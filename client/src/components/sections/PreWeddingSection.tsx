@@ -52,7 +52,7 @@ const PreWeddingSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+              src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
               alt="Lisbon cityscape" 
               className="w-full h-80 object-cover rounded-lg shadow-lg mb-6"
             />

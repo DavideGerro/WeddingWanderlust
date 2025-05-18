@@ -57,7 +57,7 @@ const WeddingDaySection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <img 
-            src="https://images.unsplash.com/photo-1548707309-dac9c32c1c0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+            src="https://pixabay.com/get/g75b5db1ad64b6c939c2a47a4ae5c60eb9458eae7dd8aee788c10828d02d5c52eca2bad9bb775b5444ac9fff593b596cbdf6178ebe8877143f74a2ce7f8ef81ba_1280.jpg" 
             alt="Wedding venue in Lisbon" 
             className="w-full h-96 object-cover rounded-lg shadow-lg mb-8"
           />

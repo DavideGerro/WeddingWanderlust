@@ -201,8 +201,8 @@ const HoneymoonSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-              alt="Japan travel landscape - Kyoto temple" 
+              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+              alt="Japan travel landscape" 
               className="w-full h-96 object-cover rounded-lg shadow-lg"
             />
           </motion.div>
