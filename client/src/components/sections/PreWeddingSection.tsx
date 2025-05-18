@@ -52,7 +52,7 @@ const PreWeddingSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img 
-              src="/images/lisbon-bridge.jpg" 
+              src="/lisbon-bridge.jpg" 
               alt="Lisbon 25 de Abril Bridge with Cristo Rei statue" 
               className="w-full h-80 object-cover rounded-lg shadow-lg mb-6"
             />
