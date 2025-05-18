@@ -148,7 +148,7 @@ const HoneymoonSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="relative z-10">Our Honeymoon in Japan</span>
+          <span className="relative z-10">Sara & Devid's Honeymoon in Japan</span>
           <span className="absolute w-24 h-2 bg-gold-light bottom-0 left-1/2 transform -translate-x-1/2"></span>
         </motion.h2>
         
@@ -201,8 +201,8 @@ const HoneymoonSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-              alt="Japan travel landscape" 
+              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+              alt="Japan travel landscape - Kyoto temple" 
               className="w-full h-96 object-cover rounded-lg shadow-lg"
             />
           </motion.div>

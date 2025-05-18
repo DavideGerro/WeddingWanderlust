@@ -51,8 +51,8 @@ const PostWeddingSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-              alt="Post-wedding brunch" 
+              src="https://images.unsplash.com/photo-1608646828558-ebe29e38e3cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+              alt="Post-wedding brunch in Lisbon" 
               className="w-full h-80 object-cover rounded-lg shadow-lg"
             />
           </motion.div>
