@@ -1,179 +1,186 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { MapPin, Car, Accessibility, Info } from "lucide-react";
+import { MapPin, Clock, Shirt, Info, Car, MessageCircle } from "lucide-react";
 import TimelineItem from "@/components/ui/TimelineItem";
-
-const timelineItems = [
-  {
-    title: "Arrival & Welcome",
-    time: "3:00 PM - 3:30 PM",
-    description: "Arrive at Palácio dos Marqueses where you'll be greeted with welcome drinks and have time to mingle before the ceremony begins."
-  },
-  {
-    title: "Ceremony",
-    time: "4:00 PM - 5:00 PM",
-    description: "Our ceremony will take place in the palace gardens with a beautiful view of the river. Please be seated 10 minutes before the ceremony begins."
-  },
-  {
-    title: "Cocktail Hour",
-    time: "5:00 PM - 6:30 PM",
-    description: "Enjoy cocktails, canapés, and live music on the terrace while we take photos. This is a perfect time to enjoy the sunset views over Lisbon."
-  },
-  {
-    title: "Dinner & Speeches",
-    time: "6:30 PM - 9:00 PM",
-    description: "Dinner will be served in the grand ballroom. We'll have speeches, toasts, and share our first dance as a married couple."
-  },
-  {
-    title: "Dancing & Celebration",
-    time: "9:00 PM - 2:00 AM",
-    description: "Dance the night away with our live band and DJ! Midnight snacks will be served to keep the energy high."
-  }
-];
+import { Button } from "@/components/ui/button";
+import { VENUE_ADDRESS } from "@/lib/constants";
+import { useLanguage } from "@/lib/useLanguage";
 
 const WeddingDaySection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
+
+  const openGoogleMaps = () => {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(VENUE_ADDRESS)}`, '_blank');
+  };
+
+  const timeline = [
+    {
+      time: "4:00 PM",
+      title: "Guest Arrival",
+      description: "Welcome drinks and mingling in the garden"
+    },
+    {
+      time: "5:00 PM",
+      title: "Ceremony",
+      description: "Vow exchange with a breathtaking view of the Tagus River"
+    },
+    {
+      time: "5:45 PM",
+      title: "Cocktail Hour",
+      description: "Champagne, signature cocktails, and passed hors d'oeuvres"
+    },
+    {
+      time: "7:00 PM",
+      title: "Dinner Reception",
+      description: "Seated dinner featuring Portuguese and Italian cuisine"
+    },
+    {
+      time: "9:00 PM",
+      title: "Cake Cutting & First Dance",
+      description: "A sweet moment followed by our first dance as a married couple"
+    },
+    {
+      time: "9:30 PM",
+      title: "Party Time",
+      description: "Dancing the night away with DJ and live band performances"
+    },
+    {
+      time: "12:00 AM",
+      title: "Late Night Snacks",
+      description: "Surprise treats to keep the energy going"
+    },
+    {
+      time: "2:00 AM",
+      title: "Farewell",
+      description: "End of the celebration (transportation available)"
+    }
+  ];
   
   return (
-    <section id="wedding-day" ref={ref} className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-center font-display text-4xl md:text-5xl mb-16 relative"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="relative z-10">The Wedding Day</span>
-          <span className="absolute w-24 h-2 bg-gold-light bottom-0 left-1/2 transform -translate-x-1/2"></span>
-        </motion.h2>
+    <section id="wedding-day" ref={ref} className="py-16 bg-gray-50">
+      <div className="container px-4 mx-auto">
+        <h2 className="text-4xl font-display font-bold text-center mb-12">
+          {t.weddingDay.title}
+        </h2>
         
-        {/* Wedding Venue */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <img 
-            src="https://pixabay.com/get/g75b5db1ad64b6c939c2a47a4ae5c60eb9458eae7dd8aee788c10828d02d5c52eca2bad9bb775b5444ac9fff593b596cbdf6178ebe8877143f74a2ce7f8ef81ba_1280.jpg" 
-            alt="Wedding venue in Lisbon" 
-            className="w-full h-96 object-cover rounded-lg shadow-lg mb-8"
-          />
-          
-          <div className="md:flex md:space-x-12">
-            <div className="md:w-1/2 mb-8 md:mb-0">
-              <h3 className="font-display text-2xl mb-4">Quinta Pezinhos no Tejo</h3>
-              <p className="text-gray-600 leading-relaxed mb-5">
-                Our ceremony and reception will be held at the beautiful Quinta Pezinhos no Tejo, a charming venue with stunning views of the Tagus River. We're excited to share this special place with you as we celebrate our love.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <MapPin className="text-gold mr-3 mt-1 h-5 w-5" />
-                  <div>
-                    <h4 className="font-medium">Location</h4>
-                    <p className="text-gray-600">R. do Joinal 2825, Caparica</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Car className="text-gold mr-3 mt-1 h-5 w-5" />
-                  <div>
-                    <h4 className="font-medium">Parking</h4>
-                    <p className="text-gray-600">Complimentary valet parking available for all guests</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Accessibility className="text-gold mr-3 mt-1 h-5 w-5" />
-                  <div>
-                    <h4 className="font-medium">Accessibility</h4>
-                    <p className="text-gray-600">The venue is fully accessible with elevators and ramps</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="md:w-1/2">
-              <div className="bg-offwhite rounded-lg p-6 shadow-md h-full">
-                <h3 className="font-display text-2xl mb-4">Venue Map</h3>
-                <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.5108057536377!2d-9.164343599999999!3d38.581136599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1942f53f7b5d09%3A0x8e87c31dfa28ccea!2sR.%20do%20Joinal%202825%2C%20Caparica!5e0!3m2!1sen!2spt!4v1684939283291!5m2!1sen!2spt"
-                    width="100%" 
-                    height="100%" 
-                    style={{ border: 0 }} 
-                    allowFullScreen 
-                    loading="lazy"
-                    title="Quinta Pezinhos no Tejo Venue Map"
-                    className="rounded-lg"
-                  ></iframe>
-                </div>
-                <div className="text-right">
-                  <a 
-                    href="https://maps.google.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="inline-flex items-center text-gold hover:text-gold-dark font-medium transition-colors"
-                  >
-                    View in Google Maps <span className="ml-1">↗</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-        
-        {/* Wedding Timeline */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h3 className="font-display text-3xl text-center mb-12">Wedding Day Timeline</h3>
-          
-          <div className="relative">
-            {timelineItems.map((item, index) => (
-              <TimelineItem 
-                key={index}
-                title={item.title}
-                time={item.time}
-                description={item.description}
-                isEven={index % 2 === 0}
-                delay={index * 0.1}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="rounded-lg overflow-hidden shadow-lg mb-6">
+              <img 
+                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+                alt="Wedding venue - Quinta Pezinhos no Tejo" 
+                className="w-full h-80 object-cover"
               />
-            ))}
-          </div>
-        </motion.div>
-        
-        {/* What to Wear */}
-        <motion.div 
-          className="bg-offwhite rounded-lg shadow-lg p-6 md:p-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <h3 className="font-display text-2xl mb-6 text-center">What to Wear</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="text-center">
-              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
-                <svg className="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h4 className="font-medium text-lg mb-2">Dress Code</h4>
-              <p className="text-gray-600">Formal attire requested. Men are encouraged to wear suits or tuxedos, and women to wear cocktail dresses or evening gowns.</p>
             </div>
+            <p className="text-gray-600 leading-relaxed mb-8">
+              {t.weddingDay.venueDescription}
+            </p>
             
-            <div className="text-center">
-              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
-                <Info className="text-gold h-6 w-6" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+              <div className="rounded-lg bg-white p-5 shadow-sm">
+                <div className="flex items-center mb-3">
+                  <MapPin className="text-gold mr-2 h-5 w-5" />
+                  <h3 className="font-medium text-lg">{t.weddingDay.location}</h3>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">
+                  Quinta Pezinhos no Tejo<br />
+                  R. do Joinal 2825<br />
+                  Caparica, Portugal
+                </p>
+                <Button 
+                  onClick={openGoogleMaps}
+                  className="w-full bg-gold hover:bg-gold-dark text-white"
+                >
+                  {t.weddingDay.viewInGoogleMaps}
+                </Button>
               </div>
-              <h4 className="font-medium text-lg mb-2">Special Notes</h4>
-              <p className="text-gray-600">The ceremony will take place on grass, so consider appropriate footwear. The evening might get cooler, so a light wrap or jacket is recommended.</p>
+              
+              <div className="space-y-6">
+                <div className="rounded-lg bg-white p-5 shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Car className="text-gold mr-2 h-5 w-5" />
+                    <h3 className="font-medium text-lg">{t.weddingDay.parking}</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    {t.weddingDay.parkingDetails}
+                  </p>
+                </div>
+                
+                <div className="rounded-lg bg-white p-5 shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <MessageCircle className="text-gold mr-2 h-5 w-5" />
+                    <h3 className="font-medium text-lg">{t.weddingDay.accessibility}</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    {t.weddingDay.accessibilityDetails}
+                  </p>
+                </div>
+              </div>
             </div>
+          </motion.div>
+          
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mb-12"
+            >
+              <h3 className="font-display text-2xl mb-6">{t.weddingDay.timeline}</h3>
+              <div className="relative">
+                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gold/30"></div>
+                <div className="space-y-6">
+                  {timeline.map((item, index) => (
+                    <TimelineItem
+                      key={index}
+                      time={item.time}
+                      title={item.title}
+                      description={item.description}
+                      isEven={index % 2 === 0}
+                      delay={index * 0.1}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <h3 className="font-display text-2xl mb-6">{t.weddingDay.whatToWear}</h3>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <Shirt className="text-gold mr-3 mt-1 h-5 w-5" />
+                  <div>
+                    <h4 className="font-medium">{t.weddingDay.dressCode}</h4>
+                    <p className="text-gray-600">
+                      {t.weddingDay.dressCodeDetails}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <Info className="text-gold mr-3 mt-1 h-5 w-5" />
+                  <div>
+                    <h4 className="font-medium">{t.weddingDay.specialNotes}</h4>
+                    <p className="text-gray-600">
+                      {t.weddingDay.specialNotesDetails}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

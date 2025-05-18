@@ -1,95 +1,87 @@
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Card } from "@/components/ui/card";
-import { Copy } from "lucide-react";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import HoneymoonGiftCard from "@/components/ui/HoneymoonGiftCard";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Card } from "@/components/ui/card";
+import { HoneymoonGiftCard } from "@/components/ui/HoneymoonGiftCard";
+import { insertContributionSchema } from "@/shared/schema";
 import { useContributions } from "@/hooks/use-contributions";
+import { useToast } from "@/hooks/use-toast";
+import { BANKING_INFO } from "@/lib/constants";
+import { useLanguage } from "@/lib/useLanguage";
 
-// Japan destinations for honeymoon
-const japanDestinations = [
-  {
-    name: "Kyoto",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80",
-    description: "Exploring ancient temples, traditional tea ceremonies, and serene bamboo forests."
-  },
-  {
-    name: "Tokyo",
-    image: "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80",
-    description: "Diving into the vibrant city life, visiting Shibuya Crossing, and enjoying world-class cuisine."
-  },
-  {
-    name: "Mount Fuji",
-    image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80",
-    description: "Hiking and taking in the breathtaking views of Japan's most iconic mountain."
-  },
-  {
-    name: "Hakone",
-    image: "https://pixabay.com/get/g328d80cf6376a20a33a97f925ccca141942b69a1cdf0acb853609f390eb949a965129d810536465f25e0889d5432316d7416a5cef50dc5118e625633f401a228_1280.jpg",
-    description: "Relaxing in hot springs with views of Mount Fuji and staying in a traditional ryokan."
-  }
-];
+// Icons
+import { SiJapan } from "react-icons/si";
+import { FaPlaneDeparture, FaUtensils, FaMountain, FaUmbrellaBeach, FaHotel, FaCamera, FaGift, FaApple, FaGooglePay } from "react-icons/fa";
+import { TbBuildingBank } from "react-icons/tb";
 
-// Honeymoon gift options
-const honeymoonGifts = [
+const honeymoonExperiences = [
   {
-    id: "ryokan",
-    title: "Romantic Ryokan Stay",
-    description: "Traditional Japanese inn experience",
-    icon: "hotel-bed",
-    amount: 150
+    id: "tokyo-hotel",
+    title: "Luxury Hotel in Tokyo",
+    description: "5-star accommodations in the heart of Tokyo with stunning city views",
+    icon: "FaHotel",
+    amount: 200
   },
   {
-    id: "dinner",
-    title: "Kaiseki Dinner",
-    description: "Multi-course traditional meal",
-    icon: "restaurant",
+    id: "kyoto-tour",
+    title: "Kyoto Temple Tour",
+    description: "Guided tour of Kyoto's historic temples and gardens",
+    icon: "FaMountain",
     amount: 100
   },
   {
-    id: "train",
-    title: "Bullet Train Tickets",
-    description: "High-speed travel between cities",
-    icon: "train",
-    amount: 75
+    id: "sushi-class",
+    title: "Sushi Making Class",
+    description: "Learn to make authentic sushi from a master chef in Osaka",
+    icon: "FaUtensils",
+    amount: 150
+  },
+  {
+    id: "mt-fuji",
+    title: "Mount Fuji Day Trip",
+    description: "Day trip to see iconic Mount Fuji with professional photo session",
+    icon: "FaCamera",
+    amount: 175
+  },
+  {
+    id: "okinawa-beach",
+    title: "Okinawa Beach Day",
+    description: "Relaxing day at a private beach in beautiful Okinawa",
+    icon: "FaUmbrellaBeach",
+    amount: 125
+  },
+  {
+    id: "bullet-train",
+    title: "Bullet Train Pass",
+    description: "High-speed train tickets to explore multiple cities",
+    icon: "FaPlaneDeparture",
+    amount: 180
   }
 ];
 
-// Form schema for contribution
-const contributionSchema = z.object({
-  name: z.string().min(2, { message: "Please enter your name" }),
-  amount: z.number().min(1, { message: "Amount must be at least 1€" }),
-  message: z.string().optional(),
-  giftType: z.string().optional(),
-  paymentMethod: z.enum(["applepay", "googlepay", "card", "bank"], {
-    required_error: "Please select a payment method",
-  }),
+const contributionSchema = insertContributionSchema.extend({
+  paymentMethod: z.enum(["apple_pay", "google_pay", "bank_transfer"])
 });
 
 type ContributionFormValues = z.infer<typeof contributionSchema>;
 
 const HoneymoonSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
-  const { toast } = useToast();
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
+  
   const [selectedGift, setSelectedGift] = useState<string | null>(null);
-  const { createContribution, isPending } = useContributions();
+  const [customAmount, setCustomAmount] = useState(true);
+  const { toast } = useToast();
+  const { createContribution, totalContributions } = useContributions();
   
   const form = useForm<ContributionFormValues>({
     resolver: zodResolver(contributionSchema),
@@ -97,327 +89,293 @@ const HoneymoonSection = () => {
       name: "",
       amount: 50,
       message: "",
-      giftType: "",
-      paymentMethod: "bank",
-    },
+      giftType: null,
+      paymentMethod: "bank_transfer"
+    }
   });
-
-  const handleGiftSelect = (giftId: string, amount: number) => {
-    setSelectedGift(giftId);
-    form.setValue("giftType", giftId);
+  
+  const handleGiftSelect = (id: string, amount: number) => {
+    setSelectedGift(id);
+    setCustomAmount(false);
     form.setValue("amount", amount);
+    form.setValue("giftType", id);
   };
-
-  const handleCustomAmount = () => {
+  
+  const handleCustomAmountClick = () => {
     setSelectedGift(null);
-    form.setValue("giftType", "custom");
+    setCustomAmount(true);
+    form.setValue("giftType", null);
   };
-
-  const copyIBAN = () => {
-    navigator.clipboard.writeText("ES91 2100 0418 4502 0005 1332");
-    toast({
-      title: "IBAN Copied!",
-      description: "Bank details copied to clipboard",
-    });
-  };
-
+  
   const onSubmit = async (data: ContributionFormValues) => {
     try {
-      await createContribution(data);
+      await createContribution.mutateAsync(data);
+      
       toast({
-        title: "Thank you for your contribution!",
-        description: "Your gift will help make our honeymoon special.",
+        title: t.honeymoon.thankYou,
+        description: t.honeymoon.thankYouDesc,
+        duration: 5000
       });
+      
       form.reset();
       setSelectedGift(null);
+      setCustomAmount(true);
     } catch (error) {
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
-        variant: "destructive",
+        variant: "destructive"
       });
     }
   };
-
+  
+  const getIconComponent = (iconName: string) => {
+    switch (iconName) {
+      case "FaHotel": return <FaHotel className="text-gold h-6 w-6" />;
+      case "FaMountain": return <FaMountain className="text-gold h-6 w-6" />;
+      case "FaUtensils": return <FaUtensils className="text-gold h-6 w-6" />;
+      case "FaCamera": return <FaCamera className="text-gold h-6 w-6" />;
+      case "FaUmbrellaBeach": return <FaUmbrellaBeach className="text-gold h-6 w-6" />;
+      case "FaPlaneDeparture": return <FaPlaneDeparture className="text-gold h-6 w-6" />;
+      default: return <FaGift className="text-gold h-6 w-6" />;
+    }
+  };
+  
   return (
-    <section id="honeymoon" ref={ref} className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-center font-display text-4xl md:text-5xl mb-16 relative"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="relative z-10">Sara & Devid's Honeymoon in Japan</span>
-          <span className="absolute w-24 h-2 bg-gold-light bottom-0 left-1/2 transform -translate-x-1/2"></span>
-        </motion.h2>
+    <section id="honeymoon" ref={ref} className="py-16 bg-gray-50">
+      <div className="container px-4 mx-auto">
+        <div className="flex items-center justify-center mb-6">
+          <SiJapan className="text-red-500 h-8 w-8 mr-3" />
+          <h2 className="text-4xl font-display font-bold text-center">
+            {t.honeymoon.title}
+          </h2>
+        </div>
         
-        <motion.div 
-          className="max-w-3xl mx-auto text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <p className="text-gray-600 leading-relaxed text-lg">
-            Instead of a traditional registry, we would love for you to contribute to our dream honeymoon in Japan. Any gift, big or small, will help make our adventure more memorable!
-          </p>
-        </motion.div>
+        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+          {t.honeymoon.description}
+        </p>
         
-        {/* Japan Honeymoon Destinations */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="font-display text-2xl mb-6">Our Dream Itinerary</h3>
+            <img 
+              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+              alt="Tokyo skyline with Mount Fuji in the background" 
+              className="w-full h-64 object-cover rounded-lg shadow-lg mb-6"
+            />
             
-            <div className="space-y-6">
-              {japanDestinations.map((destination, index) => (
-                <motion.div 
-                  key={destination.name} 
-                  className="flex"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ duration: 0.4, delay: 0.3 + (index * 0.1) }}
-                >
-                  <img 
-                    src={destination.image} 
-                    alt={destination.name} 
-                    className="w-24 h-24 object-cover rounded-lg shadow-md mr-4"
-                  />
-                  <div>
-                    <h4 className="font-medium text-lg">{destination.name}</h4>
-                    <p className="text-gray-600">{destination.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+            <h3 className="font-display text-2xl mb-4">{t.honeymoon.itinerary}</h3>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <h4 className="font-medium mb-1">Tokyo</h4>
+                <p className="text-sm text-gray-600 mb-2">4 Nights</p>
+                <p className="text-xs text-gray-500">Exploring Shinjuku, Shibuya, and Tokyo Disneyland</p>
+              </Card>
+              
+              <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <h4 className="font-medium mb-1">Kyoto</h4>
+                <p className="text-sm text-gray-600 mb-2">3 Nights</p>
+                <p className="text-xs text-gray-500">Traditional temples, geisha district, and bamboo forests</p>
+              </Card>
+              
+              <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <h4 className="font-medium mb-1">Osaka</h4>
+                <p className="text-sm text-gray-600 mb-2">2 Nights</p>
+                <p className="text-xs text-gray-500">Street food, Osaka Castle, and Universal Studios</p>
+              </Card>
+              
+              <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <h4 className="font-medium mb-1">Okinawa</h4>
+                <p className="text-sm text-gray-600 mb-2">3 Nights</p>
+                <p className="text-xs text-gray-500">Beach relaxation and snorkeling in crystal blue waters</p>
+              </Card>
             </div>
           </motion.div>
           
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <img 
-              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-              alt="Japan travel landscape" 
-              className="w-full h-96 object-cover rounded-lg shadow-lg"
-            />
-          </motion.div>
-        </div>
-        
-        {/* Honeymoon Fund */}
-        <motion.div 
-          className="bg-offwhite rounded-lg shadow-lg p-8 mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <h3 className="font-display text-3xl text-center mb-8">Honeymoon Fund</h3>
-          
-          <div className="max-w-xl mx-auto">
-            <p className="text-center text-gray-600 mb-10">
-              Your presence at our wedding is the greatest gift. However, if you'd like to contribute to our honeymoon adventure, we've created a few fun ways you can help make our trip to Japan even more special.
+            <h3 className="font-display text-2xl mb-4">{t.honeymoon.fund}</h3>
+            <p className="text-gray-600 mb-6">
+              {t.honeymoon.fundDesc}
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              {honeymoonGifts.map((gift) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              {honeymoonExperiences.map((gift) => (
                 <HoneymoonGiftCard
                   key={gift.id}
                   id={gift.id}
                   title={gift.title}
                   description={gift.description}
-                  icon={gift.icon}
+                  icon={getIconComponent(gift.icon)}
                   amount={gift.amount}
                   isSelected={selectedGift === gift.id}
                   onSelect={() => handleGiftSelect(gift.id, gift.amount)}
                 />
               ))}
+              
+              <div 
+                className={`
+                  rounded-lg border p-4 cursor-pointer transition-all duration-200
+                  ${customAmount 
+                    ? 'border-gold bg-gold/5 shadow-sm' 
+                    : 'border-gray-200 hover:border-gray-300 hover:shadow-sm'
+                  }
+                `}
+                onClick={handleCustomAmountClick}
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <div>
+                    <h4 className="font-medium">{t.honeymoon.customAmount}</h4>
+                    <p className="text-sm text-gray-600">{t.honeymoon.customAmountDesc}</p>
+                  </div>
+                  <FaGift className="text-gold h-6 w-6" />
+                </div>
+              </div>
             </div>
             
-            <div className="text-center">
-              <Button 
-                className="bg-gold hover:bg-gold-dark text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 mb-4 w-full md:w-auto"
-                onClick={handleCustomAmount}
-              >
-                Choose a Custom Amount
-              </Button>
-              <p className="text-sm text-gray-500">Enter a custom amount in the form below</p>
-            </div>
-          </div>
-        </motion.div>
-        
-        {/* Contribution Form */}
-        <motion.div 
-          className="max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <h3 className="font-display text-2xl text-center mb-8">Contribute to Our Honeymoon</h3>
-          
-          <Card className="bg-white rounded-lg shadow-md p-6 md:p-8">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="block text-gray-700 font-medium mb-2">Your Name</FormLabel>
-                      <FormControl>
-                        <Input 
-                          placeholder="John & Jane Doe" 
-                          {...field} 
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="amount"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="block text-gray-700 font-medium mb-2">Contribution Amount (€)</FormLabel>
-                      <FormControl>
-                        <Input 
-                          type="number" 
-                          placeholder="50" 
-                          {...field}
-                          onChange={(e) => field.onChange(Number(e.target.value))}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="block text-gray-700 font-medium mb-2">Personal Message (Optional)</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder="Add a personal note..." 
-                          {...field} 
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent h-24"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <div>
-                  <h4 className="font-medium text-lg mb-4">Payment Method</h4>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <h3 className="font-display text-xl mb-6">{t.honeymoon.contributeTitle}</h3>
+              
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t.honeymoon.yourName}</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="amount"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t.honeymoon.amount}</FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="number" 
+                            min={10} 
+                            {...field} 
+                            disabled={!customAmount} 
+                            onChange={(e) => field.onChange(parseInt(e.target.value))}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t.honeymoon.message}</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            placeholder={t.honeymoon.messageDesc}
+                            className="resize-none" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   
                   <FormField
                     control={form.control}
                     name="paymentMethod"
                     render={({ field }) => (
-                      <FormItem>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                          <Button
-                            type="button"
-                            className={`${
-                              field.value === "applepay" 
-                                ? "bg-black text-white" 
-                                : "bg-white border border-gray-300 text-gray-700"
-                            } font-medium py-3 px-4 rounded-lg flex items-center justify-center`}
-                            onClick={() => field.onChange("applepay")}
+                      <FormItem className="space-y-3">
+                        <FormLabel>{t.honeymoon.paymentMethod}</FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-1"
                           >
-                            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M17.0382 12.7952C17.0659 15.0834 18.963 16.0267 19 16.0434C18.9796 16.1067 18.639 17.3292 17.7537 18.583C16.9854 19.654 16.1827 20.7169 14.9684 20.7419C13.7835 20.7669 13.4078 20.0355 12.0417 20.0355C10.6756 20.0355 10.2589 20.7169 9.14048 20.7669C7.98729 20.8168 7.02552 19.6196 6.24427 18.5571C4.64303 16.3773 3.4061 12.4952 5.05285 9.79741C5.87173 8.45771 7.30407 7.60033 8.85132 7.57533C9.98283 7.55033 11.0459 8.35774 11.7305 8.35774C12.4151 8.35774 13.7131 7.37438 15.0809 7.52605C15.6383 7.55105 17.1922 7.75272 18.2063 9.14742C18.1211 9.19742 17.0153 9.82246 17.0382 12.7952ZM14.2789 5.9937C14.9381 5.17795 15.3756 4.04297 15.2531 2.9177C14.2891 2.95937 13.1272 3.54694 12.4387 4.33768C11.8285 5.03601 11.2982 6.21098 11.4412 7.29264C12.5183 7.37764 13.5903 6.78429 14.2789 5.9937Z" />
-                            </svg>
-                            Apple Pay
-                          </Button>
-                          
-                          <Button
-                            type="button"
-                            className={`${
-                              field.value === "googlepay" 
-                                ? "bg-black text-white" 
-                                : "bg-white border border-gray-300 text-gray-700"
-                            } font-medium py-3 px-4 rounded-lg flex items-center justify-center`}
-                            onClick={() => field.onChange("googlepay")}
-                          >
-                            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-                              <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="#FAB908"/>
-                              <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white"/>
-                              <path d="M12.0003 4.8C13.6003 4.8 15.0723 5.3604 16.2783 6.348L19.8243 2.802C17.7483 1.0704 15.0483 0 12.0003 0C7.3083 0 3.27231 2.6844 1.27231 6.5724L5.27231 9.6C6.25231 6.8568 8.91231 4.8 12.0003 4.8Z" fill="#EA4335"/>
-                              <path d="M22.8 12C22.8 11.1312 22.704 10.2888 22.524 9.48L12 9.6V14.4H18.06C17.7672 16.0512 16.9272 17.196 15.6 17.9364L19.5492 21.006C21.744 18.906 22.8 15.6468 22.8 12Z" fill="#4285F4"/>
-                              <path d="M5.28 14.4C5.03033 13.6464 4.8 12.8394 4.8 12C4.8 11.1606 5.03033 10.3536 5.28 9.6L1.28033 6.5724C0.463659 8.2278 0 10.0674 0 12C0 13.9326 0.463659 15.7722 1.28033 17.4276L5.28 14.4Z" fill="#FBBC05"/>
-                              <path d="M12.0003 24C15.0483 24 17.7483 22.992 19.5503 21.006L15.6003 17.9364C14.4003 18.7164 13.2003 19.2 12.0003 19.2C8.91231 19.2 6.25231 17.1432 5.27231 14.4L1.27231 17.4276C3.27231 21.3156 7.3083 24 12.0003 24Z" fill="#34A853"/>
-                            </svg>
-                            Google Pay
-                          </Button>
-                          
-                          <Button
-                            type="button"
-                            className={`${
-                              field.value === "card" 
-                                ? "bg-black text-white" 
-                                : "bg-white border border-gray-300 text-gray-700"
-                            } font-medium py-3 px-4 rounded-lg flex items-center justify-center`}
-                            onClick={() => field.onChange("card")}
-                          >
-                            <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                            </svg>
-                            Card
-                          </Button>
-                        </div>
-                        
-                        <div 
-                          className={`bg-offwhite rounded-lg p-4 mb-6 ${field.value === "bank" ? "border-2 border-gold" : ""}`}
-                          onClick={() => field.onChange("bank")}
-                        >
-                          <h4 className="font-medium mb-2 flex items-center">
-                            <svg className="w-5 h-5 mr-2 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                            </svg>
-                            Bank Transfer
-                          </h4>
-                          <p className="text-sm text-gray-600 mb-2">You can also contribute directly to our bank account:</p>
-                          <div className="flex items-center justify-between bg-white rounded p-2">
-                            <code className="text-sm">ES91 2100 0418 4502 0005 1332</code>
-                            <Button 
-                              type="button" 
-                              variant="ghost" 
-                              className="text-gold hover:text-gold-dark"
-                              onClick={copyIBAN}
-                            >
-                              <Copy className="h-4 w-4" />
-                            </Button>
-                          </div>
-                        </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="apple_pay" id="apple_pay" />
+                              <FaApple className="h-5 w-5 mr-1" />
+                              <label htmlFor="apple_pay" className="font-medium cursor-pointer">Apple Pay</label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="google_pay" id="google_pay" />
+                              <FaGooglePay className="h-5 w-5 mr-1" />
+                              <label htmlFor="google_pay" className="font-medium cursor-pointer">Google Pay</label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="bank_transfer" id="bank_transfer" />
+                              <TbBuildingBank className="h-5 w-5 mr-1" />
+                              <label htmlFor="bank_transfer" className="font-medium cursor-pointer">Bank Transfer (IBAN)</label>
+                            </div>
+                          </RadioGroup>
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                </div>
-                
-                <div className="text-center">
+                  
+                  {form.watch("paymentMethod") === "bank_transfer" && (
+                    <div className="p-4 bg-gray-50 rounded-md text-sm">
+                      <p className="font-medium mb-2">IBAN Details:</p>
+                      <p>Account Name: {BANKING_INFO.accountName}</p>
+                      <p>IBAN: {BANKING_INFO.iban}</p>
+                      <p>BIC/SWIFT: {BANKING_INFO.bic}</p>
+                      <p className="text-xs text-gray-500 mt-2">
+                        Please include your name and "Wedding Gift" in the reference
+                      </p>
+                    </div>
+                  )}
+                  
                   <Button 
-                    type="submit"
-                    disabled={isPending}
-                    className="bg-gold hover:bg-gold-dark text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg"
+                    type="submit" 
+                    className="w-full bg-gold hover:bg-gold-dark text-white"
+                    disabled={createContribution.isPending}
                   >
-                    {isPending ? "Processing..." : "Complete Contribution"}
+                    {createContribution.isPending ? "Processing..." : "Contribute"}
                   </Button>
-                </div>
-              </form>
-            </Form>
-          </Card>
+                </form>
+              </Form>
+            </div>
+          </motion.div>
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center max-w-md mx-auto bg-white p-8 rounded-lg shadow-md border border-gray-100"
+        >
+          <h3 className="font-display text-xl mb-3">Honeymoon Fund Progress</h3>
+          <div className="text-4xl font-bold text-gold mb-2">
+            €{totalContributions.data?.total || 0}
+          </div>
+          <p className="text-gray-600">raised so far</p>
+          <div className="w-full bg-gray-200 rounded-full h-2.5 mt-4">
+            <div 
+              className="bg-gold h-2.5 rounded-full" 
+              style={{ 
+                width: `${Math.min(((totalContributions.data?.total || 0) / 3000) * 100, 100)}%` 
+              }}
+            ></div>
+          </div>
+          <p className="text-sm text-gray-500 mt-2">Goal: €3,000</p>
         </motion.div>
       </div>
     </section>
