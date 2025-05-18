@@ -98,13 +98,13 @@ const WeddingDaySection = () => {
                 <h3 className="font-display text-2xl mb-4">Venue Map</h3>
                 <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12447.881865882106!2d-9.217509337133767!3d38.69746289272244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecb42c3c8a1db%3A0x320674966de82677!2sBel%C3%A9m%2C%20Lisbon%2C%20Portugal!5e0!3m2!1sen!2sus!4v1621523336425!5m2!1sen!2sus" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.5108057536377!2d-9.164343599999999!3d38.581136599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1942f53f7b5d09%3A0x8e87c31dfa28ccea!2sR.%20do%20Joinal%202825%2C%20Caparica!5e0!3m2!1sen!2spt!4v1684939283291!5m2!1sen!2spt"
                     width="100%" 
                     height="100%" 
                     style={{ border: 0 }} 
                     allowFullScreen 
                     loading="lazy"
-                    title="Wedding Venue Map"
+                    title="Quinta Pezinhos no Tejo Venue Map"
                     className="rounded-lg"
                   ></iframe>
                 </div>

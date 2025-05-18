@@ -1,7 +1,9 @@
 import { useLocation } from "wouter";
+import { useLanguage } from "@/lib/useLanguage";
 
 const Footer = () => {
   const [, navigate] = useLocation();
+  const { t } = useLanguage();
 
   const handleNavigation = (href: string) => {
     const isHashLink = href.startsWith("#");
@@ -16,60 +18,40 @@ const Footer = () => {
     }
   };
 
+  const navLinks = [
+    { href: "#pre-wedding", label: t.navLinks.preWedding },
+    { href: "#wedding-day", label: t.navLinks.weddingDay },
+    { href: "#post-wedding", label: t.navLinks.postWedding },
+    { href: "#honeymoon", label: t.navLinks.honeymoon },
+  ];
+
   return (
     <footer className="bg-gray-100 py-12">
       <div className="container mx-auto px-4 text-center">
         <h2 className="font-display text-3xl text-gold mb-6">Sara & Devid</h2>
         
         <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-          Thank you for sharing in our special day. We can't wait to celebrate with you in Lisbon!
+          {t.footer.thankYou}
         </p>
         
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-8">
-          <a 
-            href="#pre-wedding" 
-            className="text-gray-600 hover:text-gold transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation("#pre-wedding");
-            }}
-          >
-            Pre-Wedding
-          </a>
-          <a 
-            href="#wedding-day" 
-            className="text-gray-600 hover:text-gold transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation("#wedding-day");
-            }}
-          >
-            Wedding Day
-          </a>
-          <a 
-            href="#post-wedding" 
-            className="text-gray-600 hover:text-gold transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation("#post-wedding");
-            }}
-          >
-            Post-Wedding
-          </a>
-          <a 
-            href="#honeymoon" 
-            className="text-gray-600 hover:text-gold transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation("#honeymoon");
-            }}
-          >
-            Honeymoon
-          </a>
+          {navLinks.map((link) => (
+            <a 
+              key={link.href}
+              href={link.href} 
+              className="text-gray-600 hover:text-gold transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation(link.href);
+              }}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
         
         <div className="text-gray-500 text-sm">
-          <p>&copy; 2024 Sofia & Marco Wedding</p>
+          <p>{t.footer.copyright}</p>
         </div>
       </div>
     </footer>

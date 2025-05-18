@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/lib/useLanguage";
 
 const HeroSection = () => {
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (isInView) {
@@ -64,7 +66,7 @@ const HeroSection = () => {
             visible: { opacity: 1, y: 0 },
           }}
         >
-          Are getting married!
+          {t.hero.gettingMarried}
         </motion.p>
         <motion.p
           className="text-xl md:text-2xl font-light"
@@ -73,7 +75,7 @@ const HeroSection = () => {
             visible: { opacity: 1, y: 0 },
           }}
         >
-          June 26, 2026 • Lisbon, Portugal
+          {t.hero.date}
         </motion.p>
         <motion.div
           className="mt-12"
@@ -86,7 +88,7 @@ const HeroSection = () => {
             onClick={handleExploreClick}
             className="inline-block bg-gold hover:bg-gold-dark text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg"
           >
-            Explore Details <span className="ml-2">↓</span>
+            {t.hero.exploreButton} <span className="ml-2">↓</span>
           </button>
         </motion.div>
       </motion.div>

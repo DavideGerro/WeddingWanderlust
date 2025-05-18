@@ -51,8 +51,8 @@ const PostWeddingSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-              alt="Post-wedding brunch" 
+              src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+              alt="Boat cruise on the Tagus River" 
               className="w-full h-80 object-cover rounded-lg shadow-lg"
             />
           </motion.div>
@@ -62,13 +62,13 @@ const PostWeddingSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="font-display text-2xl mb-4">Farewell Brunch</h3>
+            <h3 className="font-display text-2xl mb-4">Farewell Boat Brunch</h3>
             <div className="space-y-4">
               <div className="flex items-start">
                 <Calendar className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">When</h4>
-                  <p className="text-gray-600">Sunday, June 16, 2024 • 11:00 AM - 2:00 PM</p>
+                  <p className="text-gray-600">Sunday, June 27, 2026 • 11:00 AM - 2:00 PM</p>
                 </div>
               </div>
               
@@ -76,7 +76,7 @@ const PostWeddingSection = () => {
                 <MapPin className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">Where</h4>
-                  <p className="text-gray-600">Terraço Rooftop Restaurant, Hotel Avenida Palace</p>
+                  <p className="text-gray-600">Tagus River Cruise, Departing from Doca de Santo Amaro</p>
                 </div>
               </div>
               
@@ -84,7 +84,7 @@ const PostWeddingSection = () => {
                 <Info className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">Details</h4>
-                  <p className="text-gray-600">Join us for a casual brunch with scenic views of Lisbon. This will be a relaxed affair with mimosas, pastries, and good company.</p>
+                  <p className="text-gray-600">Join us for a casual brunch on a beautiful boat with scenic views of Lisbon's coastline. This will be a relaxed affair with mimosas, pastries, and good company as we cruise along the Tagus River.</p>
                 </div>
               </div>
               
@@ -92,7 +92,7 @@ const PostWeddingSection = () => {
                 <Shirt className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">Dress Code</h4>
-                  <p className="text-gray-600">Smart casual – comfortable yet presentable</p>
+                  <p className="text-gray-600">All White – Please wear white attire for this special boat excursion</p>
                 </div>
               </div>
             </div>
