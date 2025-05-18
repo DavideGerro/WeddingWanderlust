@@ -1,14 +1,18 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Info, Shirt } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/useLanguage";
+import RsvpDialog from "@/components/ui/RsvpDialog";
 
 const PostWeddingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLanguage();
+  
+  const [rsvpDialogOpen, setRsvpDialogOpen] = useState(false);
+  const [isAttending, setIsAttending] = useState(true);
 
   return (
     <section id="post-wedding" ref={ref} className="py-16 bg-white">
@@ -27,7 +31,7 @@ const PostWeddingSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1564357645073-9b10fbeba0ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+              src="/images/tagus-boat.jpg" 
               alt="Boat cruise on the Tagus River" 
               className="w-full h-80 object-cover rounded-lg shadow-lg"
             />
