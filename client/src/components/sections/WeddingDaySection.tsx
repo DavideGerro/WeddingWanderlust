@@ -64,16 +64,16 @@ const WeddingDaySection = () => {
           
           <div className="md:flex md:space-x-12">
             <div className="md:w-1/2 mb-8 md:mb-0">
-              <h3 className="font-display text-2xl mb-4">Palácio dos Marqueses</h3>
+              <h3 className="font-display text-2xl mb-4">Quinta Pezinhos no Tejo</h3>
               <p className="text-gray-600 leading-relaxed mb-5">
-                Our ceremony and reception will be held at the stunning Palácio dos Marqueses, a historic palace with beautiful gardens overlooking the Tagus River. We're excited to share this special place with you as we celebrate our love.
+                Our ceremony and reception will be held at the beautiful Quinta Pezinhos no Tejo, a charming venue with stunning views of the Tagus River. We're excited to share this special place with you as we celebrate our love.
               </p>
               <div className="space-y-3">
                 <div className="flex items-start">
                   <MapPin className="text-gold mr-3 mt-1 h-5 w-5" />
                   <div>
                     <h4 className="font-medium">Location</h4>
-                    <p className="text-gray-600">Rua do Palácio, 23, Belém, Lisbon</p>
+                    <p className="text-gray-600">R. do Joinal 2825, Caparica</p>
                   </div>
                 </div>
                 <div className="flex items-start">

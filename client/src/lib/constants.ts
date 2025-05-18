@@ -7,8 +7,8 @@ export const BANKING_INFO = {
 
 export const WEDDING_DATE = "June 26, 2026";
 export const WEDDING_LOCATION = "Lisbon, Portugal";
-export const VENUE_NAME = "Palácio dos Marqueses";
-export const VENUE_ADDRESS = "Rua do Palácio, 23, Belém, Lisbon";
+export const VENUE_NAME = "Quinta Pezinhos no Tejo";
+export const VENUE_ADDRESS = "R. do Joinal 2825, Caparica";
 
 export const POST_WEDDING_DATE = "Sunday, June 27, 2026";
 export const POST_WEDDING_TIME = "11:00 AM - 2:00 PM";
