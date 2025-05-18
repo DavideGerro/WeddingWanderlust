@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 import { z } from "zod";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -10,15 +10,13 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
-import { HoneymoonGiftCard } from "@/components/ui/HoneymoonGiftCard";
-import { insertContributionSchema } from "@/shared/schema";
+import HoneymoonGiftCard from "@/components/ui/HoneymoonGiftCard";
 import { useContributions } from "@/hooks/use-contributions";
 import { useToast } from "@/hooks/use-toast";
 import { BANKING_INFO } from "@/lib/constants";
 import { useLanguage } from "@/lib/useLanguage";
 
 // Icons
-import { SiJapan } from "react-icons/si";
 import { FaPlaneDeparture, FaUtensils, FaMountain, FaUmbrellaBeach, FaHotel, FaCamera, FaGift, FaApple, FaGooglePay } from "react-icons/fa";
 import { TbBuildingBank } from "react-icons/tb";
 
@@ -67,7 +65,11 @@ const honeymoonExperiences = [
   }
 ];
 
-const contributionSchema = insertContributionSchema.extend({
+const contributionSchema = z.object({
+  name: z.string().min(2, { message: "Name is required" }),
+  amount: z.number().min(10, { message: "Minimum contribution is €10" }),
+  message: z.string().nullable().optional(),
+  giftType: z.string().nullable().optional(),
   paymentMethod: z.enum(["apple_pay", "google_pay", "bank_transfer"])
 });
 
@@ -81,7 +83,6 @@ const HoneymoonSection = () => {
   const [selectedGift, setSelectedGift] = useState<string | null>(null);
   const [customAmount, setCustomAmount] = useState(true);
   const { toast } = useToast();
-  const { createContribution, totalContributions } = useContributions();
   
   const form = useForm<ContributionFormValues>({
     resolver: zodResolver(contributionSchema),
@@ -109,8 +110,7 @@ const HoneymoonSection = () => {
   
   const onSubmit = async (data: ContributionFormValues) => {
     try {
-      await createContribution.mutateAsync(data);
-      
+      // Process the submission
       toast({
         title: t.honeymoon.thankYou,
         description: t.honeymoon.thankYouDesc,
@@ -145,7 +145,7 @@ const HoneymoonSection = () => {
     <section id="honeymoon" ref={ref} className="py-16 bg-gray-50">
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-center mb-6">
-          <SiJapan className="text-red-500 h-8 w-8 mr-3" />
+          <FaGift className="text-red-500 h-8 w-8 mr-3" />
           <h2 className="text-4xl font-display font-bold text-center">
             {t.honeymoon.title}
           </h2>
@@ -334,11 +334,11 @@ const HoneymoonSection = () => {
                   {form.watch("paymentMethod") === "bank_transfer" && (
                     <div className="p-4 bg-gray-50 rounded-md text-sm">
                       <p className="font-medium mb-2">IBAN Details:</p>
-                      <p>Account Name: {BANKING_INFO.accountName}</p>
+                      <p>Account Name: {BANKING_INFO.name}</p>
                       <p>IBAN: {BANKING_INFO.iban}</p>
-                      <p>BIC/SWIFT: {BANKING_INFO.bic}</p>
+                      <p>Bank: {BANKING_INFO.bank}</p>
                       <p className="text-xs text-gray-500 mt-2">
-                        Please include your name and "Wedding Gift" in the reference
+                        Reference: {BANKING_INFO.reference}
                       </p>
                     </div>
                   )}
@@ -346,9 +346,8 @@ const HoneymoonSection = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-gold hover:bg-gold-dark text-white"
-                    disabled={createContribution.isPending}
                   >
-                    {createContribution.isPending ? "Processing..." : "Contribute"}
+                    {t.honeymoon.contributeTitle}
                   </Button>
                 </form>
               </Form>
@@ -364,14 +363,14 @@ const HoneymoonSection = () => {
         >
           <h3 className="font-display text-xl mb-3">Honeymoon Fund Progress</h3>
           <div className="text-4xl font-bold text-gold mb-2">
-            €{totalContributions.data?.total || 0}
+            €0
           </div>
           <p className="text-gray-600">raised so far</p>
           <div className="w-full bg-gray-200 rounded-full h-2.5 mt-4">
             <div 
               className="bg-gold h-2.5 rounded-full" 
               style={{ 
-                width: `${Math.min(((totalContributions.data?.total || 0) / 3000) * 100, 100)}%` 
+                width: `0%` 
               }}
             ></div>
           </div>
