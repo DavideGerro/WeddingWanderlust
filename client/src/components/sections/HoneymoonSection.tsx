@@ -26,28 +26,28 @@ const honeymoonExperiences = [
     title: "Luxury Hotel in Tokyo",
     description: "5-star accommodations in the heart of Tokyo with stunning city views",
     icon: "FaHotel",
-    amount: 75
+    amount: 150
   },
   {
     id: "kyoto-tour",
     title: "Kyoto Temple Tour",
     description: "Guided tour of Kyoto's historic temples and gardens",
     icon: "FaMountain",
-    amount: 30
+    amount: 75
   },
   {
     id: "sushi-class",
     title: "Sushi Making Class",
     description: "Learn to make authentic sushi from a master chef in Osaka",
     icon: "FaUtensils",
-    amount: 40
+    amount: 45
   },
   {
     id: "mt-fuji",
     title: "Mount Fuji Day Trip",
     description: "Day trip to see iconic Mount Fuji with professional photo session",
     icon: "FaCamera",
-    amount: 50
+    amount: 100
   },
   {
     id: "okinawa-beach",
@@ -61,7 +61,7 @@ const honeymoonExperiences = [
     title: "Bullet Train Pass",
     description: "High-speed train tickets to explore multiple cities",
     icon: "FaPlaneDeparture",
-    amount: 60
+    amount: 85
   }
 ];
 
