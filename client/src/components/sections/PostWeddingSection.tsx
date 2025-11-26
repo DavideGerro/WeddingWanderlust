@@ -80,13 +80,33 @@ const PostWeddingSection = () => {
             <div className="mt-8">
               <p className="text-gray-600 italic mb-4">{t.postWedding.rsvp}</p>
               <div className="flex flex-wrap gap-4">
-                <Button variant="outline" className="border-gold text-gold hover:bg-gold hover:text-white">
+                <Button 
+                  variant="outline" 
+                  className="border-gold text-gold hover:bg-gold hover:text-white"
+                  onClick={() => {
+                    setIsAttending(true);
+                    setRsvpDialogOpen(true);
+                  }}
+                >
                   {t.postWedding.attending}
                 </Button>
-                <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-100">
+                <Button 
+                  variant="outline" 
+                  className="border-gray-300 text-gray-700 hover:bg-gray-100"
+                  onClick={() => {
+                    setIsAttending(false);
+                    setRsvpDialogOpen(true);
+                  }}
+                >
                   {t.postWedding.notAttending}
                 </Button>
               </div>
+              
+              <RsvpDialog 
+                open={rsvpDialogOpen} 
+                onOpenChange={setRsvpDialogOpen} 
+                attending={isAttending} 
+              />
             </div>
           </motion.div>
         </div>
