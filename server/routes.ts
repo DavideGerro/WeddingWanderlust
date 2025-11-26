@@ -67,7 +67,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         from: "noreply@wedding.com",
         subject: `Wedding Brunch RSVP: ${name} - ${attendingStatus}`,
         html: `
-          <h2>New RSVP for Farewell Boat Brunch</h2>
+          <h2>New RSVP for Sunset Boat Tour</h2>
           <p><strong>Guest Name:</strong> ${name}</p>
           <p><strong>Guest Email:</strong> ${email}</p>
           <p><strong>Attending:</strong> ${attending ? "Yes, I'll be there!" : "Unfortunately cannot make it"}</p>
