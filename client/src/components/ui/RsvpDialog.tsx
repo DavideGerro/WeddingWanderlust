@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/lib/useLanguage";
+import { apiRequest } from "@/lib/queryClient";
 
 interface RsvpDialogProps {
   open: boolean;
@@ -34,16 +35,11 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
     setIsSubmitting(true);
     
     try {
-      // In a real implementation, you would send this to your server
-      // For now, let's simulate sending an email
-      console.log(`Sending email to dgeris@icloud.com with:
-        Name: ${name}
-        Email: ${email}
-        Attending: ${attending ? "Yes" : "No"}
-      `);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await apiRequest("POST", "/api/rsvp", {
+        name: name.trim(),
+        email: email.trim(),
+        attending
+      });
       
       toast({
         title: "Success!",
@@ -87,6 +83,7 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
               onChange={(e) => setName(e.target.value)} 
               placeholder="Your full name"
               required
+              data-testid="input-rsvp-name"
             />
           </div>
           
@@ -99,6 +96,7 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
               onChange={(e) => setEmail(e.target.value)} 
               placeholder="your.email@example.com"
               required
+              data-testid="input-rsvp-email"
             />
           </div>
           
@@ -112,6 +110,7 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
               type="submit" 
               disabled={isSubmitting}
               className="bg-gold hover:bg-gold-dark text-white"
+              data-testid="button-submit-rsvp"
             >
               {isSubmitting ? "Submitting..." : "Submit"}
             </Button>

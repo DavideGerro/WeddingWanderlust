@@ -26,42 +26,42 @@ const honeymoonExperiences = [
     title: "Luxury Hotel in Tokyo",
     description: "5-star accommodations in the heart of Tokyo with stunning city views",
     icon: "FaHotel",
-    amount: 200
+    amount: 75
   },
   {
     id: "kyoto-tour",
     title: "Kyoto Temple Tour",
     description: "Guided tour of Kyoto's historic temples and gardens",
     icon: "FaMountain",
-    amount: 100
+    amount: 30
   },
   {
     id: "sushi-class",
     title: "Sushi Making Class",
     description: "Learn to make authentic sushi from a master chef in Osaka",
     icon: "FaUtensils",
-    amount: 150
+    amount: 40
   },
   {
     id: "mt-fuji",
     title: "Mount Fuji Day Trip",
     description: "Day trip to see iconic Mount Fuji with professional photo session",
     icon: "FaCamera",
-    amount: 175
+    amount: 50
   },
   {
     id: "okinawa-beach",
     title: "Okinawa Beach Day",
     description: "Relaxing day at a private beach in beautiful Okinawa",
     icon: "FaUmbrellaBeach",
-    amount: 125
+    amount: 35
   },
   {
     id: "bullet-train",
     title: "Bullet Train Pass",
     description: "High-speed train tickets to explore multiple cities",
     icon: "FaPlaneDeparture",
-    amount: 180
+    amount: 60
   }
 ];
 
@@ -90,7 +90,7 @@ const HoneymoonSection = () => {
     resolver: zodResolver(contributionSchema),
     defaultValues: {
       name: "",
-      amount: 50,
+      amount: 25,
       message: "",
       giftType: undefined,
       paymentMethod: "bank_transfer"
