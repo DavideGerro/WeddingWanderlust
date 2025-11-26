@@ -10,48 +10,12 @@ import { FaPlaneDeparture, FaUtensils, FaMountain, FaUmbrellaBeach, FaHotel, FaC
 import { TbBuildingBank } from "react-icons/tb";
 
 const honeymoonExperiences = [
-  {
-    id: "tokyo-hotel",
-    title: "Luxury Hotel in Tokyo",
-    description: "5-star accommodations in the heart of Tokyo with stunning city views",
-    icon: "FaHotel",
-    amount: 150
-  },
-  {
-    id: "kyoto-tour",
-    title: "Kyoto Temple Tour",
-    description: "Guided tour of Kyoto's historic temples and gardens",
-    icon: "FaMountain",
-    amount: 75
-  },
-  {
-    id: "sushi-class",
-    title: "Sushi Making Class",
-    description: "Learn to make authentic sushi from a master chef in Osaka",
-    icon: "FaUtensils",
-    amount: 45
-  },
-  {
-    id: "mt-fuji",
-    title: "Mount Fuji Day Trip",
-    description: "Day trip to see iconic Mount Fuji with professional photo session",
-    icon: "FaCamera",
-    amount: 100
-  },
-  {
-    id: "okinawa-beach",
-    title: "Okinawa Beach Day",
-    description: "Relaxing day at a private beach in beautiful Okinawa",
-    icon: "FaUmbrellaBeach",
-    amount: 35
-  },
-  {
-    id: "bullet-train",
-    title: "Bullet Train Pass",
-    description: "High-speed train tickets to explore multiple cities",
-    icon: "FaPlaneDeparture",
-    amount: 85
-  }
+  { id: "tokyo-hotel", titleKey: "tokyoHotel", descKey: "tokyoHotelDesc", icon: "FaHotel", amount: 150 },
+  { id: "kyoto-tour", titleKey: "kyotoTour", descKey: "kyotoTourDesc", icon: "FaMountain", amount: 75 },
+  { id: "sushi-class", titleKey: "sushiClass", descKey: "sushiClassDesc", icon: "FaUtensils", amount: 45 },
+  { id: "mt-fuji", titleKey: "mtFuji", descKey: "mtFujiDesc", icon: "FaCamera", amount: 100 },
+  { id: "okinawa-beach", titleKey: "okinawaBeach", descKey: "okinawaBeachDesc", icon: "FaUmbrellaBeach", amount: 35 },
+  { id: "bullet-train", titleKey: "bulletTrain", descKey: "bulletTrainDesc", icon: "FaPlaneDeparture", amount: 85 }
 ];
 
 const HoneymoonSection = () => {
@@ -109,27 +73,27 @@ const HoneymoonSection = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-medium mb-1">Tokyo</h4>
-                <p className="text-sm text-gray-600 mb-2">4 Nights</p>
-                <p className="text-xs text-gray-500">Exploring Shinjuku, Shibuya, and Tokyo Disneyland</p>
+                <h4 className="font-medium mb-1">{t.honeymoon.tokyo}</h4>
+                <p className="text-sm text-gray-600 mb-2">{t.honeymoon.tokyoNights}</p>
+                <p className="text-xs text-gray-500">{t.honeymoon.tokyoDesc}</p>
               </Card>
               
               <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-medium mb-1">Kyoto</h4>
-                <p className="text-sm text-gray-600 mb-2">3 Nights</p>
-                <p className="text-xs text-gray-500">Traditional temples, geisha district, and bamboo forests</p>
+                <h4 className="font-medium mb-1">{t.honeymoon.kyoto}</h4>
+                <p className="text-sm text-gray-600 mb-2">{t.honeymoon.kyotoNights}</p>
+                <p className="text-xs text-gray-500">{t.honeymoon.kyotoDesc}</p>
               </Card>
               
               <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-medium mb-1">Osaka</h4>
-                <p className="text-sm text-gray-600 mb-2">2 Nights</p>
-                <p className="text-xs text-gray-500">Street food, Osaka Castle, and Universal Studios</p>
+                <h4 className="font-medium mb-1">{t.honeymoon.osaka}</h4>
+                <p className="text-sm text-gray-600 mb-2">{t.honeymoon.osakaNights}</p>
+                <p className="text-xs text-gray-500">{t.honeymoon.osakaDesc}</p>
               </Card>
               
               <Card className="p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-medium mb-1">Okinawa</h4>
-                <p className="text-sm text-gray-600 mb-2">3 Nights</p>
-                <p className="text-xs text-gray-500">Beach relaxation and snorkeling in crystal blue waters</p>
+                <h4 className="font-medium mb-1">{t.honeymoon.okinawa}</h4>
+                <p className="text-sm text-gray-600 mb-2">{t.honeymoon.okinawaNights}</p>
+                <p className="text-xs text-gray-500">{t.honeymoon.okinawaDesc}</p>
               </Card>
             </div>
           </motion.div>
@@ -152,8 +116,8 @@ const HoneymoonSection = () => {
                 >
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h4 className="font-medium">{gift.title}</h4>
-                      <p className="text-sm text-gray-600">{gift.description}</p>
+                      <h4 className="font-medium">{t.honeymoon[gift.titleKey as keyof typeof t.honeymoon]}</h4>
+                      <p className="text-sm text-gray-600">{t.honeymoon[gift.descKey as keyof typeof t.honeymoon]}</p>
                     </div>
                     {getIconComponent(gift.icon)}
                   </div>
