@@ -86,9 +86,11 @@ const HeroSection = () => {
         >
           <button
             onClick={handleExploreClick}
-            className="inline-block bg-gold hover:bg-gold-dark text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg"
+            className="inline-block bg-gold hover:bg-gold-dark text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+            data-testid="button-explore"
+            aria-label="Scroll to explore wedding details"
           >
-            {t.hero.exploreButton} <span className="ml-2">↓</span>
+            {t.hero.exploreButton} <span className="ml-2" aria-hidden="true">↓</span>
           </button>
         </motion.div>
       </motion.div>

@@ -51,6 +51,8 @@ const PreWeddingSection = () => {
               src="/images/lisbon-bridge.jpg" 
               alt="Lisbon 25 de Abril Bridge with Cristo Rei statue" 
               className="w-full h-80 object-cover rounded-lg shadow-lg mb-6"
+              loading="lazy"
+              data-testid="img-lisbon-bridge"
             />
             <h3 className="font-display text-2xl mb-4">{t.preWedding.discoveringLisbon}</h3>
             <p className="text-gray-600 leading-relaxed mb-5">

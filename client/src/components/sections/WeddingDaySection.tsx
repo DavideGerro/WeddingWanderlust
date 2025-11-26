@@ -97,6 +97,8 @@ const WeddingDaySection = () => {
                 <Button 
                   onClick={openGoogleMaps}
                   className="w-full bg-gold hover:bg-gold-dark text-white"
+                  data-testid="button-google-maps"
+                  aria-label="Open venue location in Google Maps"
                 >
                   {t.weddingDay.viewInGoogleMaps}
                 </Button>

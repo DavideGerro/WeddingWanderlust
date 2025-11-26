@@ -34,6 +34,8 @@ const PostWeddingSection = () => {
               src="/images/tagus-boat.jpg" 
               alt="Boat cruise on the Tagus River" 
               className="w-full h-80 object-cover rounded-lg shadow-lg"
+              loading="lazy"
+              data-testid="img-tagus-boat"
             />
           </motion.div>
           
@@ -87,6 +89,7 @@ const PostWeddingSection = () => {
                     setIsAttending(true);
                     setRsvpDialogOpen(true);
                   }}
+                  data-testid="button-attending"
                 >
                   {t.postWedding.attending}
                 </Button>
@@ -97,6 +100,7 @@ const PostWeddingSection = () => {
                     setIsAttending(false);
                     setRsvpDialogOpen(true);
                   }}
+                  data-testid="button-not-attending"
                 >
                   {t.postWedding.notAttending}
                 </Button>

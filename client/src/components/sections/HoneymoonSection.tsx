@@ -17,7 +17,7 @@ import { BANKING_INFO } from "@/lib/constants";
 import { useLanguage } from "@/lib/useLanguage";
 
 // Icons
-import { FaPlaneDeparture, FaUtensils, FaMountain, FaUmbrellaBeach, FaHotel, FaCamera, FaGift, FaApple, FaGooglePay } from "react-icons/fa";
+import { FaPlaneDeparture, FaUtensils, FaMountain, FaUmbrellaBeach, FaHotel, FaCamera, FaGift, FaPaypal, FaCopy, FaCheck } from "react-icons/fa";
 import { TbBuildingBank } from "react-icons/tb";
 
 const honeymoonExperiences = [
@@ -68,9 +68,9 @@ const honeymoonExperiences = [
 const contributionSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }),
   amount: z.number().min(10, { message: "Minimum contribution is €10" }),
-  message: z.string().nullable().optional(),
-  giftType: z.string().nullable().optional(),
-  paymentMethod: z.enum(["apple_pay", "google_pay", "bank_transfer"])
+  message: z.string().optional().default(""),
+  giftType: z.string().optional(),
+  paymentMethod: z.enum(["bank_transfer", "paypal"])
 });
 
 type ContributionFormValues = z.infer<typeof contributionSchema>;
@@ -84,13 +84,15 @@ const HoneymoonSection = () => {
   const [customAmount, setCustomAmount] = useState(true);
   const { toast } = useToast();
   
+  const { totalContributions, createContribution, isPending } = useContributions();
+  
   const form = useForm<ContributionFormValues>({
     resolver: zodResolver(contributionSchema),
     defaultValues: {
       name: "",
       amount: 50,
       message: "",
-      giftType: null,
+      giftType: undefined,
       paymentMethod: "bank_transfer"
     }
   });
@@ -105,16 +107,33 @@ const HoneymoonSection = () => {
   const handleCustomAmountClick = () => {
     setSelectedGift(null);
     setCustomAmount(true);
-    form.setValue("giftType", null);
+    form.setValue("giftType", undefined);
+  };
+  
+  const [copiedIban, setCopiedIban] = useState(false);
+  
+  const copyIban = () => {
+    navigator.clipboard.writeText(BANKING_INFO.iban);
+    setCopiedIban(true);
+    setTimeout(() => setCopiedIban(false), 2000);
   };
   
   const onSubmit = async (data: ContributionFormValues) => {
     try {
-      // Process the submission
+      await createContribution({
+        name: data.name,
+        amount: data.amount,
+        message: data.message || null,
+        giftType: data.giftType || null,
+        paymentMethod: data.paymentMethod
+      });
+      
       toast({
         title: t.honeymoon.thankYou,
-        description: t.honeymoon.thankYouDesc,
-        duration: 5000
+        description: data.paymentMethod === "bank_transfer" 
+          ? "Please complete the bank transfer using the IBAN details shown. Your pledge has been recorded."
+          : "Your pledge has been recorded. Please complete the payment via PayPal.",
+        duration: 7000
       });
       
       form.reset();
@@ -252,7 +271,7 @@ const HoneymoonSection = () => {
                       <FormItem>
                         <FormLabel>{t.honeymoon.yourName}</FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Input {...field} data-testid="input-name" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -269,9 +288,13 @@ const HoneymoonSection = () => {
                           <Input 
                             type="number" 
                             min={10} 
-                            {...field} 
+                            value={field.value || ""} 
                             disabled={!customAmount} 
-                            onChange={(e) => field.onChange(parseInt(e.target.value))}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value, 10);
+                              field.onChange(isNaN(value) ? 0 : value);
+                            }}
+                            data-testid="input-amount"
                           />
                         </FormControl>
                         <FormMessage />
@@ -307,22 +330,18 @@ const HoneymoonSection = () => {
                           <RadioGroup
                             onValueChange={field.onChange}
                             defaultValue={field.value}
-                            className="flex flex-col space-y-1"
+                            className="flex flex-col space-y-2"
                           >
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="apple_pay" id="apple_pay" />
-                              <FaApple className="h-5 w-5 mr-1" />
-                              <label htmlFor="apple_pay" className="font-medium cursor-pointer">Apple Pay</label>
+                            <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                              <RadioGroupItem value="bank_transfer" id="bank_transfer" data-testid="radio-bank-transfer" />
+                              <TbBuildingBank className="h-5 w-5 text-gold" />
+                              <label htmlFor="bank_transfer" className="font-medium cursor-pointer flex-1">Bank Transfer (IBAN)</label>
+                              <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">Recommended</span>
                             </div>
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="google_pay" id="google_pay" />
-                              <FaGooglePay className="h-5 w-5 mr-1" />
-                              <label htmlFor="google_pay" className="font-medium cursor-pointer">Google Pay</label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="bank_transfer" id="bank_transfer" />
-                              <TbBuildingBank className="h-5 w-5 mr-1" />
-                              <label htmlFor="bank_transfer" className="font-medium cursor-pointer">Bank Transfer (IBAN)</label>
+                            <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                              <RadioGroupItem value="paypal" id="paypal" data-testid="radio-paypal" />
+                              <FaPaypal className="h-5 w-5 text-blue-600" />
+                              <label htmlFor="paypal" className="font-medium cursor-pointer">PayPal</label>
                             </div>
                           </RadioGroup>
                         </FormControl>
@@ -332,13 +351,38 @@ const HoneymoonSection = () => {
                   />
                   
                   {form.watch("paymentMethod") === "bank_transfer" && (
-                    <div className="p-4 bg-gray-50 rounded-md text-sm">
-                      <p className="font-medium mb-2">IBAN Details:</p>
-                      <p>Account Name: {BANKING_INFO.name}</p>
-                      <p>IBAN: {BANKING_INFO.iban}</p>
-                      <p>Bank: {BANKING_INFO.bank}</p>
-                      <p className="text-xs text-gray-500 mt-2">
-                        Reference: {BANKING_INFO.reference}
+                    <div className="p-4 bg-blue-50 rounded-lg text-sm border border-blue-100">
+                      <p className="font-semibold mb-3 text-blue-900">Bank Transfer Details</p>
+                      <div className="space-y-2 text-gray-700">
+                        <p><span className="text-gray-500">Account Name:</span> {BANKING_INFO.name}</p>
+                        <div className="flex items-center justify-between">
+                          <p><span className="text-gray-500">IBAN:</span> <span className="font-mono">{BANKING_INFO.iban}</span></p>
+                          <button 
+                            type="button" 
+                            onClick={copyIban}
+                            className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-xs"
+                            data-testid="button-copy-iban"
+                          >
+                            {copiedIban ? <FaCheck className="h-3 w-3" /> : <FaCopy className="h-3 w-3" />}
+                            {copiedIban ? "Copied!" : "Copy"}
+                          </button>
+                        </div>
+                        <p><span className="text-gray-500">Bank:</span> {BANKING_INFO.bank}</p>
+                        <p><span className="text-gray-500">Reference:</span> <span className="font-medium">{BANKING_INFO.reference}</span></p>
+                      </div>
+                      <p className="text-xs text-blue-700 mt-3 italic">
+                        Please include the reference when making your transfer so we can identify your contribution.
+                      </p>
+                    </div>
+                  )}
+                  
+                  {form.watch("paymentMethod") === "paypal" && (
+                    <div className="p-4 bg-blue-50 rounded-lg text-sm border border-blue-100">
+                      <p className="font-semibold mb-2 text-blue-900">PayPal Payment</p>
+                      <p className="text-gray-600 mb-3">After submitting, you'll need to complete the payment via PayPal. Send to:</p>
+                      <p className="font-mono bg-white p-2 rounded border">sara.devid.wedding@email.com</p>
+                      <p className="text-xs text-blue-700 mt-3 italic">
+                        Include your name in the payment note so we can match your contribution.
                       </p>
                     </div>
                   )}
@@ -346,8 +390,10 @@ const HoneymoonSection = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-gold hover:bg-gold-dark text-white"
+                    disabled={isPending}
+                    data-testid="button-submit-contribution"
                   >
-                    {t.honeymoon.contributeTitle}
+                    {isPending ? "Submitting..." : t.honeymoon.contributeTitle}
                   </Button>
                 </form>
               </Form>
@@ -360,21 +406,22 @@ const HoneymoonSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center max-w-md mx-auto bg-white p-8 rounded-lg shadow-md border border-gray-100"
+          data-testid="honeymoon-progress"
         >
-          <h3 className="font-display text-xl mb-3">Honeymoon Fund Progress</h3>
-          <div className="text-4xl font-bold text-gold mb-2">
-            €0
+          <h3 className="font-display text-xl mb-3">{t.honeymoon.progress || "Honeymoon Fund Progress"}</h3>
+          <div className="text-4xl font-bold text-gold mb-2" data-testid="text-total-contributions">
+            €{totalContributions.toLocaleString()}
           </div>
-          <p className="text-gray-600">raised so far</p>
+          <p className="text-gray-600">{t.honeymoon.raised || "raised so far"}</p>
           <div className="w-full bg-gray-200 rounded-full h-2.5 mt-4">
             <div 
-              className="bg-gold h-2.5 rounded-full" 
+              className="bg-gold h-2.5 rounded-full transition-all duration-500" 
               style={{ 
-                width: `0%` 
+                width: `${Math.min((totalContributions / 3000) * 100, 100)}%` 
               }}
             ></div>
           </div>
-          <p className="text-sm text-gray-500 mt-2">Goal: €3,000</p>
+          <p className="text-sm text-gray-500 mt-2">{t.honeymoon.goal || "Goal"}: €3,000</p>
         </motion.div>
       </div>
     </section>

@@ -66,6 +66,8 @@ const Header = () => {
             e.preventDefault();
             handleNavigation("#hero");
           }}
+          data-testid="link-logo"
+          aria-label="Go to top of page"
         >
           Sara & Devid
         </a>
@@ -77,11 +79,12 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-sans font-medium hover:text-gold transition-colors"
+                className="font-sans font-medium hover:text-gold transition-colors focus:outline-none focus:underline"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavigation(link.href);
                 }}
+                data-testid={`link-nav-${link.href.replace('#', '')}`}
               >
                 {link.label}
               </a>
@@ -129,8 +132,11 @@ const Header = () => {
           </DropdownMenu>
           
           <button 
-            className="text-gray-800 focus:outline-none" 
+            className="text-gray-800 focus:outline-none focus:ring-2 focus:ring-gold rounded" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            data-testid="button-mobile-menu"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />

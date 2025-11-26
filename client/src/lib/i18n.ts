@@ -88,7 +88,10 @@ export const translations = {
       messageDesc: "Add a personal note...",
       paymentMethod: "Payment Method",
       thankYou: "Thank you for your contribution!",
-      thankYouDesc: "Your gift will help make our honeymoon special."
+      thankYouDesc: "Your gift will help make our honeymoon special.",
+      progress: "Honeymoon Fund Progress",
+      raised: "raised so far",
+      goal: "Goal"
     },
     footer: {
       thankYou: "Thank you for sharing in our special day. We can't wait to celebrate with you in Lisbon!",
@@ -176,7 +179,10 @@ export const translations = {
       messageDesc: "Aggiungi una nota personale...",
       paymentMethod: "Metodo di Pagamento",
       thankYou: "Grazie per il tuo contributo!",
-      thankYouDesc: "Il tuo regalo aiuterà a rendere speciale la nostra luna di miele."
+      thankYouDesc: "Il tuo regalo aiuterà a rendere speciale la nostra luna di miele.",
+      progress: "Progresso del Fondo Luna di Miele",
+      raised: "raccolti finora",
+      goal: "Obiettivo"
     },
     footer: {
       thankYou: "Grazie per condividere il nostro giorno speciale. Non vediamo l'ora di festeggiare con te a Lisbona!",
@@ -264,7 +270,10 @@ export const translations = {
       messageDesc: "Añade una nota personal...",
       paymentMethod: "Método de Pago",
       thankYou: "¡Gracias por tu contribución!",
-      thankYouDesc: "Tu regalo ayudará a hacer especial nuestra luna de miel."
+      thankYouDesc: "Tu regalo ayudará a hacer especial nuestra luna de miel.",
+      progress: "Progreso del Fondo de Luna de Miel",
+      raised: "recaudados hasta ahora",
+      goal: "Objetivo"
     },
     footer: {
       thankYou: "Gracias por compartir nuestro día especial. ¡Estamos ansiosos por celebrar contigo en Lisboa!",
