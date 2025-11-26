@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Shirt, Info, Car, MessageCircle } from "lucide-react";
+import { MapPin, Clock, Shirt, Info, Smartphone, Sun } from "lucide-react";
 import TimelineItem from "@/components/ui/TimelineItem";
 import { Button } from "@/components/ui/button";
 import { VENUE_ADDRESS } from "@/lib/constants";
@@ -107,21 +107,21 @@ const WeddingDaySection = () => {
               <div className="space-y-6">
                 <div className="rounded-lg bg-white p-5 shadow-sm">
                   <div className="flex items-center mb-3">
-                    <Car className="text-gold mr-2 h-5 w-5" />
-                    <h3 className="font-medium text-lg">{t.weddingDay.parking}</h3>
+                    <Smartphone className="text-gold mr-2 h-5 w-5" />
+                    <h3 className="font-medium text-lg">{t.weddingDay.gettingThere}</h3>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    {t.weddingDay.parkingDetails}
+                    {t.weddingDay.gettingThereDetails}
                   </p>
                 </div>
                 
                 <div className="rounded-lg bg-white p-5 shadow-sm">
                   <div className="flex items-center mb-3">
-                    <MessageCircle className="text-gold mr-2 h-5 w-5" />
-                    <h3 className="font-medium text-lg">{t.weddingDay.accessibility}</h3>
+                    <Sun className="text-gold mr-2 h-5 w-5" />
+                    <h3 className="font-medium text-lg">{t.weddingDay.weather}</h3>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    {t.weddingDay.accessibilityDetails}
+                    {t.weddingDay.weatherDetails}
                   </p>
                 </div>
               </div>

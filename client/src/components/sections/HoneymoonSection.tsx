@@ -84,7 +84,7 @@ const HoneymoonSection = () => {
   const [customAmount, setCustomAmount] = useState(true);
   const { toast } = useToast();
   
-  const { totalContributions, createContribution, isPending } = useContributions();
+  const { createContribution, isPending } = useContributions();
   
   const form = useForm<ContributionFormValues>({
     resolver: zodResolver(contributionSchema),
@@ -400,29 +400,6 @@ const HoneymoonSection = () => {
             </div>
           </motion.div>
         </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center max-w-md mx-auto bg-white p-8 rounded-lg shadow-md border border-gray-100"
-          data-testid="honeymoon-progress"
-        >
-          <h3 className="font-display text-xl mb-3">{t.honeymoon.progress || "Honeymoon Fund Progress"}</h3>
-          <div className="text-4xl font-bold text-gold mb-2" data-testid="text-total-contributions">
-            €{totalContributions.toLocaleString()}
-          </div>
-          <p className="text-gray-600">{t.honeymoon.raised || "raised so far"}</p>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mt-4">
-            <div 
-              className="bg-gold h-2.5 rounded-full transition-all duration-500" 
-              style={{ 
-                width: `${Math.min((totalContributions / 3000) * 100, 100)}%` 
-              }}
-            ></div>
-          </div>
-          <p className="text-sm text-gray-500 mt-2">{t.honeymoon.goal || "Goal"}: €3,000</p>
-        </motion.div>
       </div>
     </section>
   );
