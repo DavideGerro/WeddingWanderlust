@@ -50,7 +50,7 @@ const PostWeddingSection = () => {
                 <Calendar className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.when}</h4>
-                  <p className="text-gray-600">Sunday, June 27, 2026 • 11:00 AM - 2:00 PM</p>
+                  <p className="text-gray-600">Sunday, June 27, 2026 • 19:00 - 21:00</p>
                 </div>
               </div>
               
