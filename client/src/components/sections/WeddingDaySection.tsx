@@ -6,7 +6,6 @@ import TimelineItem from "@/components/ui/TimelineItem";
 import { Button } from "@/components/ui/button";
 import { VENUE_ADDRESS } from "@/lib/constants";
 import { useLanguage } from "@/lib/useLanguage";
-import ceremonyIllustration from "@assets/generated_images/playful_outdoor_wedding_ceremony.png";
 
 const WeddingDaySection = () => {
   const ref = useRef(null);
@@ -75,8 +74,8 @@ const WeddingDaySection = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-lg mb-6">
               <img 
-                src={ceremonyIllustration} 
-                alt="Wedding ceremony by the river" 
+                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+                alt="Wedding venue - Quinta Pezinhos no Tejo" 
                 className="w-full h-80 object-cover"
               />
             </div>

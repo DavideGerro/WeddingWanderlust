@@ -5,7 +5,6 @@ import { Calendar, MapPin, Info, Shirt } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/useLanguage";
 import RsvpDialog from "@/components/ui/RsvpDialog";
-import boatIllustration from "@assets/generated_images/playful_sunset_boat_cruise.png";
 
 const PostWeddingSection = () => {
   const ref = useRef(null);
@@ -32,8 +31,8 @@ const PostWeddingSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <img 
-              src={boatIllustration} 
-              alt="Sunset boat cruise on the Tagus River" 
+              src="/images/tagus-boat.jpg" 
+              alt="Boat cruise on the Tagus River" 
               className="w-full h-80 object-cover rounded-lg shadow-lg"
               loading="lazy"
               data-testid="img-tagus-boat"
