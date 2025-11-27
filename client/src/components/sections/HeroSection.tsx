@@ -3,6 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/lib/useLanguage";
+import heroIllustration from "@assets/generated_images/playful_watercolor_bride_and_groom.png";
 
 const HeroSection = () => {
   const controls = useAnimation();
@@ -29,7 +30,7 @@ const HeroSection = () => {
       ref={ref}
       className="h-screen relative flex items-center justify-center"
       style={{
-        background: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
+        background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('${heroIllustration}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

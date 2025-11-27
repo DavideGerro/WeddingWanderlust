@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MapPin, HandPlatter, Info, Hotel, Utensils, Umbrella, Bus, Car } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/lib/useLanguage";
+import lisbonIllustration from "@assets/generated_images/playful_lisbon_cityscape_illustration.png";
 
 const hotels = [
   {
@@ -48,8 +49,8 @@ const PreWeddingSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img 
-              src="/images/lisbon-bridge.jpg" 
-              alt="Lisbon 25 de Abril Bridge with Cristo Rei statue" 
+              src={lisbonIllustration} 
+              alt="Lisbon cityscape with 25 de Abril Bridge" 
               className="w-full h-80 object-cover rounded-lg shadow-lg mb-6"
               loading="lazy"
               data-testid="img-lisbon-bridge"
