@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Fredoka", "Montserrat", "sans-serif"],
-        display: ["Fredoka", "Playfair Display", "serif"],
+        sans: ["Poppins", "Montserrat", "sans-serif"],
+        display: ["Poppins", "Playfair Display", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
