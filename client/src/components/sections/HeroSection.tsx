@@ -3,6 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/lib/useLanguage";
+import heroImage from "@assets/ChatGPT Image 27 nov 2025, 17_00_36_1764263624289.png";
 
 const HeroSection = () => {
   const controls = useAnimation();
@@ -29,13 +30,13 @@ const HeroSection = () => {
       ref={ref}
       className="h-screen relative flex items-center justify-center"
       style={{
-        background: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
+        background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('${heroImage}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       <motion.div
-        className="text-center text-white"
+        className="text-center text-gray-700"
         initial="hidden"
         animate={controls}
         variants={{
@@ -51,7 +52,7 @@ const HeroSection = () => {
         }}
       >
         <motion.h1
-          className="font-display text-5xl md:text-7xl font-bold mb-4"
+          className="font-display text-6xl md:text-8xl font-bold mb-4 tracking-tight"
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
@@ -86,7 +87,7 @@ const HeroSection = () => {
         >
           <button
             onClick={handleExploreClick}
-            className="inline-block bg-gold hover:bg-gold-dark text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+            className="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-transparent"
             data-testid="button-explore"
             aria-label="Scroll to explore wedding details"
           >

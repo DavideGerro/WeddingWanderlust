@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "Montserrat", "sans-serif"],
-        display: ["Poppins", "Playfair Display", "serif"],
+        sans: ["Lora", "Montserrat", "sans-serif"],
+        display: ["Cormorant Garamond", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
