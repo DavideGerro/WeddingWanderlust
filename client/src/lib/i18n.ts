@@ -15,7 +15,7 @@ export const translations = {
       honeymoon: "Honeymoon"
     },
     hero: {
-      gettingMarried: "On the road to forever.",
+      gettingMarried: "Are getting married!",
       date: "June 26, 2026 • Lisbon, Portugal",
       exploreButton: "Explore Details"
     },
@@ -144,7 +144,7 @@ export const translations = {
       honeymoon: "Luna di Miele"
     },
     hero: {
-      gettingMarried: "Sulla strada verso sempre.",
+      gettingMarried: "Si sposano!",
       date: "26 Giugno, 2026 • Lisbona, Portogallo",
       exploreButton: "Esplora i Dettagli"
     },
@@ -273,7 +273,7 @@ export const translations = {
       honeymoon: "Luna de Miel"
     },
     hero: {
-      gettingMarried: "En el camino hacia siempre.",
+      gettingMarried: "¡Se casan!",
       date: "26 de Junio, 2026 • Lisboa, Portugal",
       exploreButton: "Explorar Detalles"
     },
