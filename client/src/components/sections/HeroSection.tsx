@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/lib/useLanguage";
-import heroImage from "@assets/ChatGPT Image 27 nov 2025, 17_00_36_1764263624289.png";
+import heroImage from "@assets/ChatGPT Image 30 nov 2025, 10_46_28-2_1764500001380.png";
 
 const HeroSection = () => {
   const controls = useAnimation();
