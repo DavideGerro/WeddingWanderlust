@@ -61,6 +61,15 @@ const HeroSection = () => {
         >
           Sara & Devid
         </motion.h1>
+        <motion.p
+          className="text-xl md:text-2xl mb-6 font-light"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          {t.hero.gettingMarried}
+        </motion.p>
         <motion.div
           className="mt-12"
           variants={{
