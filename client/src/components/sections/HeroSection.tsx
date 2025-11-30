@@ -30,11 +30,9 @@ const HeroSection = () => {
       ref={ref}
       className="h-screen relative flex items-center justify-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)), url('${heroImage}')`,
-        backgroundSize: "contain",
+        background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('${heroImage}')`,
+        backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
       }}
     >
       <motion.div
@@ -54,8 +52,7 @@ const HeroSection = () => {
         }}
       >
         <motion.h1
-          className="text-6xl md:text-8xl font-bold mb-4 tracking-tight"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          className="font-display text-6xl md:text-8xl font-bold mb-4 tracking-tight"
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
