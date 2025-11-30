@@ -69,14 +69,6 @@ const PreWeddingSection = () => {
               </div>
               
               <div className="flex items-start">
-                <Utensils className="text-gold mr-3 mt-1 h-5 w-5" />
-                <div>
-                  <h4 className="font-medium">{t.preWedding.localCuisine}</h4>
-                  <p className="text-gray-600">{t.preWedding.localCuisineDesc}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
                 <Info className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.preWedding.usefulTips}</h4>
