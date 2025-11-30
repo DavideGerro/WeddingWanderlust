@@ -25,69 +25,77 @@ const HeroSection = () => {
   };
 
   return (
-    <section
-      id="hero"
-      ref={ref}
-      className="h-screen relative flex items-center justify-center"
-      style={{
-        background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('${heroImage}')`,
-        backgroundSize: "contain",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <motion.div
-        className="text-center text-gray-700"
-        initial="hidden"
-        animate={controls}
-        variants={{
-          hidden: { opacity: 0, y: 20 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.8,
-              staggerChildren: 0.3,
-            },
-          },
+    <>
+      {/* Two-column hero layout with drawing on left */}
+      <div className="hero">
+        <div className="hero-left">
+          <img src={heroImage} alt="Sara & Devid wedding illustration" />
+        </div>
+        <div className="hero-right"></div>
+      </div>
+
+      {/* Original hero section with centered text - unchanged */}
+      <section
+        id="hero"
+        ref={ref}
+        className="h-screen relative flex items-center justify-center"
+        style={{
+          background: "#f5efe6",
         }}
       >
-        <motion.h1
-          className="font-display text-6xl md:text-8xl font-bold mb-4 tracking-tight"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          Sara & Devid
-        </motion.h1>
-        <motion.p
-          className="text-xl md:text-2xl mb-6 font-light"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          {t.hero.gettingMarried}
-        </motion.p>
         <motion.div
-          className="mt-12"
+          className="text-center text-gray-700"
+          initial="hidden"
+          animate={controls}
           variants={{
             hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.8,
+                staggerChildren: 0.3,
+              },
+            },
           }}
         >
-          <button
-            onClick={handleExploreClick}
-            className="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-transparent"
-            data-testid="button-explore"
-            aria-label="Scroll to explore wedding details"
+          <motion.h1
+            className="font-display text-6xl md:text-8xl font-bold mb-4 tracking-tight"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
           >
-            {t.hero.exploreButton} <span className="ml-2" aria-hidden="true">↓</span>
-          </button>
+            Sara & Devid
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl mb-6 font-light"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            {t.hero.gettingMarried}
+          </motion.p>
+          <motion.div
+            className="mt-12"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            <button
+              onClick={handleExploreClick}
+              className="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-transparent"
+              data-testid="button-explore"
+              aria-label="Scroll to explore wedding details"
+            >
+              {t.hero.exploreButton} <span className="ml-2" aria-hidden="true">↓</span>
+            </button>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </section>
+      </section>
+    </>
   );
 };
 
