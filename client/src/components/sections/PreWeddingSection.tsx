@@ -84,6 +84,37 @@ const PreWeddingSection = () => {
                 </div>
               </div>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-8 p-6 bg-yellow-50 border-2 border-yellow-300 rounded-lg shadow-md transform -rotate-1"
+            >
+              <h4 className="font-display text-lg mb-4 text-amber-900">{t.preWedding.favoriteFood}</h4>
+              
+              <div className="space-y-3 text-sm">
+                <div>
+                  <p className="font-medium text-amber-900 mb-2">{t.preWedding.breakfast}</p>
+                  <p className="text-gray-700 mb-1">{t.preWedding.honestGreens}</p>
+                  <p className="text-gray-700 mb-1">{t.preWedding.monkaCafe}</p>
+                  <p className="text-gray-700">{t.preWedding.bikeBakery}</p>
+                </div>
+
+                <div>
+                  <p className="font-medium text-amber-900 mb-2">{t.preWedding.lunchDinner}</p>
+                  <p className="text-gray-700 mb-1">{t.preWedding.mercado}</p>
+                  <p className="text-gray-700 mb-1">{t.preWedding.ruiDosPregos}</p>
+                  <p className="text-gray-700">{t.preWedding.laCamionetta}</p>
+                </div>
+
+                <div>
+                  <p className="font-medium text-amber-900 mb-2">{t.preWedding.pasteisDeNata}</p>
+                  <p className="text-gray-700 mb-1">{t.preWedding.manteigaria}</p>
+                  <p className="text-gray-700">{t.preWedding.castro}</p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
           
           <motion.div
