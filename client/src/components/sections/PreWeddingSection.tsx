@@ -83,7 +83,7 @@ const PreWeddingSection = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="mt-8 p-6 bg-yellow-50 border-2 border-yellow-300 rounded-lg shadow-md transform -rotate-1"
             >
-              <h4 className="font-display text-lg mb-4 text-amber-900">{t.preWedding.favoriteFood}</h4>
+              <h4 className="font-display text-lg mb-4 text-amber-900">{t.preWedding.favoriteFood} 👨‍🍳</h4>
               
               <div className="space-y-3 text-sm">
                 <div>
