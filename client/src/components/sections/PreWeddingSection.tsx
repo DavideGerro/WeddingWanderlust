@@ -5,6 +5,17 @@ import { MapPin, HandPlatter, Info, Hotel, Utensils, Umbrella, Bus, Car } from "
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/lib/useLanguage";
 
+// Helper function to render markdown bold syntax (**text**) as bold JSX elements
+const renderBoldText = (text: string) => {
+  const parts = text.split(/(\*\*[^*]+\*\*)/);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return <span key={i}>{part}</span>;
+  });
+};
+
 const hotels = [
   {
     name: "Hotel Avenida Palace",
