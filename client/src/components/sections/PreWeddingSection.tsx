@@ -75,7 +75,7 @@ const PreWeddingSection = () => {
                 <MapPin className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.preWedding.mustVisit}</h4>
-                  <p className="text-gray-600">{t.preWedding.mustVisitPlaces}</p>
+                  <p className="text-gray-600 whitespace-pre-line">{renderBoldText(t.preWedding.mustVisitPlaces)}</p>
                 </div>
               </div>
               
@@ -83,7 +83,7 @@ const PreWeddingSection = () => {
                 <Info className="text-gold mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.preWedding.usefulTips}</h4>
-                  <p className="text-gray-600">{t.preWedding.usefulTipsDesc}</p>
+                  <p className="text-gray-600 whitespace-pre-line">{renderBoldText(t.preWedding.usefulTipsDesc)}</p>
                 </div>
               </div>
             </div>
