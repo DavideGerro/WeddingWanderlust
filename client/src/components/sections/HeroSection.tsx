@@ -31,8 +31,9 @@ const HeroSection = () => {
       className="h-screen relative flex items-center justify-center"
       style={{
         background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('${heroImage}')`,
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <motion.div
