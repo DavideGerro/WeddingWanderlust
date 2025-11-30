@@ -62,7 +62,7 @@ export const translations = {
       timeline: "Wedding Day Timeline",
       whatToWear: "What to Wear",
       dressCode: "Dress Code",
-      dressCodeDetails: "Formal attire requested. Men are encouraged to wear suits or tuxedos, and women to wear cocktail dresses or evening gowns.",
+      dressCodeDetails: "Formal attire requested. Men are encouraged to wear suits or tuxedos, and women to wear cocktail dresses or evening gowns. We also warmly welcome traditional and cultural attire, such as caftans or other traditional dress that holds meaning for you.",
       specialNotes: "Special Notes",
       specialNotesDetails: "The ceremony will take place on grass, so consider appropriate footwear. The evening might get cooler, so a light wrap or jacket is recommended."
     },
@@ -191,7 +191,7 @@ export const translations = {
       timeline: "Programma del Giorno del Matrimonio",
       whatToWear: "Cosa Indossare",
       dressCode: "Dress Code",
-      dressCodeDetails: "Richiesto abbigliamento formale. Gli uomini sono incoraggiati a indossare abiti o smoking, e le donne abiti da cocktail o da sera.",
+      dressCodeDetails: "Richiesto abbigliamento formale. Gli uomini sono incoraggiati a indossare abiti o smoking, e le donne abiti da cocktail o da sera. Accogliamo anche calorosamente abiti tradizionali e culturali, come caftani o altri abiti tradizionali che hanno significato per voi.",
       specialNotes: "Note Speciali",
       specialNotesDetails: "La cerimonia si svolgerà sull'erba, quindi considera calzature appropriate. La serata potrebbe diventare più fresca, quindi è consigliata una stola o una giacca leggera."
     },
@@ -320,7 +320,7 @@ export const translations = {
       timeline: "Cronograma del Día de la Boda",
       whatToWear: "Qué Vestir",
       dressCode: "Código de Vestimenta",
-      dressCodeDetails: "Se solicita atuendo formal. Se anima a los hombres a usar trajes o esmoquin, y a las mujeres vestidos de cóctel o vestidos de noche.",
+      dressCodeDetails: "Se solicita atuendo formal. Se anima a los hombres a usar trajes o esmoquin, y a las mujeres vestidos de cóctel o vestidos de noche. También recibimos calurosamente el atuendo tradicional y cultural, como caftanes u otra ropa tradicional que sea significativa para ti.",
       specialNotes: "Notas Especiales",
       specialNotesDetails: "La ceremonia tendrá lugar sobre césped, así que considera un calzado apropiado. La noche podría enfriarse, por lo que se recomienda un chal o chaqueta ligera."
     },
