@@ -59,32 +59,29 @@
 
 /* Hero section with drawing on left */
 .hero {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0;
-  margin: 0;
-  background: #f5efe6;
-  min-height: 100vh;
-}
-
-.hero-left {
-  flex: 0 0 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  gap: 40px;
+  padding: 0 5%;
+  min-height: 100vh;
+  background: #f5efe6;
 }
 
-.hero-left img {
+.hero .drawing {
+  flex: 0 0 auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero .drawing img {
+  display: block;
   width: 100%;
   height: auto;
-  max-width: 800px;
-  display: block;
-  object-fit: contain;
 }
 
-.hero-right {
-  flex: 1;
+.hero .text {
+  flex: 1 1 auto;
+  max-width: 500px;
+  margin-left: 30px;
 }
