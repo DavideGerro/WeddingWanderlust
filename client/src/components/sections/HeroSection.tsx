@@ -25,26 +25,18 @@ const HeroSection = () => {
   };
 
   return (
-    <>
-      {/* Two-column hero layout with drawing on left */}
-      <div className="hero">
-        <div className="hero-left">
-          <img src={heroImage} alt="Sara & Devid wedding illustration" />
-        </div>
-        <div className="hero-right"></div>
+    <section
+      id="hero"
+      ref={ref}
+      className="hero"
+    >
+      <div className="drawing">
+        <img src={heroImage} alt="Sara & Devid wedding illustration" />
       </div>
 
-      {/* Original hero section with centered text - unchanged */}
-      <section
-        id="hero"
-        ref={ref}
-        className="h-screen relative flex items-center justify-center"
-        style={{
-          background: "#f5efe6",
-        }}
-      >
+      <div className="text">
         <motion.div
-          className="text-center text-gray-700"
+          className="text-gray-700"
           initial="hidden"
           animate={controls}
           variants={{
@@ -94,8 +86,8 @@ const HeroSection = () => {
             </button>
           </motion.div>
         </motion.div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
