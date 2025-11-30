@@ -67,7 +67,7 @@ const HeroSection = () => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            {t.hero.gettingMarried} 💍
+            {t.hero.gettingMarried} 💍💍
           </motion.p>
           <motion.div
             className="mt-12"
