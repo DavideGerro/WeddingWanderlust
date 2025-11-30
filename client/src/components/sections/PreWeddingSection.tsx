@@ -88,22 +88,54 @@ const PreWeddingSection = () => {
               <div className="space-y-3 text-sm">
                 <div>
                   <p className="font-medium text-amber-900 mb-2">{t.preWedding.breakfast}</p>
-                  <p className="text-gray-700 mb-1">{t.preWedding.honestGreens}</p>
-                  <p className="text-gray-700 mb-1">{t.preWedding.monkaCafe}</p>
-                  <p className="text-gray-700">{t.preWedding.bikeBakery}</p>
+                  {t.preWedding.honestGreens && (
+                    <p className="text-gray-700 mb-1">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.honestGreens.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.honestGreens.split(' — ')[0]}</a> — {t.preWedding.honestGreens.split(' — ')[1]}
+                    </p>
+                  )}
+                  {t.preWedding.monkaCafe && (
+                    <p className="text-gray-700 mb-1">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.monkaCafe.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.monkaCafe.split(' — ')[0]}</a> — {t.preWedding.monkaCafe.split(' — ')[1]}
+                    </p>
+                  )}
+                  {t.preWedding.bikeBakery && (
+                    <p className="text-gray-700">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.bikeBakery.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.bikeBakery.split(' — ')[0]}</a> — {t.preWedding.bikeBakery.split(' — ')[1]}
+                    </p>
+                  )}
                 </div>
 
                 <div>
                   <p className="font-medium text-amber-900 mb-2">{t.preWedding.lunchDinner}</p>
-                  <p className="text-gray-700 mb-1">{t.preWedding.mercado}</p>
-                  <p className="text-gray-700 mb-1">{t.preWedding.ruiDosPregos}</p>
-                  <p className="text-gray-700">{t.preWedding.laCamionetta}</p>
+                  {t.preWedding.mercado && (
+                    <p className="text-gray-700 mb-1">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.mercado.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.mercado.split(' — ')[0]}</a> — {t.preWedding.mercado.split(' — ')[1]}
+                    </p>
+                  )}
+                  {t.preWedding.ruiDosPregos && (
+                    <p className="text-gray-700 mb-1">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.ruiDosPregos.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.ruiDosPregos.split(' — ')[0]}</a> — {t.preWedding.ruiDosPregos.split(' — ')[1]}
+                    </p>
+                  )}
+                  {t.preWedding.laCamionetta && (
+                    <p className="text-gray-700">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.laCamionetta.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.laCamionetta.split(' — ')[0]}</a> — {t.preWedding.laCamionetta.split(' — ')[1]}
+                    </p>
+                  )}
                 </div>
 
                 <div>
                   <p className="font-medium text-amber-900 mb-2">{t.preWedding.pasteisDeNata}</p>
-                  <p className="text-gray-700 mb-1">{t.preWedding.manteigaria}</p>
-                  <p className="text-gray-700">{t.preWedding.castro}</p>
+                  {t.preWedding.manteigaria && (
+                    <p className="text-gray-700 mb-1">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.manteigaria)}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.manteigaria}</a>
+                    </p>
+                  )}
+                  {t.preWedding.castro && (
+                    <p className="text-gray-700">
+                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.castro)}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.castro}</a>
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
