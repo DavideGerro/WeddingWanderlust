@@ -26,7 +26,7 @@ export const translations = {
       mustVisit: "Must-Visit Places",
       mustVisitPlaces: "**Alfama** — Lisbon's oldest neighborhood, full of narrow streets, fado music, and stunning viewpoints.\n\n**Belém Tower** — A symbol of Portugal's Age of Discoveries.\n\n**Jerónimos Monastery** — A UNESCO masterpiece with breathtaking architecture.\n\n**Praça do Comércio** — Lisbon's grand riverside square, perfect for a stroll and a drink.",
       usefulTips: "Useful Tips",
-      usefulTipsDesc: "Lisbon has hills… lots of them — comfortable shoes are your best friend.\n\nEven in summer, evenings by the river can be cool — bring a light jacket.\n\nA few basic Portuguese words go a long way:\n\n**Olá** (hello)\n\n**Por favor** (please)\n\n**Obrigado/Obrigada** (thank you)",
+      usefulTipsDesc: "Lisbon has hills… lots of them — comfortable shoes are your best friend.\n\nEven in summer, evenings by the river can be cool — bring a light jacket.\n\nA few basic Portuguese words go a long way:\n\n- **Olá** (hello)\n\n- **Por favor** (please)\n\n- **Obrigado/Obrigada** (thank you)",
       favoriteFood: "Our Favorite Food Places in Lisbon",
       breakfast: "Breakfast",
       honestGreens: "Honest Greens — for lunch or a healthy breakfast",
