@@ -53,7 +53,8 @@ const HeroSection = () => {
         }}
       >
         <motion.h1
-          className="font-display text-6xl md:text-8xl font-bold mb-4 tracking-tight"
+          className="text-6xl md:text-8xl font-bold mb-4 tracking-tight"
+          style={{ fontFamily: "'Playfair Display', serif" }}
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
