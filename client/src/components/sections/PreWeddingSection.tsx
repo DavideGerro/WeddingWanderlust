@@ -74,7 +74,7 @@ const PreWeddingSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="font-display text-2xl mb-4">{t.preWedding.gettingAround}</h3>
+            <h3 className="font-display text-2xl mb-4">{t.preWedding.gettingAround} 🚊</h3>
             <div className="space-y-6">
               <div className="flex items-start">
                 <Car className="text-gold mr-3 mt-1 h-5 w-5" />
