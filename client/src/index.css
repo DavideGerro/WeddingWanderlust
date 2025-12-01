@@ -86,6 +86,19 @@
   margin-left: 30px;
 }
 
+/* Portuguese flag box for language section */
+.portuguese-flag-box {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(90deg, rgba(0, 153, 0, 0.15) 0%, rgba(0, 153, 0, 0.15) 40%, rgba(204, 0, 0, 0.15) 40%, rgba(204, 0, 0, 0.15) 100%);
+  border: 1px solid #e0e0e0;
+}
+
+.portuguese-flag-box strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .hero {

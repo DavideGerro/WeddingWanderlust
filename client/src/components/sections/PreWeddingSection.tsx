@@ -81,9 +81,12 @@ const PreWeddingSection = () => {
               
               <div className="flex items-start">
                 <Info className="text-gold mr-3 mt-1 h-5 w-5" />
-                <div>
+                <div className="w-full">
                   <h4 className="font-medium">{t.preWedding.usefulTips}</h4>
-                  <p className="text-gray-600 whitespace-pre-line">{renderBoldText(t.preWedding.usefulTipsDesc)}</p>
+                  <p className="text-gray-600 whitespace-pre-line mb-3">{renderBoldText(t.preWedding.usefulTipsDesc.split('A few basic Portuguese words')[0])}</p>
+                  <div className="portuguese-flag-box">
+                    <p className="text-gray-700 whitespace-pre-line">{renderBoldText('A few basic Portuguese words go a long way:\n\n' + t.preWedding.usefulTipsDesc.split('A few basic Portuguese words go a long way:\n\n')[1])}</p>
+                  </div>
                 </div>
               </div>
             </div>
