@@ -137,7 +137,37 @@ const PreWeddingSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="font-display text-2xl mb-4">{t.preWedding.gettingAround}</h3>
+            <h3 className="font-display text-2xl mb-6">{t.preWedding.gettingAround}</h3>
+            
+            {/* Yellow Lisbon Tram */}
+            <svg className="w-full h-auto mb-8" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+              {/* Tram body */}
+              <rect x="40" y="40" width="220" height="50" fill="#FFD700" stroke="#333" strokeWidth="2" rx="8" />
+              
+              {/* Tram top */}
+              <rect x="50" y="25" width="200" height="20" fill="#FFD700" stroke="#333" strokeWidth="2" rx="5" />
+              
+              {/* Windows */}
+              <rect x="60" y="30" width="30" height="15" fill="#87CEEB" stroke="#333" strokeWidth="1" />
+              <rect x="100" y="30" width="30" height="15" fill="#87CEEB" stroke="#333" strokeWidth="1" />
+              <rect x="140" y="30" width="30" height="15" fill="#87CEEB" stroke="#333" strokeWidth="1" />
+              <rect x="180" y="30" width="30" height="15" fill="#87CEEB" stroke="#333" strokeWidth="1" />
+              
+              {/* Doors */}
+              <rect x="55" y="45" width="18" height="38" fill="#8B4513" stroke="#333" strokeWidth="1.5" />
+              <rect x="227" y="45" width="18" height="38" fill="#8B4513" stroke="#333" strokeWidth="1.5" />
+              
+              {/* Wheels */}
+              <circle cx="70" cy="95" r="10" fill="#333" />
+              <circle cx="230" cy="95" r="10" fill="#333" />
+              <circle cx="90" cy="95" r="8" fill="#666" />
+              <circle cx="210" cy="95" r="8" fill="#666" />
+              
+              {/* Pantograph connection */}
+              <line x1="80" y1="20" x2="120" y2="0" stroke="#333" strokeWidth="2" />
+              <line x1="120" y1="0" x2="220" y2="0" stroke="#333" strokeWidth="2" />
+            </svg>
+            
             <div className="space-y-6">
               <div className="flex items-start">
                 <Car className="text-gold mr-3 mt-1 h-5 w-5" />
