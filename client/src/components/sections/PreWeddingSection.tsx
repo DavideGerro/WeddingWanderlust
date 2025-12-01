@@ -67,12 +67,45 @@ const PreWeddingSection = () => {
                 </div>
               </div>
             </div>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h3 className="font-display text-2xl mb-4">{t.preWedding.gettingAround}</h3>
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <Car className="text-gold mr-3 mt-1 h-5 w-5" />
+                <div>
+                  <h4 className="font-medium">{t.preWedding.taxis}</h4>
+                  <p className="text-gray-600">{t.preWedding.taxisDesc}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <Bus className="text-gold mr-3 mt-1 h-5 w-5" />
+                <div>
+                  <h4 className="font-medium">{t.preWedding.publicTransport}</h4>
+                  <p className="text-gray-600">{t.preWedding.publicTransportDesc}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <Umbrella className="text-gold mr-3 mt-1 h-5 w-5" />
+                <div>
+                  <h4 className="font-medium">{t.preWedding.walking}</h4>
+                  <p className="text-gray-600">{t.preWedding.walkingDesc}</p>
+                </div>
+              </div>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-8 p-6 bg-yellow-50 border-2 border-yellow-300 rounded-lg shadow-md transform -rotate-1"
+              className="mt-12 p-6 kitchen-note-box"
             >
               <h4 className="font-display text-lg mb-4 text-amber-900">{t.preWedding.favoriteFood} 👨‍🍳</h4>
               
@@ -130,39 +163,6 @@ const PreWeddingSection = () => {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className="font-display text-2xl mb-4">{t.preWedding.gettingAround}</h3>
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <Car className="text-gold mr-3 mt-1 h-5 w-5" />
-                <div>
-                  <h4 className="font-medium">{t.preWedding.taxis}</h4>
-                  <p className="text-gray-600">{t.preWedding.taxisDesc}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <Bus className="text-gold mr-3 mt-1 h-5 w-5" />
-                <div>
-                  <h4 className="font-medium">{t.preWedding.publicTransport}</h4>
-                  <p className="text-gray-600">{t.preWedding.publicTransportDesc}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <Umbrella className="text-gold mr-3 mt-1 h-5 w-5" />
-                <div>
-                  <h4 className="font-medium">{t.preWedding.walking}</h4>
-                  <p className="text-gray-600">{t.preWedding.walkingDesc}</p>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
