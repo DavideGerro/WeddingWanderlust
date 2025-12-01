@@ -16,29 +16,6 @@ const renderBoldText = (text: string) => {
   });
 };
 
-const hotels = [
-  {
-    name: "Hotel Avenida Palace",
-    stars: 5,
-    address: "Rua 1º de Dezembro 123, 1200-359 Lisboa",
-    amenities: ["Free WiFi", "Breakfast included", "Air conditioning"],
-    distance: "25 min drive to venue"
-  },
-  {
-    name: "Lisbon Marriott Hotel",
-    stars: 4,
-    address: "Avenida dos Combatentes 45, 1600-042 Lisboa",
-    amenities: ["Swimming pool", "Restaurant", "Fitness center"],
-    distance: "20 min drive to venue"
-  },
-  {
-    name: "Olissippo Lapa Palace",
-    stars: 5,
-    address: "Rua do Pau da Bandeira 4, 1249-021 Lisboa",
-    amenities: ["Luxury spa", "Garden view", "24h room service"],
-    distance: "15 min drive to venue"
-  }
-];
 
 const PreWeddingSection = () => {
   const ref = useRef(null);
@@ -160,38 +137,7 @@ const PreWeddingSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="font-display text-2xl mb-6">{t.preWedding.accommodation}</h3>
-            <p className="text-gray-600 mb-6">
-              {t.preWedding.accommodationDesc}
-            </p>
-            
-            <div className="space-y-4 mb-8">
-              {hotels.map((hotel, index) => (
-                <Card key={index} className="p-4 hover:shadow-md transition-shadow duration-200">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h4 className="font-medium">{hotel.name}</h4>
-                      <p className="text-sm text-gray-500">{hotel.address}</p>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {hotel.amenities.map((amenity, i) => (
-                          <span key={i} className="text-xs bg-gray-100 px-2 py-1 rounded">
-                            {amenity}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-gold">
-                        {"★".repeat(hotel.stars)}
-                      </div>
-                      <p className="text-xs text-gray-500 mt-1">{hotel.distance}</p>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-            
-            <h3 className="font-display text-2xl mb-4 mt-12">{t.preWedding.gettingAround}</h3>
+            <h3 className="font-display text-2xl mb-4">{t.preWedding.gettingAround}</h3>
             <div className="space-y-6">
               <div className="flex items-start">
                 <Car className="text-gold mr-3 mt-1 h-5 w-5" />
