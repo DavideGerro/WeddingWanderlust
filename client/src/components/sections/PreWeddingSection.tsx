@@ -35,14 +35,15 @@ const PreWeddingSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <img 
-              src="/images/lisbon-bridge.jpg" 
-              alt="Lisbon 25 de Abril Bridge with Cristo Rei statue" 
-              className="w-full h-80 object-cover rounded-lg shadow-lg mb-6"
-              style={{ backgroundColor: "#F6EEE2" }}
-              loading="lazy"
-              data-testid="img-lisbon-bridge"
-            />
+            <div className="rounded-lg shadow-lg mb-6 overflow-hidden" style={{ backgroundColor: "#F6EEE2" }}>
+              <img 
+                src="/images/lisbon-bridge.jpg" 
+                alt="Lisbon 25 de Abril Bridge with Cristo Rei statue" 
+                className="w-full h-80 object-cover"
+                loading="lazy"
+                data-testid="img-lisbon-bridge"
+              />
+            </div>
             <h3 className="font-display text-2xl mb-4">{t.preWedding.discoveringLisbon}</h3>
             <p className="text-gray-600 leading-relaxed mb-5">
               {t.preWedding.lisbonDescription}
