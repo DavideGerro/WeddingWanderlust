@@ -20,10 +20,10 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
           </DialogTitle>
         </DialogHeader>
         
-        <div className="w-full">
+        <div className="w-full flex justify-center">
           <iframe 
             src="https://docs.google.com/forms/d/e/1FAIpQLSfIPOa-HhOS8RqBvtFIwF9iKnS0nKKEsj6V96XUUssYTsujvw/viewform?embedded=true" 
-            width="100%" 
+            width="640" 
             height="760" 
             frameBorder="0" 
             marginHeight={0} 
@@ -31,7 +31,7 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
             className="rounded"
             data-testid="iframe-rsvp-form"
           >
-            Loading…
+            Caricamento…
           </iframe>
         </div>
 
