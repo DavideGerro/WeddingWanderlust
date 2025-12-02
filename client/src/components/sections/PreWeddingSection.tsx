@@ -39,6 +39,7 @@ const PreWeddingSection = () => {
               src="/images/lisbon-bridge.jpg" 
               alt="Lisbon 25 de Abril Bridge with Cristo Rei statue" 
               className="w-full h-80 object-cover rounded-lg shadow-lg mb-6"
+              style={{ backgroundColor: "#F6EEE2" }}
               loading="lazy"
               data-testid="img-lisbon-bridge"
             />
