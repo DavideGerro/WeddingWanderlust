@@ -35,7 +35,7 @@ const PreWeddingSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="rounded-lg shadow-lg mb-6 overflow-hidden" style={{ backgroundColor: "#F6EEE2" }}>
+            <div className="rounded-lg shadow-lg mb-6 overflow-hidden" style={{ backgroundColor: "#f9eddb" }}>
               <img 
                 src="/images/lisbon-bridge.jpg" 
                 alt="Lisbon 25 de Abril Bridge with Cristo Rei statue" 
