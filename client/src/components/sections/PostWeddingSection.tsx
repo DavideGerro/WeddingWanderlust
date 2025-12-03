@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Info, Shirt } from "lucide-react";
+import { Calendar, MapPin, Shirt } from "lucide-react";
 import { useLanguage } from "@/lib/useLanguage";
 
 const PostWeddingSection = () => {
@@ -57,14 +57,6 @@ const PostWeddingSection = () => {
                 <div>
                   <h4 className="font-medium">{t.postWedding.where}</h4>
                   <p className="text-gray-600">Tagus River Cruise, Departing from Doca de Santo Amaro</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <Info className="text-primary mr-3 mt-1 h-5 w-5" strokeWidth={2.5} />
-                <div>
-                  <h4 className="font-medium">{t.postWedding.details}</h4>
-                  <p className="text-gray-600">{t.postWedding.detailsDesc}</p>
                 </div>
               </div>
               
