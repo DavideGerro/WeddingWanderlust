@@ -27,7 +27,7 @@ const RsvpSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-gold hover:bg-gold/90 text-white"
+              className="bg-rust text-white hover:bg-rust/90"
               onClick={() => {
                 setIsAttending(true);
                 setRsvpDialogOpen(true);
