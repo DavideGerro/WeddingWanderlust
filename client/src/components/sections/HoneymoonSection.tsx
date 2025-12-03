@@ -7,6 +7,14 @@ import { useLanguage } from "@/lib/useLanguage";
 import { FaGift } from "react-icons/fa";
 import { TbBuildingBank } from "react-icons/tb";
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "stripe-buy-button": any;
+    }
+  }
+}
+
 const HoneymoonSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
