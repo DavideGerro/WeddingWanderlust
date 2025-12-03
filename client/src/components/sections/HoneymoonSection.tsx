@@ -1,11 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { BANKING_INFO } from "@/lib/constants";
 import { useLanguage } from "@/lib/useLanguage";
 
 // Icons
-import { FaGift, FaCopy, FaCheck } from "react-icons/fa";
+import { FaGift } from "react-icons/fa";
 import { TbBuildingBank } from "react-icons/tb";
 
 const HoneymoonSection = () => {
@@ -13,13 +12,13 @@ const HoneymoonSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLanguage();
   
-  const [copiedIban, setCopiedIban] = useState(false);
-  
-  const copyIban = () => {
-    navigator.clipboard.writeText(BANKING_INFO.iban);
-    setCopiedIban(true);
-    setTimeout(() => setCopiedIban(false), 2000);
-  };
+  useEffect(() => {
+    // Load Stripe buy button script
+    const script = document.createElement("script");
+    script.src = "https://js.stripe.com/v3/buy-button.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
   
   return (
     <section id="honeymoon" ref={ref} className="py-16 bg-gray-50">
@@ -48,31 +47,14 @@ const HoneymoonSection = () => {
             </div>
             
             <p className="text-gray-600 mb-6">
-              {t.honeymoon.bankTransferInfo}
+              If you'd like to contribute, simply make a bank transfer using the details below. We appreciate any amount you choose to give!
             </p>
             
-            <div className="p-4 bg-blue-50 rounded-lg text-sm border border-blue-100">
-              <p className="font-semibold mb-3 text-blue-900">{t.honeymoon.bankDetails}</p>
-              <div className="space-y-2 text-gray-700">
-                <p><span className="text-gray-500">Account Name:</span> {BANKING_INFO.name}</p>
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <p><span className="text-gray-500">IBAN:</span> <span className="font-mono text-xs sm:text-sm">{BANKING_INFO.iban}</span></p>
-                  <button 
-                    type="button" 
-                    onClick={copyIban}
-                    className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-xs bg-white px-2 py-1 rounded border"
-                    data-testid="button-copy-iban"
-                  >
-                    {copiedIban ? <FaCheck className="h-3 w-3" /> : <FaCopy className="h-3 w-3" />}
-                    {copiedIban ? "Copied!" : "Copy IBAN"}
-                  </button>
-                </div>
-                <p><span className="text-gray-500">Bank:</span> {BANKING_INFO.bank}</p>
-                <p><span className="text-gray-500">Reference:</span> <span className="font-medium">{BANKING_INFO.reference}</span></p>
-              </div>
-              <p className="text-xs text-blue-700 mt-3 italic">
-                {t.honeymoon.referenceNote}
-              </p>
+            <div className="flex justify-center">
+              <stripe-buy-button
+                buy-button-id="buy_btn_1SaG7QH5mllg6YT2FHFDJTgD"
+                publishable-key="pk_live_51JU9DkH5mllg6YT2vYTtdZaQLqxwbW4miwQuXjq2exsEopznOQwT1HcnX7JHBSDfpXF8zJxl1oVw0PtgilzKhDFs00drBmiUPd"
+              ></stripe-buy-button>
             </div>
           </div>
         </motion.div>
