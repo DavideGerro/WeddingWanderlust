@@ -10,16 +10,19 @@ const PostWeddingSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="post-wedding" ref={ref} className="py-16 bg-white">
-      <div className="container px-4 mx-auto">
-        <h2 className="text-4xl font-display font-bold text-center mb-6">
-          {t.postWedding.title}
-        </h2>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-16">
-          {t.postWedding.description}
-        </p>
+    <section id="post-wedding" ref={ref} className="py-20 bg-white">
+      <div className="container px-4 mx-auto max-w-5xl">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-display font-bold mb-4">
+            {t.postWedding.title}
+          </h2>
+          <div className="w-24 h-1 bg-primary/30 mx-auto mb-6"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            {t.postWedding.description}
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
@@ -42,7 +45,7 @@ const PostWeddingSection = () => {
             <h3 className="font-display text-2xl mb-4">{t.postWedding.farewellBrunch}</h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <Calendar className="text-gold mr-3 mt-1 h-5 w-5" />
+                <Calendar className="text-primary mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.when}</h4>
                   <p className="text-gray-600">Sunday, June 27, 2026 • 19:00 - 21:00</p>
@@ -50,7 +53,7 @@ const PostWeddingSection = () => {
               </div>
               
               <div className="flex items-start">
-                <MapPin className="text-gold mr-3 mt-1 h-5 w-5" />
+                <MapPin className="text-primary mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.where}</h4>
                   <p className="text-gray-600">Tagus River Cruise, Departing from Doca de Santo Amaro</p>
@@ -58,7 +61,7 @@ const PostWeddingSection = () => {
               </div>
               
               <div className="flex items-start">
-                <Info className="text-gold mr-3 mt-1 h-5 w-5" />
+                <Info className="text-primary mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.details}</h4>
                   <p className="text-gray-600">{t.postWedding.detailsDesc}</p>
@@ -66,7 +69,7 @@ const PostWeddingSection = () => {
               </div>
               
               <div className="flex items-start">
-                <Shirt className="text-gold mr-3 mt-1 h-5 w-5" />
+                <Shirt className="text-primary mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.dressCode}</h4>
                   <p className="text-gray-600">{t.postWedding.dressCodeDetails}</p>

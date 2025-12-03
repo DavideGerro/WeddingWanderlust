@@ -9,20 +9,25 @@ const WeddingGallerySection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="gallery" ref={ref} className="py-16 bg-white">
-      <div className="container px-4 mx-auto max-w-2xl">
+    <section id="gallery" ref={ref} className="py-20 bg-gray-50">
+      <div className="container px-4 mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h3 className="font-display text-2xl mb-4">{t.postWedding.weddingGallery}</h3>
-          <p className="text-gray-600 mb-6">
+          <div className="inline-block mb-6">
+            <span className="text-5xl">📸</span>
+          </div>
+          <h2 className="font-display text-3xl font-bold mb-4">{t.postWedding.weddingGallery}</h2>
+          <div className="w-16 h-1 bg-primary/30 mx-auto mb-6"></div>
+          <p className="text-gray-600 mb-8 text-lg">
             {t.postWedding.galleryDesc}
           </p>
-          <div className="p-12 bg-gray-50 rounded-lg border border-dashed border-gray-300 flex items-center justify-center">
-            <p className="text-xl text-gray-400 font-light">{t.postWedding.gallerySoon}</p>
+          <div className="p-16 bg-white rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center shadow-sm">
+            <span className="text-4xl mb-4">🎞️</span>
+            <p className="text-xl text-gray-400 font-light italic">{t.postWedding.gallerySoon}</p>
           </div>
         </motion.div>
       </div>
