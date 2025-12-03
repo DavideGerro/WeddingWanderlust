@@ -14,9 +14,9 @@ const Home = () => {
       <div className="section-divider bg-floral-pattern"></div>
       <WeddingDaySection />
       <div className="section-divider bg-floral-pattern"></div>
-      <RsvpSection />
-      <div className="section-divider bg-floral-pattern"></div>
       <PostWeddingSection />
+      <div className="section-divider bg-floral-pattern"></div>
+      <RsvpSection />
       <div className="section-divider bg-floral-pattern"></div>
       <HoneymoonSection />
     </main>
