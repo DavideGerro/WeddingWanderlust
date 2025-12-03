@@ -27,7 +27,7 @@ const RsvpSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-rust text-white hover:bg-rust/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
               onClick={() => {
                 setIsAttending(true);
                 setRsvpDialogOpen(true);
@@ -39,7 +39,7 @@ const RsvpSection = () => {
             <Button 
               size="lg"
               variant="outline" 
-              className="border-gray-300 text-gray-700 hover:bg-gray-100"
+              className="border-gray-400 text-gray-700 hover:bg-gray-100"
               onClick={() => {
                 setIsAttending(false);
                 setRsvpDialogOpen(true);
