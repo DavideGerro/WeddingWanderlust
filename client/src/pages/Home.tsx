@@ -1,8 +1,9 @@
 import HeroSection from "@/components/sections/HeroSection";
 import PreWeddingSection from "@/components/sections/PreWeddingSection";
 import WeddingDaySection from "@/components/sections/WeddingDaySection";
-import RsvpSection from "@/components/sections/RsvpSection";
 import PostWeddingSection from "@/components/sections/PostWeddingSection";
+import RsvpSection from "@/components/sections/RsvpSection";
+import WeddingGallerySection from "@/components/sections/WeddingGallerySection";
 import HoneymoonSection from "@/components/sections/HoneymoonSection";
 
 const Home = () => {
@@ -17,6 +18,8 @@ const Home = () => {
       <PostWeddingSection />
       <div className="section-divider bg-floral-pattern"></div>
       <RsvpSection />
+      <div className="section-divider bg-floral-pattern"></div>
+      <WeddingGallerySection />
       <div className="section-divider bg-floral-pattern"></div>
       <HoneymoonSection />
     </main>
