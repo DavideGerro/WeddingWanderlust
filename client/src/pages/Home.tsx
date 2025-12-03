@@ -4,7 +4,7 @@ import WeddingDaySection from "@/components/sections/WeddingDaySection";
 import PostWeddingSection from "@/components/sections/PostWeddingSection";
 import RsvpSection from "@/components/sections/RsvpSection";
 import WeddingGallerySection from "@/components/sections/WeddingGallerySection";
-import HoneymoonSection from "@/components/sections/HoneymoonSection";
+// import HoneymoonSection from "@/components/sections/HoneymoonSection"; // Hidden for now - uncomment when ready
 
 const Home = () => {
   return (
@@ -20,8 +20,6 @@ const Home = () => {
       <RsvpSection />
       <div className="section-divider bg-floral-pattern"></div>
       <WeddingGallerySection />
-      <div className="section-divider bg-floral-pattern"></div>
-      <HoneymoonSection />
     </main>
   );
 };
