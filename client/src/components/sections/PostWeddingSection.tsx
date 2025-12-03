@@ -61,7 +61,7 @@ const PostWeddingSection = () => {
               </div>
               
               <div className="flex items-start">
-                <Info className="text-primary mr-3 mt-1 h-5 w-5" />
+                <Info className="text-primary mr-3 mt-0.5 h-6 w-6" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.details}</h4>
                   <p className="text-gray-600">{t.postWedding.detailsDesc}</p>
