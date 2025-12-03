@@ -66,6 +66,12 @@ export const translations = {
       specialNotes: "Special Notes",
       specialNotesDetails: "The ceremony will take place on grass, so consider appropriate footwear. The evening might get cooler, so a light wrap or jacket is recommended."
     },
+    rsvp: {
+      title: "Please Let Us Know",
+      description: "We'd love to know if you'll be joining us for the wedding and the day after sunset boat tour!",
+      attending: "I'll Be There",
+      notAttending: "Can't Make It"
+    },
     postWedding: {
       title: "After The Wedding",
       description: "The celebration continues! Join us the day after the wedding for a magical sunset boat tour to say goodbye before we jet off on our honeymoon.",
@@ -195,6 +201,12 @@ export const translations = {
       specialNotes: "Note Speciali",
       specialNotesDetails: "La cerimonia si svolgerà sull'erba, quindi considera calzature appropriate. La serata potrebbe diventare più fresca, quindi è consigliata una stola o una giacca leggera."
     },
+    rsvp: {
+      title: "Facci Sapere",
+      description: "Ci piacerebbe sapere se ti unirai a noi per il matrimonio e il tour in barca al tramonto del giorno dopo!",
+      attending: "Ci Sarò",
+      notAttending: "Non Posso"
+    },
     postWedding: {
       title: "Dopo il Matrimonio",
       description: "La celebrazione continua! Unisciti a noi il giorno dopo il matrimonio per un magico tour in barca al tramonto per salutarci prima di partire per la nostra luna di miele.",
@@ -323,6 +335,12 @@ export const translations = {
       dressCodeDetails: "Atuendo smart casual o elegante – ¡piensa en una fiesta de jardín! Usa tu mejor outfit, ya sea un traje, un vestido elegante o algo colorido y cómodo. También recibimos calurosamente el atuendo tradicional y cultural, como caftanes u otras prendas que tengan un significado especial para ti.",
       specialNotes: "Notas Especiales",
       specialNotesDetails: "La ceremonia tendrá lugar sobre césped, así que considera un calzado apropiado. La noche podría enfriarse, por lo que se recomienda un chal o chaqueta ligera."
+    },
+    rsvp: {
+      title: "Por Favor, Cuéntanos",
+      description: "¡Nos encantaría saber si te unirás a nosotros para la boda y el tour en barco al atardecer del día siguiente!",
+      attending: "Asistiré",
+      notAttending: "No Puedo Asistir"
     },
     postWedding: {
       title: "Después de la Boda",
