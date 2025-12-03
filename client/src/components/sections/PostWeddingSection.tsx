@@ -1,18 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Info, Shirt } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/useLanguage";
-import RsvpDialog from "@/components/ui/RsvpDialog";
 
 const PostWeddingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLanguage();
-  
-  const [rsvpDialogOpen, setRsvpDialogOpen] = useState(false);
-  const [isAttending, setIsAttending] = useState(true);
 
   return (
     <section id="post-wedding" ref={ref} className="py-16 bg-white">
@@ -77,40 +72,6 @@ const PostWeddingSection = () => {
                   <p className="text-gray-600">{t.postWedding.dressCodeDetails}</p>
                 </div>
               </div>
-            </div>
-            
-            <div className="mt-8">
-              <p className="text-gray-600 italic mb-4">{t.postWedding.rsvp}</p>
-              <div className="flex flex-wrap gap-4">
-                <Button 
-                  variant="outline" 
-                  className="border-gold text-gold hover:bg-gold hover:text-white"
-                  onClick={() => {
-                    setIsAttending(true);
-                    setRsvpDialogOpen(true);
-                  }}
-                  data-testid="button-attending"
-                >
-                  {t.postWedding.attending}
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-gray-300 text-gray-700 hover:bg-gray-100"
-                  onClick={() => {
-                    setIsAttending(false);
-                    setRsvpDialogOpen(true);
-                  }}
-                  data-testid="button-not-attending"
-                >
-                  {t.postWedding.notAttending}
-                </Button>
-              </div>
-              
-              <RsvpDialog 
-                open={rsvpDialogOpen} 
-                onOpenChange={setRsvpDialogOpen} 
-                attending={isAttending} 
-              />
             </div>
           </motion.div>
         </div>
