@@ -16,12 +16,7 @@ const RsvpSection = () => {
   return (
     <section id="rsvp" ref={ref} className="py-16 bg-white">
       <div className="container px-4 mx-auto max-w-2xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
+        <div className="text-center">
           <h2 className="text-4xl font-display font-bold mb-4">
             {t.rsvp.title}
           </h2>
@@ -60,7 +55,7 @@ const RsvpSection = () => {
             onOpenChange={setRsvpDialogOpen} 
             attending={isAttending} 
           />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
