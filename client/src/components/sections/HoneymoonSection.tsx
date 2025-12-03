@@ -55,7 +55,7 @@ const HoneymoonSection = () => {
             </div>
             
             <p className="text-gray-600 mb-6">
-              If you'd like to contribute, simply make a bank transfer using the details below. We appreciate any amount you choose to give!
+              If you'd like to contribute, simply make a payment using the button below. We appreciate any amount you choose to give!
             </p>
             
             <div className="flex justify-center">
