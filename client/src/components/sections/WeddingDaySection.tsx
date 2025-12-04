@@ -48,7 +48,7 @@ const WeddingDaySection = () => {
     {
       time: "9:00 PM",
       title: "Cake Cutting & First Dance",
-      description: "A sweet moment followed by our first dance as a married couple",
+      description: "A sweet moment with our first dance as a married couple",
       icon: Cake,
       highlight: true
     },
@@ -108,13 +108,17 @@ const WeddingDaySection = () => {
                 className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="font-display text-2xl font-semibold mb-1">Quinta Pezinhos no Tejo</h3>
-                <p className="text-white/80 text-sm flex items-center gap-2">
+              <button
+                onClick={openGoogleMaps}
+                className="absolute bottom-0 left-0 right-0 p-6 text-white cursor-pointer hover:bg-black/40 transition-colors group/btn"
+                aria-label="Open venue location in Google Maps"
+              >
+                <h3 className="font-display text-2xl font-semibold mb-1 group-hover/btn:underline">Quinta Pezinhos no Tejo</h3>
+                <p className="text-white/80 text-sm flex items-center gap-2 group-hover/btn:text-white transition-colors">
                   <MapPin className="w-4 h-4" />
                   Caparica, Portugal
                 </p>
-              </div>
+              </button>
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 mb-8">
