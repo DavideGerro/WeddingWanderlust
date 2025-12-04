@@ -48,7 +48,7 @@ const WeddingDaySection = () => {
     {
       time: "9:00 PM",
       title: "Cake Cutting & First Dance",
-      description: "A sweet moment with our first dance as a married couple",
+      description: "Celebrating love with our first dance",
       icon: Cake,
       highlight: true
     },
