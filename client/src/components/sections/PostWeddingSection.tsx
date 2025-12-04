@@ -48,7 +48,7 @@ const PostWeddingSection = () => {
                 <Calendar className="text-primary mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.when}</h4>
-                  <p className="text-gray-600">Sunday, June 27, 2026 • 19:00 - 21:00</p>
+                  <p className="text-gray-600">{t.postWedding.whenDetails}</p>
                 </div>
               </div>
               
@@ -56,7 +56,7 @@ const PostWeddingSection = () => {
                 <MapPin className="text-primary mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.where}</h4>
-                  <p className="text-gray-600">Tagus River Cruise, Departing from Doca de Santo Amaro</p>
+                  <p className="text-gray-600">{t.postWedding.whereDetails}</p>
                 </div>
               </div>
               

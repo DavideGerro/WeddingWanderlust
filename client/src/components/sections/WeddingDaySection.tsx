@@ -19,57 +19,57 @@ const WeddingDaySection = () => {
   const timeline = [
     {
       time: "4:00 PM",
-      title: "Guest Arrival",
-      description: "Welcome drinks and mingling in the garden",
+      title: t.weddingDay.timelineEvents.guestArrival,
+      description: t.weddingDay.timelineEvents.guestArrivalDesc,
       icon: Users,
       highlight: false
     },
     {
       time: "5:00 PM",
-      title: "Ceremony",
-      description: "Vow exchange with a breathtaking view of the Tagus River",
+      title: t.weddingDay.timelineEvents.ceremony,
+      description: t.weddingDay.timelineEvents.ceremonyDesc,
       icon: Heart,
       highlight: true
     },
     {
       time: "5:45 PM",
-      title: "Cocktail Hour",
-      description: "Champagne, signature cocktails, and passed hors d'oeuvres",
+      title: t.weddingDay.timelineEvents.cocktailHour,
+      description: t.weddingDay.timelineEvents.cocktailHourDesc,
       icon: Wine,
       highlight: false
     },
     {
       time: "7:00 PM",
-      title: "Dinner Reception",
-      description: "Seated dinner featuring Portuguese and Italian cuisine",
+      title: t.weddingDay.timelineEvents.dinnerReception,
+      description: t.weddingDay.timelineEvents.dinnerReceptionDesc,
       icon: UtensilsCrossed,
       highlight: false
     },
     {
       time: "9:00 PM",
-      title: "Cake Cutting & First Dance",
-      description: "Celebrating love with our first dance",
+      title: t.weddingDay.timelineEvents.cakeCutting,
+      description: t.weddingDay.timelineEvents.cakeCuttingDesc,
       icon: Cake,
       highlight: true
     },
     {
       time: "9:30 PM",
-      title: "Party Time",
-      description: "Dancing the night away with DJ and live band performances",
+      title: t.weddingDay.timelineEvents.partyTime,
+      description: t.weddingDay.timelineEvents.partyTimeDesc,
       icon: Music,
       highlight: false
     },
     {
       time: "12:00 AM",
-      title: "Late Night Snacks",
-      description: "Surprise treats to keep the energy going",
+      title: t.weddingDay.timelineEvents.lateNightSnacks,
+      description: t.weddingDay.timelineEvents.lateNightSnacksDesc,
       icon: Pizza,
       highlight: false
     },
     {
       time: "2:00 AM",
-      title: "Farewell",
-      description: "End of the celebration (transportation available)",
+      title: t.weddingDay.timelineEvents.farewell,
+      description: t.weddingDay.timelineEvents.farewellDesc,
       icon: Car,
       highlight: false
     }
@@ -116,7 +116,7 @@ const WeddingDaySection = () => {
                 <h3 className="font-display text-2xl font-semibold mb-1 group-hover/btn:underline">Quinta Pezinhos no Tejo</h3>
                 <p className="text-white/80 text-sm flex items-center gap-2 group-hover/btn:text-white transition-colors">
                   <MapPin className="w-4 h-4" />
-                  Caparica, Portugal
+                  {t.weddingDay.venueLocation}
                 </p>
               </button>
             </div>
@@ -235,7 +235,7 @@ const WeddingDaySection = () => {
                       >
                         <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                           item.highlight 
-                            ? 'bg-gold text-white shadow-lg shadow-gold/30' 
+                            ? 'bg-white border-2 border-gold text-gold shadow-lg shadow-gold/20' 
                             : 'bg-white border-2 border-gold/30 text-gold group-hover:border-gold group-hover:bg-gold/5'
                         }`}>
                           <IconComponent className="w-5 h-5" />
