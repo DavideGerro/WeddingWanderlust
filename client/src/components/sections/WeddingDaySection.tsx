@@ -84,12 +84,12 @@ const WeddingDaySection = () => {
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-              <div className="rounded-lg bg-white p-5 shadow-sm">
+              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
                 <div className="flex items-center mb-3">
                   <MapPin className="text-gold mr-2 h-5 w-5" />
                   <h3 className="font-medium text-lg">{t.weddingDay.location}</h3>
                 </div>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 text-sm mb-4 flex-grow">
                   Quinta Pezinhos no Tejo<br />
                   R. do Joinal 2825<br />
                   Caparica, Portugal
@@ -104,36 +104,34 @@ const WeddingDaySection = () => {
                 </Button>
               </div>
               
-              <div className="space-y-6">
-                <div className="rounded-lg bg-white p-5 shadow-sm">
-                  <div className="flex items-center mb-3">
-                    <Smartphone className="text-gold mr-2 h-5 w-5" />
-                    <h3 className="font-medium text-lg">{t.weddingDay.gettingThere}</h3>
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    {t.weddingDay.gettingThereDetails}
-                  </p>
+              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
+                <div className="flex items-center mb-3">
+                  <Smartphone className="text-gold mr-2 h-5 w-5" />
+                  <h3 className="font-medium text-lg">{t.weddingDay.gettingThere}</h3>
                 </div>
-                
-                <div className="rounded-lg bg-white p-5 shadow-sm">
-                  <div className="flex items-center mb-3">
-                    <Sun className="text-gold mr-2 h-5 w-5" />
-                    <h3 className="font-medium text-lg">{t.weddingDay.weather}</h3>
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    {t.weddingDay.weatherDetails}
-                  </p>
+                <p className="text-gray-600 text-sm flex-grow">
+                  {t.weddingDay.gettingThereDetails}
+                </p>
+              </div>
+              
+              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
+                <div className="flex items-center mb-3">
+                  <Bus className="text-gold mr-2 h-5 w-5" />
+                  <h3 className="font-medium text-lg">{t.weddingDay.accommodation}</h3>
                 </div>
-                
-                <div className="rounded-lg bg-white p-5 shadow-sm">
-                  <div className="flex items-center mb-3">
-                    <Bus className="text-gold mr-2 h-5 w-5" />
-                    <h3 className="font-medium text-lg">{t.weddingDay.accommodation}</h3>
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    {t.weddingDay.accommodationDetails}
-                  </p>
+                <p className="text-gray-600 text-sm flex-grow">
+                  {t.weddingDay.accommodationDetails}
+                </p>
+              </div>
+              
+              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
+                <div className="flex items-center mb-3">
+                  <Sun className="text-gold mr-2 h-5 w-5" />
+                  <h3 className="font-medium text-lg">{t.weddingDay.weather}</h3>
                 </div>
+                <p className="text-gray-600 text-sm flex-grow">
+                  {t.weddingDay.weatherDetails}
+                </p>
               </div>
             </div>
           </motion.div>
