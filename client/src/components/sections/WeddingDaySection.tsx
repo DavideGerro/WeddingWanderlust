@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Shirt, Info, Smartphone, Sun, Bus } from "lucide-react";
+import { MapPin, Clock, Shirt, Info, Smartphone, Sun, Bus, ExternalLink } from "lucide-react";
 import TimelineItem from "@/components/ui/TimelineItem";
 import { Button } from "@/components/ui/button";
 import { VENUE_ADDRESS } from "@/lib/constants";
@@ -62,9 +62,12 @@ const WeddingDaySection = () => {
   return (
     <section id="wedding-day" ref={ref} className="py-16 bg-gray-50">
       <div className="container px-4 mx-auto">
-        <h2 className="text-4xl font-display font-bold text-center mb-12">
-          {t.weddingDay.title}
-        </h2>
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-display font-bold mb-4">
+            {t.weddingDay.title}
+          </h2>
+          <div className="w-20 h-1 bg-gold/50 mx-auto rounded-full"></div>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           <motion.div
@@ -84,55 +87,84 @@ const WeddingDaySection = () => {
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
-                <div className="flex items-center mb-3">
-                  <MapPin className="text-gold mr-2 h-5 w-5" />
-                  <h3 className="font-medium text-lg">{t.weddingDay.location}</h3>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:border-gold/20 border border-transparent transition-all duration-300 flex flex-col group"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mr-3 group-hover:bg-gold/15 transition-colors">
+                    <MapPin className="text-gold h-5 w-5" />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.location}</h3>
                 </div>
-                <p className="text-gray-600 text-sm mb-4 flex-grow">
+                <p className="text-gray-600 text-sm mb-5 flex-grow leading-relaxed">
                   Quinta Pezinhos no Tejo<br />
                   R. do Joinal 2825<br />
                   Caparica, Portugal
                 </p>
                 <Button 
                   onClick={openGoogleMaps}
-                  className="w-full bg-gold hover:bg-gold-dark text-white"
+                  className="w-full bg-gold hover:bg-gold-dark text-white font-medium transition-all duration-200 gap-2"
                   data-testid="button-google-maps"
                   aria-label="Open venue location in Google Maps"
                 >
                   {t.weddingDay.viewInGoogleMaps}
+                  <ExternalLink className="h-4 w-4" />
                 </Button>
-              </div>
+              </motion.div>
               
-              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
-                <div className="flex items-center mb-3">
-                  <Smartphone className="text-gold mr-2 h-5 w-5" />
-                  <h3 className="font-medium text-lg">{t.weddingDay.gettingThere}</h3>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:border-gold/20 border border-transparent transition-all duration-300 flex flex-col group"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mr-3 group-hover:bg-gold/15 transition-colors">
+                    <Smartphone className="text-gold h-5 w-5" />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.gettingThere}</h3>
                 </div>
-                <p className="text-gray-600 text-sm flex-grow">
+                <p className="text-gray-600 text-sm flex-grow leading-relaxed">
                   {t.weddingDay.gettingThereDetails}
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
-                <div className="flex items-center mb-3">
-                  <Bus className="text-gold mr-2 h-5 w-5" />
-                  <h3 className="font-medium text-lg">{t.weddingDay.accommodation}</h3>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:border-gold/20 border border-transparent transition-all duration-300 flex flex-col group"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mr-3 group-hover:bg-gold/15 transition-colors">
+                    <Bus className="text-gold h-5 w-5" />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.accommodation}</h3>
                 </div>
-                <p className="text-gray-600 text-sm flex-grow">
+                <p className="text-gray-600 text-sm flex-grow leading-relaxed">
                   {t.weddingDay.accommodationDetails}
                 </p>
-              </div>
+              </motion.div>
               
-              <div className="rounded-lg bg-white p-5 shadow-sm flex flex-col">
-                <div className="flex items-center mb-3">
-                  <Sun className="text-gold mr-2 h-5 w-5" />
-                  <h3 className="font-medium text-lg">{t.weddingDay.weather}</h3>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:border-gold/20 border border-transparent transition-all duration-300 flex flex-col group"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center mr-3 group-hover:bg-gold/15 transition-colors">
+                    <Sun className="text-gold h-5 w-5" />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.weather}</h3>
                 </div>
-                <p className="text-gray-600 text-sm flex-grow">
+                <p className="text-gray-600 text-sm flex-grow leading-relaxed">
                   {t.weddingDay.weatherDetails}
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
           
@@ -143,7 +175,7 @@ const WeddingDaySection = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-12"
             >
-              <h3 className="font-display text-2xl mb-6">{t.weddingDay.timeline}</h3>
+              <h3 className="font-display text-3xl font-bold mb-8">{t.weddingDay.timeline}</h3>
               <div className="relative">
                 <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gold/30"></div>
                 <div className="space-y-6">
@@ -166,27 +198,45 @@ const WeddingDaySection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h3 className="font-display text-2xl mb-6">{t.weddingDay.whatToWear}</h3>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <Shirt className="text-gold mr-3 mt-1 h-5 w-5" />
-                  <div>
-                    <h4 className="font-medium">{t.weddingDay.dressCode}</h4>
-                    <p className="text-gray-600">
-                      {t.weddingDay.dressCodeDetails}
-                    </p>
+              <h3 className="font-display text-3xl font-bold mb-8">{t.weddingDay.whatToWear}</h3>
+              <div className="space-y-4">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:border-gold/20 border border-transparent transition-all duration-300 group"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/15 transition-colors mt-1">
+                      <Shirt className="text-gold h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-display font-semibold text-lg text-gray-900 mb-2">{t.weddingDay.dressCode}</h4>
+                      <p className="text-gray-600 leading-relaxed">
+                        {t.weddingDay.dressCodeDetails}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
                 
-                <div className="flex items-start">
-                  <Info className="text-gold mr-3 mt-1 h-5 w-5" />
-                  <div>
-                    <h4 className="font-medium">{t.weddingDay.specialNotes}</h4>
-                    <p className="text-gray-600">
-                      {t.weddingDay.specialNotesDetails}
-                    </p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:border-gold/20 border border-transparent transition-all duration-300 group"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/15 transition-colors mt-1">
+                      <Info className="text-gold h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-display font-semibold text-lg text-gray-900 mb-2">{t.weddingDay.specialNotes}</h4>
+                      <p className="text-gray-600 leading-relaxed">
+                        {t.weddingDay.specialNotesDetails}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
