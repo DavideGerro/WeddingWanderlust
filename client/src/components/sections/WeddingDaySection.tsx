@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Shirt, Info, Smartphone, Sun, Bus, ExternalLink } from "lucide-react";
+import { MapPin, Clock, Shirt, Info, Smartphone, Sun, Bus, ExternalLink, Users, Heart, Wine, UtensilsCrossed, Cake, Music, Pizza, Car } from "lucide-react";
 import TimelineItem from "@/components/ui/TimelineItem";
 import { Button } from "@/components/ui/button";
 import { VENUE_ADDRESS } from "@/lib/constants";
@@ -20,71 +20,108 @@ const WeddingDaySection = () => {
     {
       time: "4:00 PM",
       title: "Guest Arrival",
-      description: "Welcome drinks and mingling in the garden"
+      description: "Welcome drinks and mingling in the garden",
+      icon: Users,
+      highlight: false
     },
     {
       time: "5:00 PM",
       title: "Ceremony",
-      description: "Vow exchange with a breathtaking view of the Tagus River"
+      description: "Vow exchange with a breathtaking view of the Tagus River",
+      icon: Heart,
+      highlight: true
     },
     {
       time: "5:45 PM",
       title: "Cocktail Hour",
-      description: "Champagne, signature cocktails, and passed hors d'oeuvres"
+      description: "Champagne, signature cocktails, and passed hors d'oeuvres",
+      icon: Wine,
+      highlight: false
     },
     {
       time: "7:00 PM",
       title: "Dinner Reception",
-      description: "Seated dinner featuring Portuguese and Italian cuisine"
+      description: "Seated dinner featuring Portuguese and Italian cuisine",
+      icon: UtensilsCrossed,
+      highlight: false
     },
     {
       time: "9:00 PM",
       title: "Cake Cutting & First Dance",
-      description: "A sweet moment followed by our first dance as a married couple"
+      description: "A sweet moment followed by our first dance as a married couple",
+      icon: Cake,
+      highlight: true
     },
     {
       time: "9:30 PM",
       title: "Party Time",
-      description: "Dancing the night away with DJ and live band performances"
+      description: "Dancing the night away with DJ and live band performances",
+      icon: Music,
+      highlight: false
     },
     {
       time: "12:00 AM",
       title: "Late Night Snacks",
-      description: "Surprise treats to keep the energy going"
+      description: "Surprise treats to keep the energy going",
+      icon: Pizza,
+      highlight: false
     },
     {
       time: "2:00 AM",
       title: "Farewell",
-      description: "End of the celebration (transportation available)"
+      description: "End of the celebration (transportation available)",
+      icon: Car,
+      highlight: false
     }
   ];
   
   return (
-    <section id="wedding-day" ref={ref} className="py-16 bg-gray-50">
-      <div className="container px-4 mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-display font-bold mb-4">
+    <section id="wedding-day" ref={ref} className="py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+      <div className="container px-4 mx-auto max-w-7xl">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="text-gold/80 font-medium tracking-widest uppercase text-sm mb-3 block">June 26, 2026</span>
+          <h2 className="text-5xl md:text-6xl font-display font-bold mb-4 text-gray-900">
             {t.weddingDay.title}
           </h2>
-          <div className="w-20 h-1 bg-gold/50 mx-auto rounded-full"></div>
-        </div>
+          <div className="flex items-center justify-center gap-3">
+            <div className="w-12 h-0.5 bg-gold/40 rounded-full"></div>
+            <Heart className="w-5 h-5 text-gold/60" />
+            <div className="w-12 h-0.5 bg-gold/40 rounded-full"></div>
+          </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="rounded-lg overflow-hidden shadow-lg mb-6">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8 group">
               <img 
                 src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
                 alt="Wedding venue - Quinta Pezinhos no Tejo" 
-                className="w-full h-80 object-cover"
+                className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="font-display text-2xl font-semibold mb-1">Quinta Pezinhos no Tejo</h3>
+                <p className="text-white/80 text-sm flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  Caparica, Portugal
+                </p>
+              </div>
             </div>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              {t.weddingDay.venueDescription}
-            </p>
+            
+            <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 mb-8">
+              <p className="text-gray-600 leading-relaxed text-lg">
+                {t.weddingDay.venueDescription}
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               <motion.div
@@ -175,20 +212,51 @@ const WeddingDaySection = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-12"
             >
-              <h3 className="font-display text-3xl font-bold mb-8">{t.weddingDay.timeline}</h3>
+              <h3 className="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <Clock className="w-7 h-7 text-gold" />
+                {t.weddingDay.timeline}
+              </h3>
               <div className="relative">
-                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gold/30"></div>
-                <div className="space-y-6">
-                  {timeline.map((item, index) => (
-                    <TimelineItem
-                      key={index}
-                      time={item.time}
-                      title={item.title}
-                      description={item.description}
-                      isEven={index % 2 === 0}
-                      delay={index * 0.1}
-                    />
-                  ))}
+                <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/50 via-gold/30 to-gold/10"></div>
+                <div className="space-y-4">
+                  {timeline.map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                        transition={{ duration: 0.4, delay: 0.4 + index * 0.08 }}
+                        className={`relative pl-14 group ${item.highlight ? 'py-1' : ''}`}
+                      >
+                        <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                          item.highlight 
+                            ? 'bg-gold text-white shadow-lg shadow-gold/30' 
+                            : 'bg-white border-2 border-gold/30 text-gold group-hover:border-gold group-hover:bg-gold/5'
+                        }`}>
+                          <IconComponent className="w-5 h-5" />
+                        </div>
+                        <div className={`rounded-xl p-4 transition-all duration-300 ${
+                          item.highlight 
+                            ? 'bg-gradient-to-r from-gold/10 to-gold/5 border border-gold/20 shadow-sm' 
+                            : 'bg-white border border-gray-100 hover:border-gold/20 hover:shadow-md'
+                        }`}>
+                          <div className="flex items-center gap-3 mb-1">
+                            <span className={`font-bold text-sm ${item.highlight ? 'text-gold' : 'text-gold/80'}`}>
+                              {item.time}
+                            </span>
+                            <span className="text-gray-300">•</span>
+                            <h4 className={`font-display font-semibold ${item.highlight ? 'text-gray-900' : 'text-gray-800'}`}>
+                              {item.title}
+                            </h4>
+                          </div>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>
@@ -198,7 +266,10 @@ const WeddingDaySection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h3 className="font-display text-3xl font-bold mb-8">{t.weddingDay.whatToWear}</h3>
+              <h3 className="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <Shirt className="w-7 h-7 text-gold" />
+                {t.weddingDay.whatToWear}
+              </h3>
               <div className="space-y-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
