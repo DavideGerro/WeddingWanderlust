@@ -13,7 +13,7 @@ const WeddingDaySection = () => {
   const { t } = useLanguage();
 
   const openGoogleMaps = () => {
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(VENUE_ADDRESS)}`, '_blank');
+    window.open('https://maps.app.goo.gl/eZuQpG2GWwmJqUhG9', '_blank');
   };
 
   const timeline = [
