@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Shirt, Info, Smartphone, Sun } from "lucide-react";
+import { MapPin, Clock, Shirt, Info, Smartphone, Sun, Bus } from "lucide-react";
 import TimelineItem from "@/components/ui/TimelineItem";
 import { Button } from "@/components/ui/button";
 import { VENUE_ADDRESS } from "@/lib/constants";
@@ -122,6 +122,16 @@ const WeddingDaySection = () => {
                   </div>
                   <p className="text-gray-600 text-sm">
                     {t.weddingDay.weatherDetails}
+                  </p>
+                </div>
+                
+                <div className="rounded-lg bg-white p-5 shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Bus className="text-gold mr-2 h-5 w-5" />
+                    <h3 className="font-medium text-lg">{t.weddingDay.accommodation}</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    {t.weddingDay.accommodationDetails}
                   </p>
                 </div>
               </div>
