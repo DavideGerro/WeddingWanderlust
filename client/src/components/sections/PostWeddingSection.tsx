@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Shirt } from "lucide-react";
+import { Calendar, MapPin, Shirt, Car, Hotel } from "lucide-react";
 import { useLanguage } from "@/lib/useLanguage";
 
 const PostWeddingSection = () => {
@@ -65,6 +65,24 @@ const PostWeddingSection = () => {
                 <div>
                   <h4 className="font-medium">{t.postWedding.dressCode}</h4>
                   <p className="text-gray-600">{t.postWedding.dressCodeDetails}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8 space-y-4">
+              <div className="flex items-start p-4 bg-gray-50 rounded-lg">
+                <Car className="text-primary mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+                <div>
+                  <h4 className="font-medium">{t.postWedding.gettingThere}</h4>
+                  <p className="text-gray-600">{t.postWedding.gettingThereDesc}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start p-4 bg-gray-50 rounded-lg">
+                <Hotel className="text-primary mr-3 mt-1 h-5 w-5 flex-shrink-0" />
+                <div>
+                  <h4 className="font-medium">{t.postWedding.accommodation}</h4>
+                  <p className="text-gray-600">{t.postWedding.accommodationDesc}</p>
                 </div>
               </div>
             </div>
