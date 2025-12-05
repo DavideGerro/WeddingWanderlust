@@ -84,7 +84,7 @@ export const translations = {
         lateNightSnacks: "Late Night Snacks",
         lateNightSnacksDesc: "Surprise treats to keep the energy going",
         farewell: "Farewell",
-        farewellDesc: "End of celebration – Bus depart at 2:30 AM"
+        farewellDesc: "End of celebration – Bus departs at 2:30 AM"
       }
     },
     rsvp: {
