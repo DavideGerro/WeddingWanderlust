@@ -59,7 +59,7 @@ export const translations = {
       weather: "Weather",
       weatherDetails: "June in Lisbon is warm (20-28°C). Bring a light jacket for the evening as it can get cooler by the river",
       accommodation: "Accommodation & Shuttle",
-      accommodationDetails: "We suggest staying around Marquês De Pombal for convenient access to our shuttle bus service. The bus will bring you back from the venue to Marquês De Pombal square.",
+      accommodationDetails: "Stay near Marquês De Pombal – our shuttle will bring you back to the square.",
       venueMap: "Venue Map",
       viewInGoogleMaps: "View in Google Maps",
       timeline: "Wedding Day Timeline",
@@ -84,7 +84,7 @@ export const translations = {
         lateNightSnacks: "Late Night Snacks",
         lateNightSnacksDesc: "Surprise treats to keep the energy going",
         farewell: "Farewell",
-        farewellDesc: "End of the celebration (transportation available bus departure at 2:30)"
+        farewellDesc: "Farewell & Departure (Bus at 2:30 PM)"
       }
     },
     rsvp: {
@@ -108,7 +108,7 @@ export const translations = {
       gettingThere: "Getting There",
       gettingThereDesc: "We recommend using Bolt or Uber to get to the venue. Average ride from Lisbon city center: €15-20",
       accommodation: "Accommodation & Shuttle",
-      accommodationDesc: "We suggest staying around Marquês De Pombal for convenient access to our shuttle bus service. The bus will bring you back from the venue to Marquês De Pombal square.",
+      accommodationDesc: "Stay near Marquês De Pombal – our shuttle will bring you back to the square.",
       rsvp: "Please let us know if you'll be joining us:",
       attending: "I'll Be There",
       notAttending: "Can't Make It",
@@ -222,7 +222,7 @@ export const translations = {
       weather: "Meteo",
       weatherDetails: "Giugno a Lisbona è caldo (20-28°C). Porta una giacca leggera per la sera, può rinfrescare vicino al fiume",
       accommodation: "Alloggio & Navetta",
-      accommodationDetails: "Ti suggeriamo di alloggiare intorno a Marquês De Pombal per un facile accesso al nostro servizio di autobus navetta. L'autobus ti riporterà dalla location a Marquês De Pombal.",
+      accommodationDetails: "Alloggiati vicino a Marquês De Pombal – la nostra navetta ti riporterà alla piazza.",
       venueMap: "Mappa della Location",
       viewInGoogleMaps: "Visualizza in Google Maps",
       timeline: "Programma del Giorno del Matrimonio",
@@ -247,7 +247,7 @@ export const translations = {
         lateNightSnacks: "Spuntini Notturni",
         lateNightSnacksDesc: "Sorprese per mantenere l'energia",
         farewell: "Saluti",
-        farewellDesc: "Fine della celebrazione (trasporto disponibile partenza autobus alle 2:30)"
+        farewellDesc: "Arrivederci & Partenza (Autobus alle 14:30)"
       }
     },
     rsvp: {
@@ -271,7 +271,7 @@ export const translations = {
       gettingThere: "Come Arrivare",
       gettingThereDesc: "Ti consigliamo di usare Bolt o Uber per raggiungere la location. Corsa media dal centro di Lisbona: €15-20",
       accommodation: "Alloggio & Navetta",
-      accommodationDesc: "Ti suggeriamo di alloggiare intorno a Marquês De Pombal per un facile accesso al nostro servizio di autobus navetta. L'autobus ti riporterà dalla location a Marquês De Pombal.",
+      accommodationDesc: "Alloggiati vicino a Marquês De Pombal – la nostra navetta ti riporterà alla piazza.",
       rsvp: "Per favore, facci sapere se parteciperai:",
       attending: "Ci Sarò",
       notAttending: "Non Posso",
@@ -385,7 +385,7 @@ export const translations = {
       weather: "Clima",
       weatherDetails: "Junio en Lisboa es cálido (20-28°C). Trae una chaqueta ligera para la noche, puede refrescar cerca del río",
       accommodation: "Alojamiento y Transporte",
-      accommodationDetails: "Sugerimos alojarse alrededor de Marquês De Pombal para acceso conveniente a nuestro servicio de autobús. El autobús te llevará de vuelta desde el lugar a Marquês De Pombal.",
+      accommodationDetails: "Alójate cerca de Marquês De Pombal – nuestro autobús te llevará de vuelta a la plaza.",
       venueMap: "Mapa del Lugar",
       viewInGoogleMaps: "Ver en Google Maps",
       timeline: "Cronograma del Día de la Boda",
@@ -410,7 +410,7 @@ export const translations = {
         lateNightSnacks: "Bocadillos de Medianoche",
         lateNightSnacksDesc: "Sorpresas para mantener la energía",
         farewell: "Despedida",
-        farewellDesc: "Fin de la celebración (transporte disponible salida de autobús a las 2:30)"
+        farewellDesc: "Adiós & Despedida (Autobús a las 2:30 PM)"
       }
     },
     rsvp: {
@@ -434,7 +434,7 @@ export const translations = {
       gettingThere: "Cómo Llegar",
       gettingThereDesc: "Te recomendamos usar Bolt o Uber para llegar al lugar. Viaje promedio desde el centro de Lisboa: €15-20",
       accommodation: "Alojamiento y Transporte",
-      accommodationDesc: "Sugerimos alojarse alrededor de Marquês De Pombal para acceso conveniente a nuestro servicio de autobús. El autobús te llevará de vuelta desde el lugar a Marquês De Pombal.",
+      accommodationDesc: "Alójate cerca de Marquês De Pombal – nuestro autobús te llevará de vuelta a la plaza.",
       rsvp: "Por favor, haznos saber si te unirás a nosotros:",
       attending: "Asistiré",
       notAttending: "No Puedo Asistir",
