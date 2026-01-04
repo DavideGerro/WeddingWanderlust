@@ -61,7 +61,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (!rsvp) {
         return res.status(404).json({ message: "RSVP not found" });
       }
-      res.json(rsvp);
+      res.json({
+        name: rsvp.name,
+        email: rsvp.email,
+        attendingWedding: rsvp.attendingWedding,
+        attendingBoatTour: rsvp.attendingBoatTour,
+        numberOfGuests: rsvp.numberOfGuests,
+        dietaryRestrictions: rsvp.dietaryRestrictions
+      });
     } catch (error) {
       res.status(500).json({ message: "Failed to get RSVP" });
     }
