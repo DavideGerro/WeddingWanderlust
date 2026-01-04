@@ -145,8 +145,8 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
     }
   };
 
-  const lang = (t as { lang?: string }).lang || "en";
-  const formText = rsvpForm[lang as keyof typeof rsvpForm] || rsvpForm.en;
+  const { language } = useLanguage();
+  const formText = rsvpForm[language as keyof typeof rsvpForm] || rsvpForm.en;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
