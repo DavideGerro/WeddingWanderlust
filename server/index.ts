@@ -7,6 +7,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
+  if (req.path === "/api/health") {
+    return res.status(200).json({ status: "ok" });
+  }
   const start = Date.now();
   const path = req.path;
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
