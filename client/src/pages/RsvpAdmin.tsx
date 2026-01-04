@@ -4,7 +4,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { format } from "date-fns";
+import { Trash2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface Rsvp {
   id: number;
@@ -32,6 +35,9 @@ export default function RsvpAdmin() {
   const [error, setError] = useState<string | null>(null);
   const [adminKey, setAdminKey] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const { toast } = useToast();
 
   const fetchRsvps = async () => {
     setLoading(true);
@@ -58,7 +64,56 @@ export default function RsvpAdmin() {
     }
   };
 
-  if (loading) {
+  const handleDelete = async () => {
+    if (selectedIds.length === 0) return;
+    if (!confirm(`Are you sure you want to delete ${selectedIds.length} selected RSVP(s)?`)) return;
+
+    setIsDeleting(true);
+    try {
+      const response = await fetch("/api/admin/rsvps", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-key": adminKey
+        },
+        body: JSON.stringify({ ids: selectedIds })
+      });
+
+      if (!response.ok) throw new Error("Failed to delete RSVPs");
+
+      toast({
+        title: "Success",
+        description: `${selectedIds.length} RSVP(s) deleted successfully`,
+      });
+      
+      setSelectedIds([]);
+      fetchRsvps();
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: err instanceof Error ? err.message : "Failed to delete RSVPs",
+        variant: "destructive"
+      });
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.length === rsvps.length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(rsvps.map(r => r.id));
+    }
+  };
+
+  const toggleSelect = (id: number) => {
+    setSelectedIds(prev => 
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
+  };
+
+  if (loading && !isAuthenticated) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <p className="text-lg">Loading RSVPs...</p>
@@ -97,7 +152,24 @@ export default function RsvpAdmin() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h1 className="text-3xl font-bold mb-8">RSVP Responses</h1>
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-3xl font-bold">RSVP Responses</h1>
+          <div className="flex gap-2">
+            {selectedIds.length > 0 && (
+              <Button 
+                variant="destructive" 
+                onClick={handleDelete}
+                disabled={isDeleting}
+              >
+                <Trash2 className="w-4 h-4 mr-2" />
+                Delete ({selectedIds.length})
+              </Button>
+            )}
+            <Button variant="outline" onClick={fetchRsvps} disabled={loading}>
+              Refresh
+            </Button>
+          </div>
+        </div>
 
         {stats && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -148,6 +220,12 @@ export default function RsvpAdmin() {
                 <Table>
                   <TableHeader>
                     <TableRow>
+                      <TableHead className="w-[50px]">
+                        <Checkbox 
+                          checked={selectedIds.length === rsvps.length && rsvps.length > 0}
+                          onCheckedChange={toggleSelectAll}
+                        />
+                      </TableHead>
                       <TableHead>Name</TableHead>
                       <TableHead>Email</TableHead>
                       <TableHead>Wedding</TableHead>
@@ -159,7 +237,13 @@ export default function RsvpAdmin() {
                   </TableHeader>
                   <TableBody>
                     {rsvps.map((rsvp) => (
-                      <TableRow key={rsvp.id}>
+                      <TableRow key={rsvp.id} className={selectedIds.includes(rsvp.id) ? "bg-muted/50" : ""}>
+                        <TableCell>
+                          <Checkbox 
+                            checked={selectedIds.includes(rsvp.id)}
+                            onCheckedChange={() => toggleSelect(rsvp.id)}
+                          />
+                        </TableCell>
                         <TableCell className="font-medium">{rsvp.name}</TableCell>
                         <TableCell>{rsvp.email}</TableCell>
                         <TableCell>

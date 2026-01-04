@@ -14,6 +14,7 @@ export interface IStorage {
   createOrUpdateRsvp(rsvp: InsertRsvp): Promise<Rsvp>;
   getRsvpByEmail(email: string): Promise<Rsvp | undefined>;
   getAllRsvps(): Promise<Rsvp[]>;
+  deleteRsvps(ids: number[]): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -70,6 +71,11 @@ export class DatabaseStorage implements IStorage {
 
   async getAllRsvps(): Promise<Rsvp[]> {
     return await db.select().from(rsvps).orderBy(rsvps.createdAt);
+  }
+
+  async deleteRsvps(ids: number[]): Promise<void> {
+    if (ids.length === 0) return;
+    await db.delete(rsvps).where(sql`${rsvps.id} IN ${ids}`);
   }
 }
 

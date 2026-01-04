@@ -101,6 +101,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.delete("/api/admin/rsvps", async (req, res) => {
+    const adminKey = req.headers["x-admin-key"];
+    const validAdminKey = process.env.ADMIN_SECRET_KEY;
+
+    if (!validAdminKey || adminKey !== validAdminKey) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    try {
+      const { ids } = z.object({ ids: z.array(z.number()) }).parse(req.body);
+      await storage.deleteRsvps(ids);
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to delete RSVPs" });
+    }
+  });
+
   // Geo-detection endpoint for automatic language selection
   app.get("/api/geo", async (req, res) => {
     try {
