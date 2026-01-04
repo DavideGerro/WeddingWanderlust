@@ -6,6 +6,11 @@ import { z } from "zod";
 import sgMail from "@sendgrid/mail";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Health check endpoint
+  app.get("/api/health", (_req, res) => {
+    res.json({ status: "ok" });
+  });
+
   // API endpoints for honeymoon contributions
   app.get("/api/contributions", async (req, res) => {
     try {

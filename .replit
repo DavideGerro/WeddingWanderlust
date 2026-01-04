@@ -39,5 +39,8 @@ waitForPort = 5000
 
 [userenv.shared]
 
+[userenv.production]
+NODE_ENV = "production"
+
 [agent]
 expertMode = true
