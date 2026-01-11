@@ -95,7 +95,7 @@ export const translations = {
     },
     postWedding: {
       title: "After The Wedding",
-      description: "The celebration continues! Join us the day after the wedding for a magical sunset boat tour to say goodbye before we jet off on our honeymoon.",
+      description: "The celebration continues! Join us the day after the wedding for a magical sunset boat tour to say goodbye.",
       farewellBrunch: "Sunset Boat Tour",
       when: "When",
       whenDetails: "Sunday, June 27, 2026 • 19:00 - 21:00",
@@ -258,7 +258,7 @@ export const translations = {
     },
     postWedding: {
       title: "Dopo il Matrimonio",
-      description: "La celebrazione continua! Unisciti a noi il giorno dopo il matrimonio per un magico tour in barca al tramonto per salutarci prima di partire per la nostra luna di miele.",
+      description: "La celebrazione continua! Unisciti a noi il giorno dopo il matrimonio per un magico tour in barca al tramonto per salutarci.",
       farewellBrunch: "Tour in Barca al Tramonto",
       when: "Quando",
       whenDetails: "Domenica 27 Giugno, 2026 • 19:00 - 21:00",
@@ -421,7 +421,7 @@ export const translations = {
     },
     postWedding: {
       title: "Después de la Boda",
-      description: "¡La celebración continúa! Únete a nosotros el día después de la boda para un mágico tour en barco al atardecer para despedirnos antes de partir hacia nuestra luna de miel.",
+      description: "¡La celebración continúa! Únete a nosotros el día después de la boda para un mágico tour en barco al atardecer para despedirnos.",
       farewellBrunch: "Tour en Barco al Atardecer",
       when: "Cuándo",
       whenDetails: "Domingo 27 de Junio, 2026 • 19:00 - 21:00",
