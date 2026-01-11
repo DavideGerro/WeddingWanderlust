@@ -74,7 +74,7 @@ export const translations = {
         ceremony: "Ceremony",
         ceremonyDesc: "Vow exchange with a breathtaking view of the Tagus River",
         cocktailHour: "Cocktail Hour",
-        cocktailHourDesc: "Champagne, signature cocktails, and passed hors d'oeuvres",
+        cocktailHourDesc: "Champagne, signature cocktails, and finger food",
         dinnerReception: "Dinner Reception",
         dinnerReceptionDesc: "Seated dinner featuring Portuguese and Italian cuisine",
         cakeCutting: "Cake Cutting",
