@@ -18,7 +18,7 @@ const WeddingDaySection = () => {
 
   const timeline = [
     {
-      time: "4:00 PM",
+      time: "16:00",
       title: t.weddingDay.timelineEvents.guestArrival,
       description: t.weddingDay.timelineEvents.guestArrivalDesc,
       icon: Users,
@@ -32,42 +32,42 @@ const WeddingDaySection = () => {
       highlight: true
     },
     {
-      time: "5:00 PM",
+      time: "17:00",
       title: t.weddingDay.timelineEvents.cocktailHour,
       description: t.weddingDay.timelineEvents.cocktailHourDesc,
       icon: Wine,
       highlight: false
     },
     {
-      time: "7:00 PM",
+      time: "19:00",
       title: t.weddingDay.timelineEvents.dinnerReception,
       description: t.weddingDay.timelineEvents.dinnerReceptionDesc,
       icon: UtensilsCrossed,
       highlight: false
     },
     {
-      time: "9:00 PM",
+      time: "21:00",
       title: t.weddingDay.timelineEvents.cakeCutting,
       description: t.weddingDay.timelineEvents.cakeCuttingDesc,
       icon: Cake,
       highlight: true
     },
     {
-      time: "9:30 PM",
+      time: "21:30",
       title: t.weddingDay.timelineEvents.partyTime,
       description: t.weddingDay.timelineEvents.partyTimeDesc,
       icon: Music,
       highlight: false
     },
     {
-      time: "12:00 AM",
+      time: "00:00",
       title: t.weddingDay.timelineEvents.lateNightSnacks,
       description: t.weddingDay.timelineEvents.lateNightSnacksDesc,
       icon: Pizza,
       highlight: false
     },
     {
-      time: "2:00 AM",
+      time: "02:00",
       title: t.weddingDay.timelineEvents.farewell,
       description: t.weddingDay.timelineEvents.farewellDesc,
       icon: Car,
