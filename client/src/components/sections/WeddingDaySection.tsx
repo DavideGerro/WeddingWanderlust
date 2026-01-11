@@ -25,7 +25,7 @@ const WeddingDaySection = () => {
       highlight: false
     },
     {
-      time: "5:00 PM",
+      time: "16:30",
       title: t.weddingDay.timelineEvents.ceremony,
       description: t.weddingDay.timelineEvents.ceremonyDesc,
       icon: Heart,
