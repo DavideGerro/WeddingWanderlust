@@ -140,9 +140,9 @@ const PreWeddingSection = () => {
                       <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.ruiDosPregos.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.ruiDosPregos.split(' — ')[0]}</a> — {t.preWedding.ruiDosPregos.split(' — ')[1]}
                     </p>
                   )}
-                  {t.preWedding.laCamionetta && (
+                  {t.preWedding.retrogusto84 && (
                     <p className="text-gray-700">
-                      <a href={`https://www.google.com/maps/search/${encodeURIComponent(t.preWedding.laCamionetta.split(' — ')[0])}`} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.laCamionetta.split(' — ')[0]}</a> — {t.preWedding.laCamionetta.split(' — ')[1]}
+                      <a href="https://maps.app.goo.gl/Yh166LpzFDXsaaxj9" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 hover:underline">{t.preWedding.retrogusto84.split(' — ')[0]}</a> — {t.preWedding.retrogusto84.split(' — ')[1]}
                     </p>
                   )}
                 </div>
