@@ -32,7 +32,7 @@ const WeddingDaySection = () => {
       highlight: true
     },
     {
-      time: "5:45 PM",
+      time: "5:00 PM",
       title: t.weddingDay.timelineEvents.cocktailHour,
       description: t.weddingDay.timelineEvents.cocktailHourDesc,
       icon: Wine,
