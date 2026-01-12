@@ -230,7 +230,7 @@ export const translations = {
       dressCode: "Dress Code",
       dressCodeDetails: "Abbigliamento smart casual o elegante – pensa a una festa in giardino! Indossa il tuo miglior outfit, che sia un abito, un vestito elegante o qualcosa di colorato e comodo. Accogliamo anche calorosamente abiti tradizionali e culturali, come caftani o altri capi che hanno un significato speciale per te.",
       specialNotes: "Note Speciali",
-      specialNotesDetails: "La cerimonia si svolgerà sull'erba e sul tradizionale acciottolato di Lisbona, quindi considera calzature appropriate. La serata potrebbe diventare più fresca, quindi è consigliata una stola o una giacca leggera.",
+      specialNotesDetails: "La cerimonia si svolgerà sull'erba e sui Sampietrini tradizionale di Lisbona, quindi considera scarpe appropriate. La serata potrebbe diventare più fresca vicino al fiume, quindi è consigliata una giacca leggera.",
       timelineEvents: {
         guestArrival: "Arrivo Ospiti",
         guestArrivalDesc: "Benvenuto con drink e socializzazione in giardino",
