@@ -414,7 +414,7 @@ export const translations = {
       }
     },
     rsvp: {
-      title: "Por Favor, Cuéntanos",
+      title: "Confirma tu asistencia",
       description: "¡Nos encantaría saber si te unirás a nosotros para la boda y el tour en barco al atardecer del día siguiente!",
       attending: "Asistiré",
       notAttending: "No Puedo Asistir"
