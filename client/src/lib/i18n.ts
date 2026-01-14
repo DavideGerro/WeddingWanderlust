@@ -84,7 +84,7 @@ export const translations = {
         lateNightSnacks: "Late Night Snacks",
         lateNightSnacksDesc: "Surprise treats to keep the energy going",
         farewell: "Farewell",
-        farewellDesc: "End of celebration – Bus departs at 2:00 AM"
+        farewellDesc: "End of celebration – Bus departs at 1:30 AM"
       }
     },
     rsvp: {
@@ -247,7 +247,7 @@ export const translations = {
         lateNightSnacks: "Spuntini Notturni",
         lateNightSnacksDesc: "Sorprese per mantenere l'energia",
         farewell: "Saluti",
-        farewellDesc: "Fine della celebrazione – Autobus parte alle 2:00 AM"
+        farewellDesc: "Fine della celebrazione – Autobus parte alle 1:30 AM"
       }
     },
     rsvp: {
@@ -410,7 +410,7 @@ export const translations = {
         lateNightSnacks: "Bocadillos de Medianoche",
         lateNightSnacksDesc: "Sorpresas para mantener la energía",
         farewell: "Despedida",
-        farewellDesc: "Fin de la celebración – Autobús sale a las 2:00 AM"
+        farewellDesc: "Fin de la celebración – Autobús sale a las 1:30 AM"
       }
     },
     rsvp: {

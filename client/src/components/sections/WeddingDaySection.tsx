@@ -67,7 +67,7 @@ const WeddingDaySection = () => {
       highlight: false
     },
     {
-      time: "01:30",
+      time: "01:00",
       title: t.weddingDay.timelineEvents.farewell,
       description: t.weddingDay.timelineEvents.farewellDesc,
       icon: Car,
