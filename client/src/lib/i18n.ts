@@ -15,7 +15,7 @@ export const translations = {
       postWedding: "Le lendemain"
     },
     hero: {
-      gettingMarried: "Se marient !",
+      gettingMarried: "",
       date: "26 Juin 2026 • Lisbonne, Portugal",
       exploreButton: "Explorer les Détails"
     },
