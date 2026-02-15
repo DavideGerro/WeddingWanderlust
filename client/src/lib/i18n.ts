@@ -117,7 +117,7 @@ export const translations = {
       gallerySoon: "Galerie bientôt disponible"
     },
     footer: {
-      thankYou: "Merci de partager ce moment avec nous. Nous avons hâte de fêter cela à Lisbonne !",
+      thankYou: "Merci de partager ce moment avec nous. Nous avons hâte de vous retrouver à Lisbonne !",
       copyright: "© 2026 Mariage Sara & Devid"
     }
   },
