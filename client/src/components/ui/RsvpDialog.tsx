@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/lib/useLanguage";
 import { useToast } from "@/hooks/use-toast";
+import { Minus, Plus } from "lucide-react";
 
 interface RsvpDialogProps {
   open: boolean;
@@ -216,16 +217,32 @@ const RsvpDialog = ({ open, onOpenChange, attending }: RsvpDialogProps) => {
 
           {formData.attendingWedding && (
             <div className="space-y-2">
-              <Label htmlFor="numberOfGuests">{formText.numberOfGuests}</Label>
-              <Input
-                id="numberOfGuests"
-                type="number"
-                min="1"
-                max="10"
-                value={formData.numberOfGuests}
-                onChange={(e) => setFormData({ ...formData, numberOfGuests: parseInt(e.target.value) || 1 })}
-                data-testid="input-number-of-guests"
-              />
+              <Label>{formText.numberOfGuests}</Label>
+              <div className="flex items-center gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  disabled={formData.numberOfGuests <= 1}
+                  onClick={() => setFormData({ ...formData, numberOfGuests: Math.max(1, formData.numberOfGuests - 1) })}
+                  data-testid="button-guests-minus"
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="text-xl font-semibold min-w-[2.5rem] text-center" data-testid="text-number-of-guests">
+                  {formData.numberOfGuests}
+                </span>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  disabled={formData.numberOfGuests >= 10}
+                  onClick={() => setFormData({ ...formData, numberOfGuests: Math.min(10, formData.numberOfGuests + 1) })}
+                  data-testid="button-guests-plus"
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           )}
 
