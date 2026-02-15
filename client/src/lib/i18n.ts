@@ -77,7 +77,7 @@ export const translations = {
         cocktailHourDesc: "Cocktails signatures et amuse-bouches",
         dinnerReception: "Dîner de Réception",
         dinnerReceptionDesc: "Dîner servi avec une cuisine portugaise",
-        cakeCutting: "Pièce Montée",
+        cakeCutting: "Gâteau des mariés",
         cakeCuttingDesc: "Célébration de l'amour",
         partyTime: "Soirée",
         partyTimeDesc: "Soirée dansante avec DJ",
