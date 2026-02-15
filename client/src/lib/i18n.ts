@@ -165,7 +165,7 @@ export const translations = {
     },
     weddingDay: {
       title: "The Wedding Day",
-      venueDescription: "Our ceremony and reception will be held at the beautiful Quinta Pezinhos no Tejo, a charming venue with stunning views of the Tagus River. We're excited to share this special place with you as we celebrate our love.",
+      venueDescription: "The ceremony and reception will take place at Quinta Pezinhos no Tejo, on the banks of the Tagus River.",
       location: "Location",
       venueLocation: "Caparica, Portugal",
       gettingThere: "Getting There",
@@ -328,7 +328,7 @@ export const translations = {
     },
     weddingDay: {
       title: "Il Giorno del Matrimonio",
-      venueDescription: "La nostra cerimonia e il ricevimento si terranno nella bellissima Quinta Pezinhos no Tejo, una location affascinante con una vista sul fiume Tago. Siamo entusiasti di condividere questo posto speciale con voi mentre celebriamo il nostro amore.",
+      venueDescription: "La cerimonia e il ricevimento si terranno alla Quinta Pezinhos no Tejo, sulle rive del Tago.",
       location: "Posizione",
       venueLocation: "Caparica, Portogallo",
       gettingThere: "Come Arrivare",
@@ -491,7 +491,7 @@ export const translations = {
     },
     weddingDay: {
       title: "El Día de la Boda",
-      venueDescription: "Nuestra ceremonia y recepción se celebrarán en la hermosa Quinta Pezinhos no Tejo, un encantador lugar con vistas al río Tajo. Estamos emocionados de compartir este lugar especial con ustedes mientras celebramos nuestro amor.",
+      venueDescription: "La ceremonia y la celebración tendrán lugar en la Quinta Pezinhos no Tejo, a orillas del Tajo.",
       location: "Ubicación",
       venueLocation: "Caparica, Portugal",
       gettingThere: "Cómo Llegar",
