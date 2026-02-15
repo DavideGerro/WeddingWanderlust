@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { format } from "date-fns";
-import { Trash2 } from "lucide-react";
+import { Trash2, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Rsvp {
@@ -99,6 +99,32 @@ export default function RsvpAdmin() {
     }
   };
 
+  const exportToExcel = () => {
+    const BOM = "\uFEFF";
+    const headers = ["Name", "Email", "Attending Wedding", "Attending Boat Tour", "Number of Guests", "Dietary Restrictions", "Submitted", "Last Updated"];
+    const csvContent = rsvps.map(rsvp => {
+      return [
+        `"${(rsvp.name || "").replace(/"/g, '""')}"`,
+        `"${(rsvp.email || "").replace(/"/g, '""')}"`,
+        rsvp.attendingWedding ? "Yes" : "No",
+        rsvp.attendingBoatTour ? "Yes" : "No",
+        rsvp.numberOfGuests || 1,
+        `"${(rsvp.dietaryRestrictions || "").replace(/"/g, '""')}"`,
+        format(new Date(rsvp.createdAt), "yyyy-MM-dd HH:mm"),
+        format(new Date(rsvp.updatedAt), "yyyy-MM-dd HH:mm")
+      ].join(",");
+    });
+
+    const csv = BOM + [headers.join(","), ...csvContent].join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `rsvp_export_${format(new Date(), "yyyy-MM-dd")}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   const toggleSelectAll = () => {
     if (selectedIds.length === rsvps.length) {
       setSelectedIds([]);
@@ -160,12 +186,19 @@ export default function RsvpAdmin() {
                 variant="destructive" 
                 onClick={handleDelete}
                 disabled={isDeleting}
+                data-testid="button-delete-rsvps"
               >
                 <Trash2 className="w-4 h-4 mr-2" />
                 Delete ({selectedIds.length})
               </Button>
             )}
-            <Button variant="outline" onClick={fetchRsvps} disabled={loading}>
+            {rsvps.length > 0 && (
+              <Button variant="outline" onClick={exportToExcel} data-testid="button-export-excel">
+                <Download className="w-4 h-4 mr-2" />
+                Export Excel
+              </Button>
+            )}
+            <Button variant="outline" onClick={fetchRsvps} disabled={loading} data-testid="button-refresh-rsvps">
               Refresh
             </Button>
           </div>
