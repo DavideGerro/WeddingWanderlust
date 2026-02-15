@@ -79,12 +79,12 @@ export const translations = {
         dinnerReceptionDesc: "Dîner aux saveurs portugaises",
         cakeCutting: "Gâteau des mariés",
         cakeCuttingDesc: "Coupe du gâteau et ouverture du bal",
-        partyTime: "Soirée",
-        partyTimeDesc: "Soirée dansante avec DJ",
-        lateNightSnacks: "Snacks de Minuit",
-        lateNightSnacksDesc: "Surprises pour garder l'énergie",
-        farewell: "Fin de Soirée",
-        farewellDesc: "Fin de la célébration – Le bus part à 1h30"
+        partyTime: "Soirée dansante",
+        partyTimeDesc: "Ouverture du bal et fête",
+        lateNightSnacks: "Buffet de nuit",
+        lateNightSnacksDesc: "Une pause gourmande pour reprendre des forces",
+        farewell: "Fin de la soirée",
+        farewellDesc: "Navette retour à 1h30"
       }
     },
     rsvp: {
