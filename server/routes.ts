@@ -143,8 +143,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let language = "en";
       if (countryCode === "IT") {
         language = "it";
-      } else if (countryCode === "ES" || countryCode === "MA") {
+      } else if (countryCode === "ES") {
         language = "es";
+      } else if (countryCode === "FR" || countryCode === "MA") {
+        language = "fr";
       }
       
       res.json({ country: countryCode, language });
