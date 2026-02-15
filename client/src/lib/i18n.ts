@@ -65,7 +65,7 @@ export const translations = {
       timeline: "Programme du Mariage",
       whatToWear: "Tenue de Mariage",
       dressCode: "Code Vestimentaire",
-      dressCodeDetails: "Tenue décontractée chic ou élégante – ambiance fête de jardin ! Les tenues traditionnelles et culturelles sont également les bienvenues.",
+      dressCodeDetails: "Tenue décontractée chic ou élégante – ambiance fête de jardin ! Les tenues traditionnelles et culturelles sont les bienvenues, notamment les caftans ✨",
       specialNotes: "Notes Spéciales",
       specialNotesDetails: "La cérémonie aura lieu sur l'herbe et les pavés de Lisbonne, prévoyez des chaussures adaptées. Une veste légère est conseillée pour le soir.",
       timelineEvents: {
