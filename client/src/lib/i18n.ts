@@ -10,9 +10,9 @@ export const languages = [
 export const translations = {
   fr: {
     navLinks: {
-      preWedding: "Avant le Mariage",
-      weddingDay: "Le Jour du Mariage",
-      postWedding: "Après le Mariage"
+      preWedding: "Avant le mariage",
+      weddingDay: "Le jour de la cérémonie",
+      postWedding: "Le lendemain"
     },
     hero: {
       gettingMarried: "Se marient !",
@@ -20,7 +20,7 @@ export const translations = {
       exploreButton: "Explorer les Détails"
     },
     preWedding: {
-      title: "Avant le Mariage",
+      title: "Avant le mariage",
       discoveringLisbon: "Découvrir Lisbonne",
       lisbonDescription: "Lisbonne, la ville des sept collines, offre un mélange parfait d'histoire, de culture et de vues. Nous avons préparé quelques recommandations pour vous aider à profiter au mieux de votre séjour.",
       mustVisit: "Lieux à Visiter",
@@ -50,7 +50,7 @@ export const translations = {
       walkingDesc: "Beaucoup d'attractions sont accessibles à pied, mais préparez-vous aux collines !"
     },
     weddingDay: {
-      title: "Le Jour du Mariage",
+      title: "Le jour de la cérémonie",
       venueDescription: "Nous serons heureux de vous accueillir à la Quinta Pezinhos no Tejo, au bord du Tage, pour célébrer cette journée avec vous.",
       location: "Lieu",
       venueLocation: "Caparica, Portugal",
@@ -94,7 +94,7 @@ export const translations = {
       notAttending: "Je ne pourrai pas venir"
     },
     postWedding: {
-      title: "Après le Mariage",
+      title: "Le lendemain",
       description: "La célébration continue ! Rejoignez-nous le lendemain pour un tour en bateau au coucher du soleil.",
       farewellBrunch: "Tour en Bateau au Coucher du Soleil",
       when: "Quand",
