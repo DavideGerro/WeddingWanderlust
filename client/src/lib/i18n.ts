@@ -51,7 +51,7 @@ export const translations = {
     },
     weddingDay: {
       title: "Le Jour du Mariage",
-      venueDescription: "Notre cérémonie et notre réception auront lieu à la magnifique Quinta Pezinhos no Tejo, un lieu charmant avec vue sur le Tage.",
+      venueDescription: "Nous serons heureux de vous accueillir à la Quinta Pezinhos no Tejo, au bord du Tage, pour célébrer cette journée avec vous.",
       location: "Lieu",
       venueLocation: "Caparica, Portugal",
       gettingThere: "Comment s'y Rendre",
