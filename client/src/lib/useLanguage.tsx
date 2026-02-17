@@ -20,13 +20,13 @@ const STORAGE_KEY = 'wedding-language';
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
   const [language, setLanguage] = useState<Language>('en');
   const [isDetecting, setIsDetecting] = useState(true);
-  const t = translations[language];
+  const t = translations[language] as typeof translations.en;
 
   useEffect(() => {
     const detectLanguage = async () => {
       const storedLanguage = localStorage.getItem(STORAGE_KEY) as Language | null;
       
-      if (storedLanguage && ['en', 'it', 'es'].includes(storedLanguage)) {
+      if (storedLanguage && ['en', 'it', 'es', 'fr'].includes(storedLanguage)) {
         setLanguage(storedLanguage);
         setIsDetecting(false);
         return;
@@ -37,7 +37,7 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
         if (response.ok) {
           const data = await response.json();
           const detectedLang = data.language as Language;
-          if (['en', 'it', 'es'].includes(detectedLang)) {
+          if (['en', 'it', 'es', 'fr'].includes(detectedLang)) {
             setLanguage(detectedLang);
             localStorage.setItem(STORAGE_KEY, detectedLang);
           }

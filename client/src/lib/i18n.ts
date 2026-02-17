@@ -612,6 +612,6 @@ export const translations = {
   }
 };
 
-export type Language = 'en' | 'it' | 'es';
+export type Language = 'en' | 'it' | 'es' | 'fr';
 
 export type TranslationsType = typeof translations.en;
