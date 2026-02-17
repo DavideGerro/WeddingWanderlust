@@ -15,7 +15,7 @@ interface LanguageProviderProps {
   children: ReactNode;
 }
 
-const STORAGE_KEY = 'wedding-language';
+const STORAGE_KEY = 'wedding-lang-v2';
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
   const [language, setLanguage] = useState<Language>('en');
@@ -24,10 +24,10 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
 
   useEffect(() => {
     const detectLanguage = async () => {
-      const storedLanguage = localStorage.getItem(STORAGE_KEY) as Language | null;
+      const manualChoice = localStorage.getItem(STORAGE_KEY) as Language | null;
       
-      if (storedLanguage && ['en', 'it', 'es', 'fr'].includes(storedLanguage)) {
-        setLanguage(storedLanguage);
+      if (manualChoice && ['en', 'it', 'es', 'fr'].includes(manualChoice)) {
+        setLanguage(manualChoice);
         setIsDetecting(false);
         return;
       }
@@ -39,7 +39,6 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
           const detectedLang = data.language as Language;
           if (['en', 'it', 'es', 'fr'].includes(detectedLang)) {
             setLanguage(detectedLang);
-            localStorage.setItem(STORAGE_KEY, detectedLang);
           }
         }
       } catch (error) {
