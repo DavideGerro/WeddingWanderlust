@@ -91,8 +91,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const rsvps = await storage.getAllRsvps();
       const stats = {
         total: rsvps.length,
-        attendingWedding: rsvps.filter(r => r.attendingWedding).length,
-        attendingBoatTour: rsvps.filter(r => r.attendingBoatTour).length,
+        attendingWedding: rsvps.reduce((sum, r) => sum + (r.attendingWedding ? (r.numberOfGuests || 1) : 0), 0),
+        attendingBoatTour: rsvps.reduce((sum, r) => sum + (r.attendingBoatTour ? (r.numberOfGuests || 1) : 0), 0),
         totalGuests: rsvps.reduce((sum, r) => sum + (r.numberOfGuests || 1), 0)
       };
       res.json({ rsvps, stats });

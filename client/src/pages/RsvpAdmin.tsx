@@ -216,7 +216,7 @@ export default function RsvpAdmin() {
             </Card>
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">Attending Wedding</CardTitle>
+                <CardTitle className="text-sm font-medium text-muted-foreground">Wedding Guests</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-3xl font-bold text-green-600">{stats.attendingWedding}</p>
@@ -224,7 +224,7 @@ export default function RsvpAdmin() {
             </Card>
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">Attending Boat Tour</CardTitle>
+                <CardTitle className="text-sm font-medium text-muted-foreground">Boat Tour Guests</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-3xl font-bold text-blue-600">{stats.attendingBoatTour}</p>
