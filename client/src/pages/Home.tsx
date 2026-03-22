@@ -4,9 +4,12 @@ import WeddingDaySection from "@/components/sections/WeddingDaySection";
 import PostWeddingSection from "@/components/sections/PostWeddingSection";
 import RsvpSection from "@/components/sections/RsvpSection";
 import WeddingGallerySection from "@/components/sections/WeddingGallerySection";
-// import HoneymoonSection from "@/components/sections/HoneymoonSection"; // Hidden for now - uncomment when ready
+import HoneymoonSection from "@/components/sections/HoneymoonSection";
+import { useLanguage } from "@/lib/useLanguage";
 
 const Home = () => {
+  const { language } = useLanguage();
+  
   return (
     <main className="font-sans bg-offwhite text-gray-800">
       <HeroSection />
@@ -19,6 +22,12 @@ const Home = () => {
       <div className="section-divider bg-floral-pattern"></div>
       <RsvpSection />
       <div className="section-divider bg-floral-pattern"></div>
+      {language !== "fr" && (
+        <>
+          <HoneymoonSection />
+          <div className="section-divider bg-floral-pattern"></div>
+        </>
+      )}
       <WeddingGallerySection />
     </main>
   );
