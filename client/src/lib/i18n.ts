@@ -239,7 +239,7 @@ export const translations = {
       customAmount: "Any Amount",
       customAmountDesc: "Choose your own contribution amount",
       howToContribute: "How to Contribute",
-      bankTransferInstructions: "If you'd like to contribute to our honeymoon adventure, we'd be delighted! You can transfer any amount you choose – every little bit helps make our dream trip to Japan even more special. Thank you for supporting our adventure!",
+      bankTransferInstructions: "If you'd like to contribute to our honeymoon adventure, we'd be delighted! You can transfer any amount you choose. Thank you for supporting our adventure!",
       bankDetails: "Bank Transfer Details",
       accountHolder: "Account Holder",
       copyIban: "Copy IBAN",
