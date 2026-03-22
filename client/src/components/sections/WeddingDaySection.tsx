@@ -7,6 +7,50 @@ import { Button } from "@/components/ui/button";
 import { VENUE_ADDRESS } from "@/lib/constants";
 import { useLanguage } from "@/lib/useLanguage";
 
+const BUS_STOPS = [
+  {
+    name: "Marquês de Pombal",
+    url: "https://maps.google.com/?q=Marquês+de+Pombal,+Lisboa,+Portugal",
+  },
+  {
+    name: "Praça dos Restauradores",
+    url: "https://maps.google.com/?q=Praça+dos+Restauradores,+Lisboa,+Portugal",
+  },
+];
+
+function ShuttleText({ text }: { text: string }) {
+  const parts: (string | JSX.Element)[] = [text];
+  BUS_STOPS.forEach((stop) => {
+    const result: (string | JSX.Element)[] = [];
+    parts.forEach((part) => {
+      if (typeof part !== "string") {
+        result.push(part);
+        return;
+      }
+      const segments = part.split(stop.name);
+      segments.forEach((seg, i) => {
+        result.push(seg);
+        if (i < segments.length - 1) {
+          result.push(
+            <a
+              key={stop.name}
+              href={stop.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-blue-600 hover:text-blue-800 underline underline-offset-2 inline-flex items-center gap-0.5 transition-colors"
+            >
+              {stop.name}
+              <ExternalLink className="h-3 w-3 inline" />
+            </a>
+          );
+        }
+      });
+    });
+    parts.splice(0, parts.length, ...result);
+  });
+  return <>{parts}</>;
+}
+
 const WeddingDaySection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -186,7 +230,7 @@ const WeddingDaySection = () => {
                   <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.accommodation}</h3>
                 </div>
                 <p className="text-gray-600 text-sm flex-grow leading-relaxed">
-                  {t.weddingDay.accommodationDetails}
+                  <ShuttleText text={t.weddingDay.accommodationDetails} />
                 </p>
               </motion.div>
               
