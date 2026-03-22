@@ -15,13 +15,16 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [, navigate] = useLocation();
-  const { t, language, changeLanguage, availableLanguages } = useLanguage();
+  const { t, language, country, changeLanguage, availableLanguages } = useLanguage();
+
+  const honeymoonHiddenCountries = ["FR", "MA"];
+  const showHoneymoon = !country || !honeymoonHiddenCountries.includes(country);
 
   const navLinks = [
     { href: "#pre-wedding", label: t.navLinks.preWedding },
     { href: "#wedding-day", label: t.navLinks.weddingDay },
     { href: "#post-wedding", label: t.navLinks.postWedding },
-    { href: "#honeymoon", label: t.navLinks.honeymoon },
+    ...(showHoneymoon ? [{ href: "#honeymoon", label: t.navLinks.honeymoon }] : []),
   ];
 
   useEffect(() => {

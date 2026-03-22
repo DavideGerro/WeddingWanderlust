@@ -7,9 +7,12 @@ import WeddingGallerySection from "@/components/sections/WeddingGallerySection";
 import HoneymoonSection from "@/components/sections/HoneymoonSection";
 import { useLanguage } from "@/lib/useLanguage";
 
+const HONEYMOON_HIDDEN_COUNTRIES = ["FR", "MA"];
+
 const Home = () => {
-  const { language } = useLanguage();
-  
+  const { country } = useLanguage();
+  const showHoneymoon = !country || !HONEYMOON_HIDDEN_COUNTRIES.includes(country);
+
   return (
     <main className="font-sans bg-offwhite text-gray-800">
       <HeroSection />
@@ -22,7 +25,7 @@ const Home = () => {
       <div className="section-divider bg-floral-pattern"></div>
       <RsvpSection />
       <div className="section-divider bg-floral-pattern"></div>
-      {language !== "fr" && (
+      {showHoneymoon && (
         <>
           <HoneymoonSection />
           <div className="section-divider bg-floral-pattern"></div>
