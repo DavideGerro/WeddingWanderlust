@@ -67,13 +67,13 @@ const HoneymoonSection = () => {
                     <div className="relative">
                       <button
                         onClick={handleCopyIban}
-                        className="p-2 hover:bg-blue-100 rounded transition-colors"
+                        className="p-2 hover:bg-gold/10 rounded transition-colors"
                         title={t.honeymoon.copyIban || "Copy IBAN"}
                         data-testid="button-copy-iban"
                       >
                         {copied
                           ? <FiCheck className="h-5 w-5 text-green-600" />
-                          : <FiCopy className="h-5 w-5 text-blue-600" />
+                          : <FiCopy className="h-5 w-5 text-gold" />
                         }
                       </button>
 

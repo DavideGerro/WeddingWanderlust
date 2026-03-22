@@ -7,40 +7,28 @@ import { Button } from "@/components/ui/button";
 import { VENUE_ADDRESS } from "@/lib/constants";
 import { useLanguage } from "@/lib/useLanguage";
 
+const VENUE_MAPS_URL = "https://maps.app.goo.gl/eZuQpG2GWwmJqUhG9";
+
 const BUS_STOPS = [
-  {
-    name: "Marquês de Pombal",
-    url: "https://maps.google.com/?q=Marquês+de+Pombal,+Lisboa,+Portugal",
-  },
-  {
-    name: "Praça dos Restauradores",
-    url: "https://maps.google.com/?q=Praça+dos+Restauradores,+Lisboa,+Portugal",
-  },
+  { name: "Marquês de Pombal", url: "https://maps.google.com/?q=Marquês+de+Pombal,+Lisboa,+Portugal" },
+  { name: "Praça dos Restauradores", url: "https://maps.google.com/?q=Praça+dos+Restauradores,+Lisboa,+Portugal" },
 ];
 
+// Renders bus stop names as clickable Google Maps links in site gold colour
 function ShuttleText({ text }: { text: string }) {
   const parts: (string | JSX.Element)[] = [text];
   BUS_STOPS.forEach((stop) => {
     const result: (string | JSX.Element)[] = [];
     parts.forEach((part) => {
-      if (typeof part !== "string") {
-        result.push(part);
-        return;
-      }
+      if (typeof part !== "string") { result.push(part); return; }
       const segments = part.split(stop.name);
       segments.forEach((seg, i) => {
         result.push(seg);
         if (i < segments.length - 1) {
           result.push(
-            <a
-              key={stop.name}
-              href={stop.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-blue-600 hover:text-blue-800 underline underline-offset-2 inline-flex items-center gap-0.5 transition-colors"
-            >
-              {stop.name}
-              <ExternalLink className="h-3 w-3 inline" />
+            <a key={stop.name} href={stop.url} target="_blank" rel="noopener noreferrer"
+              className="font-semibold text-gold hover:text-gold-dark underline underline-offset-2 inline-flex items-center gap-0.5 transition-colors">
+              {stop.name}<ExternalLink className="h-3 w-3 inline ml-0.5" />
             </a>
           );
         }
@@ -51,13 +39,63 @@ function ShuttleText({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
+// Renders the getting-there text: newlines → <br />, VISITLISBON → gold badge
+function GettingThereText({ text }: { text: string }) {
+  const lines = text.split("\n");
+  return (
+    <>
+      {lines.map((line, i) => {
+        const segments = line.split("VISITLISBON");
+        return (
+          <span key={i}>
+            {segments.map((seg, j) => (
+              <span key={j}>
+                {seg}
+                {j < segments.length - 1 && (
+                  <span className="inline-flex items-center mx-1 px-2 py-0.5 rounded-md bg-gold/15 text-gold font-bold text-xs tracking-wider border border-gold/30 align-middle">
+                    VISITLISBON
+                  </span>
+                )}
+              </span>
+            ))}
+            {i < lines.length - 1 && <br />}
+          </span>
+        );
+      })}
+    </>
+  );
+}
+
+// Highlights the "light jacket" phrase (varies by language) with a soft gold glow
+const JACKET_TERMS: Record<string, string> = {
+  en: "light jacket",
+  it: "giacca leggera",
+  es: "chaqueta ligera",
+  fr: "veste légère",
+};
+
+function WeatherText({ text, language }: { text: string; language: string }) {
+  const term = JACKET_TERMS[language];
+  if (!term || !text.includes(term)) return <>{text}</>;
+  const [before, after] = text.split(term);
+  return (
+    <>
+      {before}
+      <span className="font-semibold text-gold/90 bg-gold/10 px-1.5 py-0.5 rounded-md">
+        {term}
+      </span>
+      {after}
+    </>
+  );
+}
+
 const WeddingDaySection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const openGoogleMaps = () => {
-    window.open('https://maps.app.goo.gl/eZuQpG2GWwmJqUhG9', '_blank');
+    window.open(VENUE_MAPS_URL, '_blank');
   };
 
   const timeline = [
@@ -184,11 +222,17 @@ const WeddingDaySection = () => {
                   </div>
                   <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.location}</h3>
                 </div>
-                <p className="text-gray-600 text-sm mb-5 flex-grow leading-relaxed">
+                <a
+                  href={VENUE_MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 text-sm mb-5 flex-grow leading-relaxed hover:text-gold transition-colors block group/addr"
+                >
                   Quinta Pezinhos no Tejo<br />
                   R. do Joinal 2825<br />
                   Caparica, Portugal
-                </p>
+                  <MapPin className="inline h-3.5 w-3.5 ml-1 text-gold opacity-60 group-hover/addr:opacity-100 transition-opacity" />
+                </a>
                 <Button 
                   onClick={openGoogleMaps}
                   className="w-full bg-gold hover:bg-gold-dark text-white font-medium transition-all duration-200 gap-2"
@@ -213,7 +257,7 @@ const WeddingDaySection = () => {
                   <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.gettingThere}</h3>
                 </div>
                 <p className="text-gray-600 text-sm flex-grow leading-relaxed">
-                  {t.weddingDay.gettingThereDetails}
+                  <GettingThereText text={t.weddingDay.gettingThereDetails} />
                 </p>
               </motion.div>
               
@@ -247,7 +291,7 @@ const WeddingDaySection = () => {
                   <h3 className="font-display font-semibold text-lg text-gray-900">{t.weddingDay.weather}</h3>
                 </div>
                 <p className="text-gray-600 text-sm flex-grow leading-relaxed">
-                  {t.weddingDay.weatherDetails}
+                  <WeatherText text={t.weddingDay.weatherDetails} language={language} />
                 </p>
               </motion.div>
             </div>
