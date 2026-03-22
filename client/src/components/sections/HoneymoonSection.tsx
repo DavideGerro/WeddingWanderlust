@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/useLanguage";
@@ -6,27 +6,16 @@ import { useLanguage } from "@/lib/useLanguage";
 // Icons
 import { FaGift } from "react-icons/fa";
 import { TbBuildingBank } from "react-icons/tb";
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "stripe-buy-button": any;
-    }
-  }
-}
+import { FiCopy } from "react-icons/fi";
 
 const HoneymoonSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLanguage();
   
-  useEffect(() => {
-    // Load Stripe buy button script
-    const script = document.createElement("script");
-    script.src = "https://js.stripe.com/v3/buy-button.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
+  const handleCopyIban = () => {
+    navigator.clipboard.writeText("PT50 3560 0001 9109 9730 2304 1");
+  };
   
   return (
     <section id="honeymoon" ref={ref} className="py-16 bg-gray-50">
@@ -48,22 +37,43 @@ const HoneymoonSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-4">
               <TbBuildingBank className="h-6 w-6 text-gold" />
               <h3 className="font-display text-xl">{t.honeymoon.howToContribute}</h3>
             </div>
             
             <p className="text-gray-600 mb-6">
-              {t.honeymoon.contributeInstructions}
+              {t.honeymoon.bankTransferInstructions}
             </p>
             
-            <div className="flex justify-center">
-              <stripe-buy-button
-                buy-button-id="buy_btn_1SaG7QH5mllg6YT2FHFDJTgD"
-                publishable-key="pk_live_51JU9DkH5mllg6YT2vYTtdZaQLqxwbW4miwQuXjq2exsEopznOQwT1HcnX7JHBSDfpXF8zJxl1oVw0PtgilzKhDFs00drBmiUPd"
-              ></stripe-buy-button>
+            <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 mb-6">
+              <h4 className="font-semibold text-gray-800 mb-4">{t.honeymoon.bankDetails}</h4>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-sm text-gray-600 font-medium">{t.honeymoon.accountHolder}</p>
+                  <p className="text-lg text-gray-800 font-semibold">Sara Abadour & Devid Geris</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600 font-medium">IBAN</p>
+                  <div className="flex items-center gap-3 mt-1">
+                    <p className="text-lg font-mono font-semibold text-gray-800">PT50 3560 0001 9109 9730 2304 1</p>
+                    <button
+                      onClick={handleCopyIban}
+                      className="p-2 hover:bg-blue-100 rounded transition-colors"
+                      title={t.honeymoon.copyIban || "Copy IBAN"}
+                      data-testid="button-copy-iban"
+                    >
+                      <FiCopy className="h-5 w-5 text-blue-600" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
+            
+            <p className="text-gray-600 text-sm text-center">
+              {t.honeymoon.ibanNote}
+            </p>
           </div>
         </motion.div>
       </div>
