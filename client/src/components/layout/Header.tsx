@@ -18,7 +18,8 @@ const Header = () => {
   const { t, language, country, changeLanguage, availableLanguages } = useLanguage();
 
   const honeymoonHiddenCountries = ["FR", "MA"];
-  const showHoneymoon = !country || !honeymoonHiddenCountries.includes(country);
+  const countryHidden = country ? honeymoonHiddenCountries.includes(country) : false;
+  const showHoneymoon = !countryHidden && language !== "fr";
 
   const navLinks = [
     { href: "#pre-wedding", label: t.navLinks.preWedding },

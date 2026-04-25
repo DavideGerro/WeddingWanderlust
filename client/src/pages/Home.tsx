@@ -10,8 +10,9 @@ import { useLanguage } from "@/lib/useLanguage";
 const HONEYMOON_HIDDEN_COUNTRIES = ["FR", "MA"];
 
 const Home = () => {
-  const { country } = useLanguage();
-  const showHoneymoon = !country || !HONEYMOON_HIDDEN_COUNTRIES.includes(country);
+  const { country, language } = useLanguage();
+  const countryHidden = country ? HONEYMOON_HIDDEN_COUNTRIES.includes(country) : false;
+  const showHoneymoon = !countryHidden && language !== "fr";
 
   return (
     <main className="font-sans bg-offwhite text-gray-800">
