@@ -128,21 +128,21 @@ const WeddingDaySection = () => {
       highlight: false
     },
     {
-      time: "21:00",
+      time: "21:30",
       title: t.weddingDay.timelineEvents.cakeCutting,
       description: t.weddingDay.timelineEvents.cakeCuttingDesc,
       icon: Cake,
       highlight: true
     },
     {
-      time: "21:30",
+      time: "22:00",
       title: t.weddingDay.timelineEvents.partyTime,
       description: t.weddingDay.timelineEvents.partyTimeDesc,
       icon: Music,
       highlight: false
     },
     {
-      time: "00:00",
+      time: "23:00",
       title: t.weddingDay.timelineEvents.lateNightSnacks,
       description: t.weddingDay.timelineEvents.lateNightSnacksDesc,
       icon: Pizza,
