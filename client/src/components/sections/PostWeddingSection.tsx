@@ -56,7 +56,14 @@ const PostWeddingSection = () => {
                 <MapPin className="text-primary mr-3 mt-1 h-5 w-5" />
                 <div>
                   <h4 className="font-medium">{t.postWedding.where}</h4>
-                  <p className="text-gray-600">{t.postWedding.whereDetails}</p>
+                  <a
+                    href="https://maps.app.goo.gl/9xdfg4err2Y24vwGA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gold hover:text-gold-dark underline underline-offset-2 transition-colors"
+                  >
+                    {t.postWedding.whereDetails}
+                  </a>
                 </div>
               </div>
               
