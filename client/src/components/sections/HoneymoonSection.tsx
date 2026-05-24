@@ -14,6 +14,13 @@ const HoneymoonSection = () => {
   const { t } = useLanguage();
   const [showArigato, setShowArigato] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [copiedName, setCopiedName] = useState(false);
+
+  const handleCopyName = () => {
+    navigator.clipboard.writeText("Sara Abadour & Devid Geris");
+    setCopiedName(true);
+    setTimeout(() => setCopiedName(false), 2000);
+  };
 
   const handleCopyIban = () => {
     navigator.clipboard.writeText("PT50 3560 0001 9109 9730 2304 1");
@@ -58,7 +65,20 @@ const HoneymoonSection = () => {
               <div className="space-y-3">
                 <div>
                   <p className="text-sm text-gray-600 font-medium">{t.honeymoon.accountHolder}</p>
-                  <p className="text-lg text-gray-800 font-semibold">Sara Abadour & Devid Geris</p>
+                  <div className="flex items-center gap-3 mt-1">
+                    <p className="text-lg text-gray-800 font-semibold">Sara Abadour & Devid Geris</p>
+                    <button
+                      onClick={handleCopyName}
+                      className="p-2 hover:bg-gold/10 rounded transition-colors"
+                      title="Copy name"
+                      data-testid="button-copy-name"
+                    >
+                      {copiedName
+                        ? <FiCheck className="h-5 w-5 text-green-600" />
+                        : <FiCopy className="h-5 w-5 text-gold" />
+                      }
+                    </button>
+                  </div>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 font-medium">IBAN</p>
