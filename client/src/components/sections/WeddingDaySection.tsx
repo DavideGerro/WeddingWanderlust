@@ -39,7 +39,7 @@ function ShuttleText({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
-const PROMO_CODES = ["seelisbon", "meetLisbon"];
+const PROMO_CODES = ["SEELISBON", "MEETLISBON"];
 
 // Renders the getting-there text: newlines → <br />, promo codes → gold badge
 function GettingThereText({ text }: { text: string }) {
