@@ -39,25 +39,36 @@ function ShuttleText({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
-// Renders the getting-there text: newlines → <br />, VISITLISBON → gold badge
+const PROMO_CODES = ["seelisbon", "meetLisbon"];
+
+// Renders the getting-there text: newlines → <br />, promo codes → gold badge
 function GettingThereText({ text }: { text: string }) {
   const lines = text.split("\n");
   return (
     <>
       {lines.map((line, i) => {
-        const segments = line.split("VISITLISBON");
+        let parts: (string | JSX.Element)[] = [line];
+        PROMO_CODES.forEach((code) => {
+          const result: (string | JSX.Element)[] = [];
+          parts.forEach((part) => {
+            if (typeof part !== "string") { result.push(part); return; }
+            const segs = part.split(code);
+            segs.forEach((seg, k) => {
+              result.push(seg);
+              if (k < segs.length - 1) {
+                result.push(
+                  <span key={code} className="inline-flex items-center mx-1 px-2 py-0.5 rounded-md bg-gold/15 text-gold font-bold text-xs tracking-wider border border-gold/30 align-middle">
+                    {code}
+                  </span>
+                );
+              }
+            });
+          });
+          parts = result;
+        });
         return (
           <span key={i}>
-            {segments.map((seg, j) => (
-              <span key={j}>
-                {seg}
-                {j < segments.length - 1 && (
-                  <span className="inline-flex items-center mx-1 px-2 py-0.5 rounded-md bg-gold/15 text-gold font-bold text-xs tracking-wider border border-gold/30 align-middle">
-                    VISITLISBON
-                  </span>
-                )}
-              </span>
-            ))}
+            <>{parts}</>
             {i < lines.length - 1 && <br />}
           </span>
         );
