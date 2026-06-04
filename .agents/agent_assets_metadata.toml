@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "PDXglgNrXEuriBjjlBcmv"
+uri = "file://dist/wedding-site-static.zip"
+type = "unspecified"
+title = "Sito statico Sara & Devid (dist/public)"
