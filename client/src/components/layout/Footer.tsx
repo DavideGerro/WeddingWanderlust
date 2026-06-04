@@ -3,7 +3,11 @@ import { useLanguage } from "@/lib/useLanguage";
 
 const Footer = () => {
   const [, navigate] = useLocation();
-  const { t } = useLanguage();
+  const { t, language, country } = useLanguage();
+
+  const honeymoonHiddenCountries = ["FR", "MA"];
+  const countryHidden = country ? honeymoonHiddenCountries.includes(country) : false;
+  const showHoneymoon = !countryHidden && language !== "fr";
 
   const handleNavigation = (href: string) => {
     const isHashLink = href.startsWith("#");
@@ -22,7 +26,7 @@ const Footer = () => {
     { href: "#pre-wedding", label: t.navLinks.preWedding },
     { href: "#wedding-day", label: t.navLinks.weddingDay },
     { href: "#post-wedding", label: t.navLinks.postWedding },
-    { href: "#honeymoon", label: t.navLinks.honeymoon },
+    ...(showHoneymoon ? [{ href: "#honeymoon", label: t.navLinks.honeymoon }] : []),
   ];
 
   return (

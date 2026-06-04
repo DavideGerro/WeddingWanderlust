@@ -2,7 +2,6 @@ import HeroSection from "@/components/sections/HeroSection";
 import PreWeddingSection from "@/components/sections/PreWeddingSection";
 import WeddingDaySection from "@/components/sections/WeddingDaySection";
 import PostWeddingSection from "@/components/sections/PostWeddingSection";
-import RsvpSection from "@/components/sections/RsvpSection";
 import WeddingGallerySection from "@/components/sections/WeddingGallerySection";
 import HoneymoonSection from "@/components/sections/HoneymoonSection";
 import { useLanguage } from "@/lib/useLanguage";
@@ -23,8 +22,6 @@ const Home = () => {
       <WeddingDaySection />
       <div className="section-divider bg-floral-pattern"></div>
       <PostWeddingSection />
-      <div className="section-divider bg-floral-pattern"></div>
-      <RsvpSection />
       <div className="section-divider bg-floral-pattern"></div>
       {showHoneymoon && (
         <>

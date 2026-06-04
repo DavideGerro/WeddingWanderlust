@@ -1,0 +1,1 @@
+- [Static-only site](static-site.md) — frontend must stay backend-free (no /api, no DB); deploy via vite build to static hosting; geo via ipapi.co client-side.
